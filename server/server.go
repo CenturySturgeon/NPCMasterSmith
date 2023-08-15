@@ -17,7 +17,7 @@ import (
 func main() {
 
 	// Initialize standard Go html template engine
-	engine := html.New("./views", ".html")
+	engine := html.New("../views", ".html")
 
 	app := fiber.New(fiber.Config{
 		Views: engine,
@@ -76,5 +76,5 @@ func main() {
 		return c.SendString("Testing propmting...")
 	})
 
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(app.Listen(":8000"))
 }
