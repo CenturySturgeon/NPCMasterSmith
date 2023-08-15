@@ -1,0 +1,20 @@
+{
+  "name": "npcmastersmith",
+  "version": "1.0.0",
+  "description": "A Go Fiber Dungeons &amp; Dragons non-playable character creator using LLMs with GoLlama.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7"
+  }
+}

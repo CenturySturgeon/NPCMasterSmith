@@ -24,7 +24,9 @@ func main() {
 	})
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{})
+		return c.Render("index", fiber.Map{
+			"Title": "NPC Master Smith",
+		})
 	})
 
 	app.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
