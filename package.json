@@ -4,6 +4,7 @@
   "description": "A Go Fiber Dungeons &amp; Dragons non-playable character creator using LLMs with GoLlama.",
   "main": "index.js",
   "scripts": {
+    "dev": "cd .\\server\\ && air",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
