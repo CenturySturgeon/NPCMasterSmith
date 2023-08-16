@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 
-	"github.com/evanw/esbuild/pkg/api"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 )
@@ -24,28 +22,6 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
-
-	// Sets up esbuild to run in watch mode (Write option is vital)
-	ctx, errCtx := api.Context(api.BuildOptions{
-		EntryPoints:       []string{"../frontend/Application.tsx", "../frontend/esbuild.css"},
-		Outdir:            "../public/esbundle/",
-		Bundle:            true,
-		Write:             true,
-		MinifyWhitespace:  true,
-		MinifyIdentifiers: true,
-		MinifySyntax:      true,
-	})
-
-	if errCtx != nil {
-		os.Exit(1)
-	}
-
-	errWtch := ctx.Watch(api.WatchOptions{})
-	if errWtch != nil {
-		fmt.Println(errWtch)
-		os.Exit(1)
-	}
-	fmt.Println("		⚡ Esbuild Watching! ⚡")
 
 	// Set up the static folder
 	app.Static("/", "../public")
@@ -102,10 +78,6 @@ func main() {
 
 		return c.SendString("Testing propmting...")
 	})
-
-	// Returning from main() exits immediately in Go.
-	// Block forever so we keep watching and don't exit (doesn't seem necessary when running a server).
-	// <-make(chan struct{})
 
 	// Run the app
 	log.Fatal(app.Listen(":8000"))
