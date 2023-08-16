@@ -3,9 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 )
+
+type Prompt struct {
+	Prompt string `json:"prompt" xml:"prompt" form:"prompt"`
+}
 
 func setRoutes(app *fiber.App) {
 
@@ -13,6 +18,21 @@ func setRoutes(app *fiber.App) {
 		return c.Render("index", fiber.Map{
 			"Title": "NPC Master Smith",
 		})
+	})
+
+	app.Post("/prompt", func(c *fiber.Ctx) error {
+		// Initialize new prompt variable
+		p := new(Prompt)
+
+		// Parse the request body to p
+		if err := c.BodyParser(p); err != nil {
+			return err
+		}
+
+		fmt.Print("PROMPT: ", p.Prompt)
+
+		time.Sleep(10 * time.Second)
+		return c.SendString("Prompt processed")
 	})
 
 	app.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
