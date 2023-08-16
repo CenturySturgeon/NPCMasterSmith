@@ -4,7 +4,7 @@ import { exec } from 'child_process';
 // This file has a .mjs extension since its syntax would not work on a regular .js file due to node (refer to esbuild's documentation for more)
 
 let ctx = await esbuild.context({
-    entryPoints: ["frontend/Application.tsx", "frontend/esbuild.css"],
+    entryPoints: ["frontend/Application.tsx", "frontend/base.css"],
     outdir: "./public/esbundle/",
     bundle: true,
     minify: true,

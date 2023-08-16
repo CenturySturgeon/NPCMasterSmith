@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 
 function Application (){
-    return <div>Application</div>
+    return <p>Application</p>
 }
 
 // Render your React component instead
