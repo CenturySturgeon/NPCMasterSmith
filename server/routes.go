@@ -12,15 +12,15 @@ type Prompt struct {
 	Prompt string `json:"prompt" xml:"prompt" form:"prompt"`
 }
 
-func setRoutes(app *fiber.App) {
+func setRoutes(server *Server) {
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	server.App.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("index", fiber.Map{
 			"Title": "NPC Master Smith",
 		})
 	})
 
-	app.Post("/prompt", func(c *fiber.Ctx) error {
+	server.App.Post("/prompt", func(c *fiber.Ctx) error {
 		// Initialize new prompt variable
 		p := new(Prompt)
 
@@ -35,7 +35,7 @@ func setRoutes(app *fiber.App) {
 		return c.SendString("Prompt processed")
 	})
 
-	app.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
+	server.App.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
 		llm := LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
 		outputChan := make(chan string)
 
@@ -50,7 +50,7 @@ func setRoutes(app *fiber.App) {
 		return c.SendString("Testing prompt buffering...")
 	})
 
-	app.Get("/testPrompt", func(c *fiber.Ctx) error {
+	server.App.Get("/testPrompt", func(c *fiber.Ctx) error {
 		llm := LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
 
 		jsonStringArray, err := llm.mockPromptModel([]string{"test string"})

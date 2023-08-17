@@ -13,7 +13,7 @@ let ctx = await esbuild.context({
 await ctx.watch();
 console.log('⚡ Watching ⚡');
 
-// Since the package.json dev script can't run two commands at once, the server running command must be ran from this script.
+// Since the package.json dev script can't run two commands at once due to esbuild.mjs watch mode leaving the process running in a loop, the server running process (air) must be spawned from this script.
 const airProcess = spawn('air', [], { cwd: 'server/', stdio: 'inherit' });
 
 airProcess.on('error', (err) => {
