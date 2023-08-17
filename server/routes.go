@@ -11,8 +11,11 @@ func setRoutes(server *Server) {
 
 	server.App.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("index", fiber.Map{
-			"Title": "NPC Master Smith",
-		})
+			"Title":       "NPC Master Smith",
+			"Description": "Create NPC Characters For Your Campaigns",
+			"cssPaths":    []string{"/esBundle/base.css"},
+			"jsPaths":     []string{"/esbundle/Application.js"},
+		}, "base")
 	})
 
 	server.App.Post("/prompt", func(c *fiber.Ctx) error {

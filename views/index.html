@@ -1,22 +1,12 @@
-<!DOCTYPE html>
+<h1 class="centered">NPC Master Smith</h1>
 
-<head>
-    <title>{{.Title}}</title>
-    <link rel="stylesheet" href="/esBundle/base.css">
-</head>
+<form action="/prompt" method="POST">
+    <div class="centerHolder">
+        <label for="prompt">Character Description:</label><br>
+        <input type="text" id="prompt" name="prompt"><br>
+        <input type="submit" value="Submit">
+    </div>
+</form>
 
-<body>
-    <h1 class="centered">NPC Master Smith</h1>
-
-    <form action="/prompt" method="POST">
-        <div class="centerHolder">
-            <label for="prompt">Character Description:</label><br>
-            <input type="text" id="prompt" name="prompt"><br>
-            <input type="submit" value="Submit">
-        </div>
-    </form>
-
-    <div class="centerHolder" id="app"></div>
-</body>
-
+<div class="centerHolder" id="app"></div>
 <script src="/esBundle/Application.js"></script>

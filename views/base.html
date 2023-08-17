@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{.Title}}</title>
+    <meta name="description" content="{{.Description}}">
+    <meta name="viewport" content="width=device-width">
+    <!-- <link rel="stylesheet" href="/css/base.css" /> -->
+    {{range .cssPaths}}
+    <link rel="stylesheet" href="{{.}}" />
+    {{end}}
+</head>
+
+<body>
+
+    <!-- HTML templates are substituted here -->
+    {{embed}}
+
+    <footer class="centered">
+        <div class="footerdiv">
+            <p class="footernote">NPC Master Smith 2023</p>
+        </div>
+    </footer>
+
+    {{range .jsPaths}}
+    <script src="{{.}}"></script>
+    {{end}}
+
+</body>
+
+</html>
