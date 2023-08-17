@@ -8,7 +8,13 @@
             <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
             <div class="container">
                 <h4><b>{{.Name}}</b></h4>
-                <p>Interior Designer</p>
+                <p>{{.Appearance}}</p>
+                <p>{{.Quote}}</p>
+                <ul>
+                    <li>{{index .Roleplay 0 }}</li>
+                    <li>{{index .Roleplay 1 }}</li>
+                    <li>{{index .Roleplay 2 }}</li>
+                </ul>
             </div>
         </div>
     </div>
