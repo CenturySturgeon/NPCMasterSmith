@@ -1,0 +1,16 @@
+<h1 class="centered">CHARACTERS</h1>
+
+
+<div class="centerHolder row">
+    {{range .Characters}}
+    <div class="column">
+        <div class="card">
+            <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
+            <div class="container">
+                <h4><b>{{.Name}}</b></h4>
+                <p>Interior Designer</p>
+            </div>
+        </div>
+    </div>
+    {{end}}
+</div>

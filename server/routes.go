@@ -18,6 +18,16 @@ func setRoutes(server *Server) {
 		}, "base")
 	})
 
+	server.App.Get("/characters", func(c *fiber.Ctx) error {
+		return c.Render("characters", fiber.Map{
+			"Title":       "NPC Master Smith | Characters",
+			"Description": "All Your Characters In One Place",
+			"cssPaths":    []string{"/esBundle/characters.css"},
+			"jsPaths":     []string{""},
+			"Characters":  []fiber.Map{{"Name": "Osacar"}, {"Name": "Juan"}, {"Name": "Juan Carlos"}},
+		}, "base")
+	})
+
 	server.App.Post("/prompt", func(c *fiber.Ctx) error {
 		return postCharacter(c, server.Db)
 	})
