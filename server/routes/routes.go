@@ -1,13 +1,16 @@
-package main
+package routes
 
 import (
 	"encoding/json"
 	"fmt"
+	"npcmastersmith/handlers"
+	"npcmastersmith/mocks"
+	"npcmastersmith/models"
 
 	"github.com/gofiber/fiber/v2"
 )
 
-func setRoutes(server *Server) {
+func SetRoutes(server *models.Server) {
 
 	server.App.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("index", fiber.Map{
@@ -31,14 +34,14 @@ func setRoutes(server *Server) {
 	})
 
 	server.App.Post("/prompt", func(c *fiber.Ctx) error {
-		return postCharacter(c, server.Db)
+		return handlers.PostCharacter(c, server.Db)
 	})
 
 	server.App.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
-		llm := LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
+		llm := mocks.LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
 		outputChan := make(chan string)
 
-		go llm.mockBufferPromptModel("test string", outputChan)
+		go llm.BufferPromptModel("test string", outputChan)
 
 		outputText := ""
 		for char := range outputChan {
@@ -50,9 +53,9 @@ func setRoutes(server *Server) {
 	})
 
 	server.App.Get("/testPrompt", func(c *fiber.Ctx) error {
-		llm := LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
+		llm := mocks.LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
 
-		jsonStringArray, err := llm.mockPromptModel([]string{"test string"})
+		jsonStringArray, err := llm.PromptModel([]string{"test string"})
 
 		// Declare a slice of maps
 		var responsesArray []map[string]interface{}

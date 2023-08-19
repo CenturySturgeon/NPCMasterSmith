@@ -1,4 +1,4 @@
-package main
+package handlers
 
 import (
 	"database/sql"
@@ -10,7 +10,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func postCharacter(c *fiber.Ctx, db *sql.DB) error {
+func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 

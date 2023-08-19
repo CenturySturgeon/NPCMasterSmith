@@ -2,9 +2,9 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"npcmastersmith/models"
+	"npcmastersmith/routes"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -12,17 +12,9 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Server struct {
-	Db  *sql.DB
-	App *fiber.App
-}
-
-func newServer() *Server {
+func newServer() *models.Server {
 	// Initialize standard Go html template engine
 	engine := html.New("../views", ".html")
-
-	x := models.Character{}
-	fmt.Println(x)
 
 	// Create new instance of a fiber app
 	app := fiber.New(fiber.Config{
@@ -41,7 +33,7 @@ func newServer() *Server {
 	}
 
 	// Create server instance
-	server := Server{App: app, Db: db}
+	server := models.Server{App: app, Db: db}
 
 	return &server
 }
@@ -54,7 +46,7 @@ func main() {
 	server.App.Static("/", "../public")
 
 	// Set up all the routes handlers
-	setRoutes(server)
+	routes.SetRoutes(server)
 
 	// Run the app
 	log.Fatal(server.App.Listen(":8000"))

@@ -1,5 +1,16 @@
 package models
 
+import (
+	"database/sql"
+
+	"github.com/gofiber/fiber/v2"
+)
+
+type Server struct {
+	Db  *sql.DB
+	App *fiber.App
+}
+
 type Prompt struct {
 	Prompt string `json:"prompt" xml:"prompt" form:"prompt"`
 }
