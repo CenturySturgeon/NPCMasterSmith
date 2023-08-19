@@ -5,25 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"time"
+	"npcmastersmith/models"
 
 	"github.com/gofiber/fiber/v2"
 )
 
-type Prompt struct {
-	Prompt string `json:"prompt" xml:"prompt" form:"prompt"`
-}
-
-type Character struct {
-	Name       string   `json:"Name" xml:"Name" form:"Name"`
-	Appearance string   `json:"Appearance" xml:"Appearance" form:"Appearance"`
-	Quote      string   `json:"Quote" xml:"Quote" form:"Quote"`
-	Roleplay   []string `json:"Roleplay" xml:"Roleplay" form:"Roleplay"`
-}
-
 func postCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Initialize new prompt variable
-	p := new(Prompt)
+	p := new(models.Prompt)
 
 	// Parse the request body to p
 	if err := c.BodyParser(p); err != nil {
@@ -35,7 +24,7 @@ func postCharacter(c *fiber.Ctx, db *sql.DB) error {
 	llmresponse := "{\"Name\": \"Gargauth (Once-treasurer of hell, the Tenth Lord of the nine, Lost lord of the pit)\", \"Appearance\": \"A shield of silvered, vanadium steel, embelished with bronze decorations suggesting the horns, eyes and fangs of a pit fiend.\", \"Quote\": \"You have no idea of the secrets which I could share with you! If you would only serve me!\", \"Roleplay\": [\"Wants nothing more than to be released from his prision.\", \"Craves power, with little care for what it takes.\", \"Speaks in either a siblant, seductive whisper or a baritone roar.\"]}"
 
 	// Create new character instance
-	character := new(Character)
+	character := new(models.Character)
 
 	// Parse the json body to the character instance
 	json.Unmarshal([]byte(llmresponse), &character)
@@ -54,6 +43,5 @@ func postCharacter(c *fiber.Ctx, db *sql.DB) error {
 		log.Fatalf("An error occured while executing query: %v", err)
 	}
 
-	time.Sleep(10 * time.Second)
 	return c.SendString("Prompt processed")
 }

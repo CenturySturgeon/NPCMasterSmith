@@ -2,7 +2,9 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
+	"npcmastersmith/models"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -18,6 +20,9 @@ type Server struct {
 func newServer() *Server {
 	// Initialize standard Go html template engine
 	engine := html.New("../views", ".html")
+
+	x := models.Character{}
+	fmt.Println(x)
 
 	// Create new instance of a fiber app
 	app := fiber.New(fiber.Config{
