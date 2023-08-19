@@ -7,6 +7,7 @@ import (
 	"log"
 	"npcmastersmith/mocks"
 	"npcmastersmith/models"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -45,4 +46,36 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	}
 
 	return c.SendString("Prompt processed")
+}
+
+func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
+	var x string
+	var character models.Character
+	var characters []models.Character
+
+	// Get all characters stored on the DB
+	rows, err := db.Query("SELECT * FROM characters")
+	// Don't forget to close the DB connection
+	defer rows.Close()
+
+	if err != nil {
+		log.Fatalln(err)
+		return err
+	}
+
+	// Scan the rows and store them in characters in an array
+	for rows.Next() {
+		rows.Scan(&character.ID, &character.Name, &character.Appearance, &character.Quote, &x)
+		// Character's roleplay is interpreted as a string by the sql.Scan; it needs to be transformed back to []string
+		character.Roleplay = strings.Split(strings.Trim(x, "[]"), ",")
+		characters = append(characters, character)
+	}
+
+	return c.Render("characters", fiber.Map{
+		"Title":       "NPC Master Smith | Characters",
+		"Description": "All Your Characters In One Place",
+		"cssPaths":    []string{"/esBundle/characters.css"},
+		"jsPaths":     []string{""},
+		"Characters":  characters,
+	}, "base")
 }

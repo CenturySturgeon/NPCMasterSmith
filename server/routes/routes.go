@@ -22,15 +22,7 @@ func SetRoutes(server *models.Server) {
 	})
 
 	server.App.Get("/characters", func(c *fiber.Ctx) error {
-		return c.Render("characters", fiber.Map{
-			"Title":       "NPC Master Smith | Characters",
-			"Description": "All Your Characters In One Place",
-			"cssPaths":    []string{"/esBundle/characters.css"},
-			"jsPaths":     []string{""},
-			"Characters": []fiber.Map{
-				{"Name": "Gaa'nthu", "Appearance": "Tall with Horns", "Quote": "You don't know what I've seen with these eyes...", "Roleplay": []string{"Dances for no reason", "Eats icecream at randon times", "Crawls up in a ball"}},
-				{"Name": "Gargauth", "Appearance": "A shield of silvered, vanadium steel, embelished with bronze decorations suggesting the horns, eyes and fangs of a pit fiend.", "Quote": "You have no idea of the secrets which I could share with you! If you would only serve me!", "Roleplay": []string{"Dances for no reason", "Eats icecream at randon times", "Crawls up in a ball"}}},
-		}, "base")
+		return handlers.GetCharacters(c, server.Db)
 	})
 
 	server.App.Post("/prompt", func(c *fiber.Ctx) error {
