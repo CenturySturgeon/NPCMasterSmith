@@ -19,8 +19,8 @@ func (llm *LLM) GetLLMProps() {
 }
 
 func (llm *LLM) PromptModel(prompts []string) ([]string, error) {
-	jsonResponse := "{\"Name\": \"Sturgeon the destroyer\", \"Summary\": \"A 10 foot tall snake humanoid creature whose sole purpose is to avenge his fallen brethren\",\"Description\": \"A 10 foot tall snake-humanoid creature with black life-less eyes, hands as big as a washing machine lid, a strong back full of small horn-like bones with a long sword.\", \"Motivation\": \"Comming from a long gone species of secretive, high level assasins, Sturgeon's life long quest has become vengeance. He seeks to take revenge on those who orchestraded the slaughter of his brethren, leaving only him to live on with the shame and dishonor of being the last one alive.\"}"
-	time.Sleep(2 * time.Second)
+	jsonResponse := "{\"Name\": \"Gargauth (Once-treasurer of hell, the Tenth Lord of the nine, Lost lord of the pit)\", \"Appearance\": \"A shield of silvered, vanadium steel, embelished with bronze decorations suggesting the horns, eyes and fangs of a pit fiend.\", \"Quote\": \"You have no idea of the secrets which I could share with you! If you would only serve me!\", \"Roleplay\": [\"Wants nothing more than to be released from his prision.\", \"Craves power, with little care for what it takes.\", \"Speaks in either a siblant, seductive whisper or a baritone roar.\"]}"
+
 	return []string{jsonResponse}, nil
 }
 

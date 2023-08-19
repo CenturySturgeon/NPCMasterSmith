@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"npcmastersmith/mocks"
 	"npcmastersmith/models"
 
 	"github.com/gofiber/fiber/v2"
@@ -19,17 +20,17 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 		return err
 	}
 
-	fmt.Print("PROMPT: ", p.Prompt)
+	// Create an LLM instance
+	llm := mocks.LLM{Model: "llama2", Llamacpp: "path/to/llama.cpp", Ngl: 30}
 
-	llmresponse := "{\"Name\": \"Gargauth (Once-treasurer of hell, the Tenth Lord of the nine, Lost lord of the pit)\", \"Appearance\": \"A shield of silvered, vanadium steel, embelished with bronze decorations suggesting the horns, eyes and fangs of a pit fiend.\", \"Quote\": \"You have no idea of the secrets which I could share with you! If you would only serve me!\", \"Roleplay\": [\"Wants nothing more than to be released from his prision.\", \"Craves power, with little care for what it takes.\", \"Speaks in either a siblant, seductive whisper or a baritone roar.\"]}"
+	// Mock-prompt the model and store the response
+	llmresponses, _ := llm.PromptModel([]string{p.Prompt})
 
 	// Create new character instance
 	character := new(models.Character)
 
 	// Parse the json body to the character instance
-	json.Unmarshal([]byte(llmresponse), &character)
-
-	fmt.Println("Character: ", character.Name, " ", character.Appearance, " ", character.Quote, " ", character.Roleplay)
+	json.Unmarshal([]byte(llmresponses[0]), &character)
 
 	table := "characters"
 	query := fmt.Sprintf("INSERT INTO %s (Name, Appearance, Quote, Roleplay) VALUES ($1,$2, $3, $4)", table)
@@ -37,7 +38,7 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Since the characters table specifies the Rolplay cloumn as jsonb, the character's roleplay slice is turned back into a JSON array
 	roleplayJsonArray, _ := json.Marshal(character.Roleplay)
 
-	// Execute the insertion query
+	// Execute the insertion query: Insert the new character
 	_, err := db.Exec(query, character.Name, character.Appearance, character.Quote, roleplayJsonArray)
 	if err != nil {
 		log.Fatalf("An error occured while executing query: %v", err)
