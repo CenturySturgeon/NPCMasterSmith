@@ -26,7 +26,7 @@ func SetRoutes(server *models.Server) {
 	})
 
 	server.App.Post("/prompt", func(c *fiber.Ctx) error {
-		return handlers.PostCharacter(c, server.Db)
+		return handlers.PromptModel(c)
 	})
 
 	server.App.Get("/testPromptBuffering", func(c *fiber.Ctx) error {

@@ -1,0 +1,20 @@
+<h1 class="centered">Edit your character</h1>
+
+
+<div class="centerHolder row">
+    <div class="column">
+        <div class="card">
+            <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
+            <div class="container">
+                <h4><b>{{.Character.Name}}</b></h4>
+                <p>{{.Character.Appearance}}</p>
+                <p>{{.Character.Quote}}</p>
+                <ul>
+                    <li>{{index .Character.Roleplay 0 }}</li>
+                    <li>{{index .Character.Roleplay 1 }}</li>
+                    <li>{{index .Character.Roleplay 2 }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

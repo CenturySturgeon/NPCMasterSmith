@@ -12,6 +12,36 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+func PromptModel(c *fiber.Ctx) error {
+	// Initialize new prompt variable
+	p := new(models.Prompt)
+
+	// Parse the request body to p
+	if err := c.BodyParser(p); err != nil {
+		return err
+	}
+
+	// Create an LLM instance
+	llm := mocks.LLM{Model: "llama2", Llamacpp: "path/to/llama.cpp", Ngl: 30}
+
+	// Mock-prompt the model and store the response(s)
+	llmresponses, _ := llm.PromptModel([]string{p.Prompt})
+
+	// Create new character instance
+	character := new(models.Character)
+
+	// Parse the json body to the character instance
+	json.Unmarshal([]byte(llmresponses[0]), &character)
+
+	return c.Render("character", fiber.Map{
+		"Title":       "Edit Your Character",
+		"Description": "Edit or approve your character",
+		"cssPaths":    []string{"/esBundle/characters.css"},
+		"jsPaths":     []string{""},
+		"Character":   character,
+	}, "base")
+}
+
 func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
