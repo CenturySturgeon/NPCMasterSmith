@@ -1,20 +1,26 @@
 <h1 class="centered">Edit your character</h1>
 
 
-<div class="centerHolder row">
-    <div class="column">
-        <div class="card">
-            <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
-            <div class="container">
-                <h4><b>{{.Character.Name}}</b></h4>
-                <p>{{.Character.Appearance}}</p>
-                <p>{{.Character.Quote}}</p>
-                <ul>
-                    <li>{{index .Character.Roleplay 0 }}</li>
-                    <li>{{index .Character.Roleplay 1 }}</li>
-                    <li>{{index .Character.Roleplay 2 }}</li>
-                </ul>
+<form action="/postCharacter" method="post">
+    <div class="centerHolder row">
+        <div class="column">
+            <div class="card">
+                <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
+                <div class="container">
+                    <a>Name:</a><input class="input" name="Name" type="text" value="{{.Character.Name}}">
+                    <br>
+                    <a>Appearance:</a><input class="input" name="Appearance" type="text" value="{{.Character.Appearance}}">
+                    <br>
+                    <a>Quote:</a><input class="input" name="Quote" type="text" value="{{.Character.Quote}}">
+                    <br>
+                    <a>Roleplay:</a>
+                    <br>
+                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 0 }}"><br>
+                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 1 }}"><br>
+                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 2 }}"><br>
+                </div>
+                <button type="submit">Save Character</button>
             </div>
         </div>
     </div>
-</div>
+</form>
