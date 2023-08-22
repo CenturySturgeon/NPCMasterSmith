@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"npcmastersmith/routes"
 	"npcmastersmith/utils"
+	"os"
 
 	_ "github.com/lib/pq"
 )
@@ -18,6 +20,12 @@ func main() {
 	// Set up all the routes handlers
 	routes.SetRoutes(server)
 
+	// Port 8000 is default if the environment variable 'PORT' is not declared
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+
 	// Run the app
-	log.Fatal(server.App.Listen(":8000"))
+	log.Fatal(server.App.Listen(fmt.Sprintf(":%v", port)))
 }
