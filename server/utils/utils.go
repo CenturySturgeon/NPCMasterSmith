@@ -3,7 +3,6 @@ package utils
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 	"log"
 	"npcmastersmith/models"
 	"os"
@@ -15,19 +14,43 @@ import (
 
 // ExtractJson function extracts the JSON body inside a string and returns it alongside its error.
 func ExtractJson(s string) (string, error) {
-	// Find the starting and ending positions of the JSON portion
-	startIndex := strings.Index(s, "{")
-	endIndex := strings.LastIndex(s, "}")
-	if startIndex == -1 || endIndex == -1 || startIndex >= endIndex {
-		fmt.Println("No valid JSON found in input")
-		var err error = errors.New("No valid JSON found in input")
-		return "", err
+	if strings.Contains(s, "{") && strings.Contains(s, "}") {
+		// Define the variables for the json slice start and end indexes, as well as a variable to specify the start of the json body withing the string
+		var startIndex, endIndex int
+		var counter = 0
+		var startJson = false
+
+		// Loop through the string bytes to find the json body within the string
+		for index, character := range s {
+			// This code block is only performed when the start of a json body has been determined
+			if startJson {
+				// Basically, a counter is set to determine how many opening keys are there and if they're balanced by the closing keys
+				if string(character) == "{" {
+					// Opening keys add to the counter
+					counter += 1
+				} else if string(character) == "}" {
+					// Closing keys substract to the counter
+					counter -= 1
+				}
+				// when the opening and closing keys are balanced it means that the json body is closed
+				if counter == 0 {
+					endIndex = index
+					// Extract the JSON portion from the string
+					jsonPortion := s[startIndex : endIndex+1]
+					return jsonPortion, nil
+				}
+			}
+			// If the character == '{' it means that from that index onwards there is a json body
+			if string(character) == "{" && startJson == false {
+				startJson = true
+				startIndex = index
+				counter += 1
+			}
+		}
 	}
 
-	// Extract the JSON portion from the string
-	jsonPortion := s[startIndex : endIndex+1]
-
-	return jsonPortion, nil
+	// If the loop is completed and there was no closure, or there are no {} characters in the string, then it means there is no valid json body in the string
+	return "", errors.New("No valid JSON found in input")
 }
 
 // NewServer function creates a new server instance. A server instance has a fiber.App and a sql.DB as its fields.
