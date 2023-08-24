@@ -40,7 +40,7 @@ func PromptModel(c *fiber.Ctx) error {
 	return c.Render("character", fiber.Map{
 		"Title":       "Edit Your Character",
 		"Description": "Edit or approve your character",
-		"cssPaths":    []string{"/esBundle/character.css"},
+		"cssPaths":    []string{"/esbundle/character.css"},
 		"jsPaths":     []string{""},
 		"Character":   character,
 	}, "base")
@@ -101,7 +101,7 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 	return c.Render("characters", fiber.Map{
 		"Title":       "NPC Master Smith | Characters",
 		"Description": "All Your Characters In One Place",
-		"cssPaths":    []string{"/esBundle/characters.css"},
+		"cssPaths":    []string{"/esbundle/characters.css"},
 		"jsPaths":     []string{""},
 		"Characters":  characters,
 	}, "base")
