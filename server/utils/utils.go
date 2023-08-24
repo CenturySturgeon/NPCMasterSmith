@@ -65,7 +65,7 @@ func NewServer() *models.Server {
 	})
 
 	// Get the postgres password from the environment variables
-	postgrespw := os.Getenv("postgrespw")
+	postgrespw := os.Getenv("POSTGRESPW")
 
 	// Create the connection string and connect to the npcms database
 	conStr := "postgresql://postgres:" + postgrespw + "@localhost/npcms?sslmode=disable"
