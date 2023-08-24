@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"npcmastersmith/mocks"
 	"npcmastersmith/models"
 	"strings"
 
+	"github.com/CenturySturgeon/gollama"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -23,7 +23,7 @@ func PromptModel(c *fiber.Ctx) error {
 	}
 
 	// Create an LLM instance
-	llm := mocks.LLM{Model: "llama2", Llamacpp: "path/to/llama.cpp", Ngl: 30}
+	llm := gollama.LLM{Llamacpp: "../../ai/llama.cpp", Model: "../../ai/models/openorca-platypus2-13b.ggmlv3.q6_K.bin", Ngl: 30}
 
 	// Mock-prompt the model and store the response(s)
 	llmresponses, _ := llm.PromptModel([]string{p.Prompt})

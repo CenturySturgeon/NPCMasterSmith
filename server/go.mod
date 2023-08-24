@@ -3,6 +3,7 @@ module npcmastersmith
 go 1.21.0
 
 require (
+	github.com/CenturySturgeon/gollama v0.0.5
 	github.com/gofiber/fiber/v2 v2.48.0
 	github.com/gofiber/template/html/v2 v2.0.5
 	github.com/lib/pq v1.10.9
