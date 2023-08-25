@@ -80,7 +80,7 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 		log.Fatalf("An error occured while executing query: %v", err)
 	}
 
-	return c.SendString("Prompt processed")
+	return GetCharacters(c, db)
 }
 
 func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
