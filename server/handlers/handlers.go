@@ -14,7 +14,7 @@ import (
 )
 
 // PromptModel handler prompts the llm and redirects the user to an html page with the editable character card.
-func PromptModel(c *fiber.Ctx, llm gollama.LLM) error {
+func PromptModel(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 

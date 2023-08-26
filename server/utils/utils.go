@@ -82,7 +82,7 @@ func NewServer() *models.Server {
 }
 
 // NewLLM function creates a gollama LLM instance using the relative path to Llama.cpp and the environment variable MODELPATH to set the LLM's model and Llama.cpp running instance.
-func NewLLM(ngl int) gollama.LLM {
+func NewLLM(ngl int) *gollama.LLM {
 	// Having AI LLMs lying around is memory consuming, it is best to have them all in a folder and call them with absolute paths
 	modelPath := os.Getenv("MODELPATH")
 	if modelPath == "" {
@@ -93,11 +93,11 @@ func NewLLM(ngl int) gollama.LLM {
 	llm := gollama.LLM{Llamacpp: "../ai/llama.cpp", Model: modelPath, Ngl: ngl}
 	// It appears that the command to communicate with the model is executed at the server.go level, so the relative paths must refelct this
 
-	return llm
+	return &llm
 }
 
 // JsonCharacter function prompts the LLM and returns the character in json format
-func JsonCharacter(p *models.Prompt, instructionBlock string, llm gollama.LLM) (string, error) {
+func JsonCharacter(p *models.Prompt, instructionBlock string, llm *gollama.LLM) (string, error) {
 
 	// Set the LLM's instruction block
 	llm.InstructionBlock = instructionBlock

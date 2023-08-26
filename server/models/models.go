@@ -10,7 +10,7 @@ import (
 type Server struct {
 	Db  *sql.DB
 	App *fiber.App
-	LLM gollama.LLM
+	LLM *gollama.LLM
 }
 
 type Prompt struct {
