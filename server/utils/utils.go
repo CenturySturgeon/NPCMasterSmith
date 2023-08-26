@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/CenturySturgeon/gollama"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 )
@@ -53,7 +54,7 @@ func ExtractJson(s string) (string, error) {
 	return "", errors.New("No valid JSON found in input")
 }
 
-// NewServer function creates a new server instance. A server instance has a fiber.App and a sql.DB as its fields.
+// NewServer function creates a new server instance. A server instance has a fiber.App, a sql.DB, and a LLM as its properties. However the LLM isn't defined in this function for modularity.
 func NewServer() *models.Server {
 	// Initialize standard Go html template engine
 	engine := html.New("../views", ".html")
@@ -78,4 +79,42 @@ func NewServer() *models.Server {
 	server := models.Server{App: app, Db: db}
 
 	return &server
+}
+
+// NewLLM function creates a gollama LLM instance using the relative path to Llama.cpp and the environment variable MODELPATH to set the LLM's model and Llama.cpp running instance.
+func NewLLM(ngl int) gollama.LLM {
+	// Having AI LLMs lying around is memory consuming, it is best to have them all in a folder and call them with absolute paths
+	modelPath := os.Getenv("MODELPATH")
+	if modelPath == "" {
+		modelPath = "../ai/models/openorca-platypus2-13b.ggmlv3.q6_K.bin"
+	}
+
+	// Create an LLM instance
+	llm := gollama.LLM{Llamacpp: "../ai/llama.cpp", Model: modelPath, Ngl: ngl}
+	// It appears that the command to communicate with the model is executed at the server.go level, so the relative paths must refelct this
+
+	return llm
+}
+
+// JsonCharacter function prompts the LLM and returns the character in json format
+func JsonCharacter(p *models.Prompt, instructionBlock string, llm gollama.LLM) (string, error) {
+
+	// Set the LLM's instruction block
+	llm.InstructionBlock = instructionBlock
+
+	// Prompt the model and store the response(s)
+	llmresponses, err := llm.PromptModel([]string{p.Prompt})
+
+	if err != nil {
+		return "", err
+	}
+
+	// Extract the json response from the character
+	jsonResponse, err := ExtractJson(llmresponses[0])
+
+	if err != nil {
+		return "", err
+	}
+
+	return jsonResponse, nil
 }

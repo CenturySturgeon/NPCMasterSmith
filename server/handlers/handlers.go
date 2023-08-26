@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 	"npcmastersmith/models"
-	"os"
+	"npcmastersmith/utils"
 	"strings"
 
 	"github.com/CenturySturgeon/gollama"
@@ -14,7 +14,7 @@ import (
 )
 
 // PromptModel handler prompts the llm and redirects the user to an html page with the editable character card.
-func PromptModel(c *fiber.Ctx) error {
+func PromptModel(c *fiber.Ctx, llm gollama.LLM) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 
@@ -26,24 +26,14 @@ func PromptModel(c *fiber.Ctx) error {
 	// Add the instruction block for the LLM so it becomes a character creator
 	instructionBlock := ` <s>[INST] <<SYS>>You're a Dungeons and Dragons character creator. All your responses must only contain JSON format following the template: {"Name": "Name of the character (additional nicknames must be inside parenthesis)","Appearance": "Physical description of the character","Quote": "A quote or phrase the character would say","Roleplay": ["Distintive character trait", "Another distintive character trait", "Yet another distintive character trait"]} <</SYS>>`
 
-	// Having AI LLMs lying around is memory consuming, it is best to have them all in a folder and call them with absolute paths
-	modelPath := os.Getenv("MODELPATH")
-	if modelPath == "" {
-		modelPath = "../ai/models/openorca-platypus2-13b.ggmlv3.q6_K.bin"
-	}
-
-	// Create an LLM instance
-	llm := gollama.LLM{Llamacpp: "../ai/llama.cpp", Model: modelPath, Ngl: 30, InstructionBlock: instructionBlock}
-	// It appears that the command to communicate with the model is executed at the server.go level, so the relative paths must refelct this
-
 	// Mock-prompt the model and store the response(s)
-	llmresponses, _ := llm.PromptModel([]string{p.Prompt})
+	llmresponse, _ := utils.JsonCharacter(p, instructionBlock, llm)
 
 	// Create new character instance
 	character := new(models.Character)
 
 	// Parse the json body to the character instance
-	json.Unmarshal([]byte(llmresponses[0]), &character)
+	json.Unmarshal([]byte(llmresponse), &character)
 
 	return c.Render("character", fiber.Map{
 		"Title":       "Edit Your Character",

@@ -3,12 +3,14 @@ package models
 import (
 	"database/sql"
 
+	"github.com/CenturySturgeon/gollama"
 	"github.com/gofiber/fiber/v2"
 )
 
 type Server struct {
 	Db  *sql.DB
 	App *fiber.App
+	LLM gollama.LLM
 }
 
 type Prompt struct {

@@ -14,6 +14,9 @@ func main() {
 	// Create server instance
 	server := utils.NewServer()
 
+	// Set the server's LLM
+	server.LLM = utils.NewLLM(30)
+
 	// Set up the static folder
 	server.App.Static("/", "../public")
 
