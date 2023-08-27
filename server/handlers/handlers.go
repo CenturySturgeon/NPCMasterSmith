@@ -13,8 +13,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// PromptModel handler prompts the llm and redirects the user to an html page with the editable character card.
-func PromptModel(c *fiber.Ctx, llm *gollama.LLM) error {
+// GetNewCharacter handler prompts the llm and redirects the user to an html page with the editable character card.
+func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 
