@@ -13,15 +13,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// GetNewCharacter handler prompts the llm and redirects the user to an html page with the editable character card.
+// GetNewCharacter handler prompts the llm for a new character and redirects the user to an html page with the editable character card.
 func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 
-	// Parse the request body to p
-	if err := c.BodyParser(p); err != nil {
-		return err
-	}
+	// Extracts the user prompt from the GET request body
+	p.Prompt = c.Query("prompt")
 
 	// Add the instruction block for the LLM so it becomes a character creator
 	instructionBlock := ` <s>[INST] <<SYS>>You're a Dungeons and Dragons character creator. All your responses must only contain JSON format following the template: {"Name": "Name of the character (additional nicknames must be inside parenthesis)","Appearance": "Physical description of the character","Quote": "A quote or phrase the character would say","Roleplay": ["Distintive character trait", "Another distintive character trait", "Yet another distintive character trait"]} <</SYS>>`
