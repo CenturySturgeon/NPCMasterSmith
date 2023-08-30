@@ -6,9 +6,10 @@ import (
 )
 
 type LLM struct {
-	Model    string // Path to the model.bin
-	Llamacpp string // Path to the llama.cpp folder
-	Ngl      int    // Number of layers to store in VRAM
+	Model            string // Path to the model.bin
+	Llamacpp         string // Path to the llama.cpp folder
+	Ngl              int    // Number of layers to store in VRAM
+	InstructionBlock string // Sets the format for the LLM respones
 }
 
 // GetLLMProps reads the properties currently set to the LLM struct.
