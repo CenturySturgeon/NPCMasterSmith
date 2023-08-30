@@ -43,3 +43,7 @@
 input{
     width: 100%;
 }
+
+textarea{
+    max-width: 100%;
+}

@@ -7,17 +7,17 @@
             <div class="card">
                 <img src="/images/profile_man.png" alt="Avatar" style="max-width: 40%;">
                 <div class="container">
-                    <a>Name:</a><input class="input" name="Name" type="text" value="{{.Character.Name}}">
+                    <a>Name:</a><textarea rows="3" cols="60" class="input" name="Name" type="text">{{.Character.Name}}</textarea>
                     <br>
-                    <a>Appearance:</a><input class="input" name="Appearance" type="text" value="{{.Character.Appearance}}">
+                    <a>Appearance:</a><textarea rows="3" cols="60" class="input" name="Appearance" type="text">{{.Character.Appearance}}</textarea>
                     <br>
-                    <a>Quote:</a><input class="input" name="Quote" type="text" value="{{.Character.Quote}}">
+                    <a>Quote:</a><textarea rows="3" cols="60" class="input" name="Quote" type="text">{{.Character.Quote}}</textarea>
                     <br>
                     <a>Roleplay:</a>
                     <br>
-                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 0 }}"><br>
-                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 1 }}"><br>
-                    <input class="input" name="Roleplay" type="text" value="{{index .Character.Roleplay 2 }}"><br>
+                    <textarea rows="3" cols="60" class="input" name="Roleplay" type="text">{{index .Character.Roleplay 0 }}</textarea><br>
+                    <textarea rows="3" cols="60" class="input" name="Roleplay" type="text">{{index .Character.Roleplay 1 }}</textarea><br>
+                    <textarea rows="3" cols="60" class="input" name="Roleplay" type="text">{{index .Character.Roleplay 2 }}</textarea><br>
                 </div>
                 <button type="submit">Save Character</button>
             </div>
