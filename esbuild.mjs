@@ -4,7 +4,7 @@ import { spawn } from 'child_process';
 // This file has a .mjs extension since its syntax would not work on a regular .js file due to node (refer to esbuild's documentation for more)
 let ctx = await esbuild.context({
     entryPoints: ["client/Application.tsx", "client/*.css"],
-    outdir: "./public/esbundle/",
+    outdir: "./client/public/esbundle/",
     bundle: true,
     minify: true,
     plugins: [],

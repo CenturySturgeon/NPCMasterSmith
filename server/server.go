@@ -18,7 +18,7 @@ func main() {
 	server.LLM = utils.NewLLM(30)
 
 	// Set up the static folder
-	server.App.Static("/", "../public")
+	server.App.Static("/", "../client/public")
 
 	// Set up all the routes handlers
 	routes.SetRoutes(server)
