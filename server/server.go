@@ -12,7 +12,7 @@ import (
 
 func main() {
 	// Create server instance
-	server := utils.NewServer()
+	server := newServer()
 
 	// Set the server's LLM
 	server.LLM = utils.NewLLM(30)
