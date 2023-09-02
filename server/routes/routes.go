@@ -17,7 +17,7 @@ func SetRoutes(server *models.Server) {
 			"Title":       "NPC Master Smith",
 			"Description": "Create NPC Characters For Your Campaigns",
 			"cssPaths":    []string{"/esBundle/base.css"},
-			"jsPaths":     []string{"/esbundle/Application.js"},
+			"jsPaths":     []string{""},
 		}, "base")
 	})
 

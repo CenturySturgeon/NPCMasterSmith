@@ -3,9 +3,13 @@ import { spawn } from 'child_process';
 
 // This file has a .mjs extension since its syntax would not work on a regular .js file due to node (refer to esbuild's documentation for more)
 let ctx = await esbuild.context({
-    entryPoints: ["client/Application.tsx", "client/*.css"],
+    entryPoints: ["client/src/index.js", "client/*.css"],
     outdir: "./client/public/esbundle/",
     bundle: true,
+    // Avoid having to manually import your JSX library into each file (import * as React from 'react') 
+    jsx: 'automatic',
+    // Enables JSX syntax for JS files
+    loader: { '.js': 'jsx' },
     minify: true,
     plugins: [],
 });
