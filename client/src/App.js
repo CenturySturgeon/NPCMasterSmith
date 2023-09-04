@@ -1,10 +1,10 @@
-import ButtonUsage from "./components/ButtonUsage";
+import Card from "./components/Card"
 
 function Application (){
     return (
         <div>
             <p>Application</p>
-            <ButtonUsage/>
+            <Card></Card>
         </div>
     )
 }
