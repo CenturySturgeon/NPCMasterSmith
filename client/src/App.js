@@ -1,5 +1,12 @@
+import ButtonUsage from "./components/ButtonUsage";
+
 function Application (){
-    return <p>Application</p>
+    return (
+        <div>
+            <p>Application</p>
+            <ButtonUsage/>
+        </div>
+    )
 }
 
 export default Application;
