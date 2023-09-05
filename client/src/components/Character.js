@@ -55,7 +55,7 @@ export default function Character() {
                 alt="Paella dish"
             />
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography contentEditable={true} suppressContentEditableWarning={true} variant="body2" color="text.secondary">
                     Appearance of the character goes here.
                 </Typography>
             </CardContent>
@@ -77,7 +77,7 @@ export default function Character() {
                     <Typography paragraph>
                         Roleplay:
                     </Typography>
-                    <Typography>
+                    <Typography contentEditable={true} suppressContentEditableWarning={true}>
                         Here goes the roleplay list elements.
                     </Typography>
                 </CardContent>
