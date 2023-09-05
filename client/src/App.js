@@ -1,10 +1,10 @@
-import Card from "./components/Card"
+import Character from "./components/Character"
 
 function Application (){
     return (
         <div>
             <p>Application</p>
-            <Card></Card>
+            <Character></Character>
         </div>
     )
 }
