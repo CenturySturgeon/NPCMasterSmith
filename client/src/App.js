@@ -1,11 +1,10 @@
-import CharacterLayout from "./components/Character/CharacterLayout";
-import Character from "./components/Character/Character";
+import CharactersLayout from "./components/Character/CharactersLayout";
 
 function Application (){
     return (
         <div>
             <p>Application</p>
-            <CharacterLayout></CharacterLayout>
+            <CharactersLayout></CharactersLayout>
         </div>
     )
 }

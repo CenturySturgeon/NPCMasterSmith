@@ -6,7 +6,7 @@ import Character from './Character';
 import man_image from '../../../public/images/profile_man.png'
 import woman_image from '../../../public/images/profile_woman.png'
 
-export default CharacterLayout = () => {
+export default CharactersLayout = () => {
     return (
         <Container>
             <Grid container spacing={3}>
