@@ -46,7 +46,14 @@ export default function Character() {
 
                     <Collapse in={expanded}>
                         <Typography variant="body1">
-                            Additional details about the character go here.
+                            A brief, physical description of the character goes here.
+                        </Typography>
+                        <Typography variant="body1">
+                        <ul>
+                            <li>My first roleplay property.</li>
+                            <li>My second roleplay property.</li>
+                            <li>My third roleplay property.</li>
+                        </ul>
                         </Typography>
                     </Collapse>
 
