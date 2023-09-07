@@ -9,7 +9,7 @@ let ctx = await esbuild.context({
     // Avoid having to manually import your JSX library into each file (import * as React from 'react') 
     jsx: 'automatic',
     // Enables JSX syntax for JS files
-    loader: { '.js': 'jsx' },
+    loader: { '.js': 'jsx', '.png': 'dataurl' },
     minify: true,
     plugins: [],
 });
