@@ -8,7 +8,7 @@ let ctx = await esbuild.context({
     bundle: true,
     // Avoid having to manually import your JSX library into each file (import * as React from 'react') 
     jsx: 'automatic',
-    // Enables JSX syntax for JS files
+    // Enables JSX syntax for JS files. Allows png images, .woof, and .woff2 font files to be imported from relative paths and import statements
     loader: { '.js': 'jsx', '.png': 'dataurl', '.woff': 'dataurl', '.woff2': 'dataurl' },
     minify: true,
     plugins: [],
