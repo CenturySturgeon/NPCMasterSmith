@@ -1,4 +1,4 @@
-import Character from "./components/Character"
+import Character from "./components/Character/Character"
 
 function Application (){
     return (
