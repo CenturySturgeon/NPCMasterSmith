@@ -2,7 +2,7 @@ import { Paper, Typography, Box, Collapse, IconButton } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
 
@@ -41,7 +41,7 @@ export default function Character(props) {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             {/* FavoriteIcon on the left */}
                             <IconButton>
-                                <FavoriteIcon />
+                                <StarOutlineIcon />
                             </IconButton>
 
                             <IconButton
