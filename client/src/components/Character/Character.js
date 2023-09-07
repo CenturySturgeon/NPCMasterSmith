@@ -5,9 +5,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import './Character.css'
-import man_image from '../../../public/images/profile_man.png'
 
-export default function Character() {
+
+export default function Character(props) {
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -17,7 +17,7 @@ export default function Character() {
     return (
         <Grid item xs={3}>
             <Paper elevation={3}>
-                <img className="img" src={man_image} alt="Character Image" />
+                <img className="img" src={props.image} alt="Character Image" />
                 <Box paddingX={1}>
 
                     <Typography variant="h6" component="h2">
