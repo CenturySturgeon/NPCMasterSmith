@@ -14,7 +14,7 @@ export default function Character(props) {
                 </IconButton>
                 <Paper elevation={3}>
                     <img className="img" src={props.image} alt="Character Image" />
-                    <CharacterText name={props.name}></CharacterText>
+                    <CharacterText name={props.name} quote={props.quote}></CharacterText>
                 </Paper>
             </Box>
         </Grid>
