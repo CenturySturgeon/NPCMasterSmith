@@ -10,10 +10,10 @@ export default CharactersLayout = () => {
     return (
         <Container>
             <Grid container spacing={3}>
-                <Character image={man_image}></Character>
-                <Character image={woman_image}></Character>
-                <Character image={man_image}></Character>
-                <Character image={woman_image}></Character>
+                <Character image={man_image} name={"Name of Character"}></Character>
+                <Character image={woman_image} name={"Name of Character"}></Character>
+                <Character image={man_image} name={"Name of Character"}></Character>
+                <Character image={woman_image} name={"Name of Character"}></Character>
             </Grid>
         </Container>
     )
