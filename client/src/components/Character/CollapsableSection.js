@@ -1,39 +1,19 @@
 import { useState } from 'react';
 import { Typography, Collapse, IconButton } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import Tooltip from '@mui/material/Tooltip';
+import CollapseIcons from './CollapseIcons'
 
 
 const CollapsableSection = () => {
-    const [expanded, setExpanded] = useState(false);
+    const [isExpanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
-        setExpanded(!expanded);
+        setExpanded(!isExpanded);
     };
 
     return (
         <div>
-            {/* Flex container for icons */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                {/* FavoriteIcon on the left */}
-                <Tooltip title="Add To Favorites" arrow>
-                    <IconButton>
-                        <StarOutlineIcon />
-                    </IconButton>
-                </Tooltip>
-
-                <IconButton
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                    style={{ marginLeft: 'auto', transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                >
-                    <ExpandMoreIcon />
-                </IconButton>
-            </div>
-
-            <Collapse in={expanded}>
+            <CollapseIcons handleExpandClick={handleExpandClick} isExpanded={isExpanded}></CollapseIcons>
+            <Collapse in={isExpanded}>
                 <Typography variant="body1">
                     A brief, physical description of the character goes here.
                 </Typography>
