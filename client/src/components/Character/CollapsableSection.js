@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Typography, Collapse, IconButton } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const CollapsableSection = () => {
@@ -16,9 +17,11 @@ const CollapsableSection = () => {
             {/* Flex container for icons */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* FavoriteIcon on the left */}
-                <IconButton>
-                    <StarOutlineIcon />
-                </IconButton>
+                <Tooltip title="Add To Favorites">
+                    <IconButton>
+                        <StarOutlineIcon />
+                    </IconButton>
+                </Tooltip>
 
                 <IconButton
                     onClick={handleExpandClick}
