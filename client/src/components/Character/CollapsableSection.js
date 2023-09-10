@@ -17,7 +17,7 @@ const CollapsableSection = () => {
             {/* Flex container for icons */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* FavoriteIcon on the left */}
-                <Tooltip title="Add To Favorites">
+                <Tooltip title="Add To Favorites" arrow>
                     <IconButton>
                         <StarOutlineIcon />
                     </IconButton>
