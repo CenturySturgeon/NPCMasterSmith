@@ -13,12 +13,7 @@ import (
 func SetRoutes(server *models.Server) {
 
 	server.App.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("reactApp", fiber.Map{
-			"Title":       "NPC Master Smith",
-			"Description": "Create NPC Characters For Your Campaigns",
-			"cssPaths":    []string{"/esBundle/src/index.css"},
-			"jsPaths":     []string{""},
-		}, "base")
+		return c.Render("reactApp", fiber.Map{})
 	})
 
 	server.App.Get("/home", func(c *fiber.Ctx) error {
