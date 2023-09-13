@@ -1,5 +1,7 @@
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { MenuItem, ListItemIcon, ListItemText } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function ActionsMenu(props) {
   return (
@@ -13,9 +15,18 @@ export default function ActionsMenu(props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={props.handleClose}>Edit</MenuItem>
-        <MenuItem onClick={props.handleClose}>Delete</MenuItem>
-        <MenuItem onClick={props.handleClose}>Logout</MenuItem>
+        <MenuItem onClick={props.handleClose}>
+          <ListItemIcon>
+            <EditIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Edit</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={props.handleClose}>
+        <ListItemIcon>
+            <DeleteIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Delete</ListItemText>
+        </MenuItem>
       </Menu>
     </div>
   );
