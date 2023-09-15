@@ -1,16 +1,25 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import StarIcon from '@mui/icons-material/Star';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import { IconButton } from "@mui/material";
+import { useState } from 'react';
 
 import Tooltip from '@mui/material/Tooltip';
 
 const CollapseIcons = (props) => {
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const handleFavoriteClick = (event) => {
+        setIsFavorite(!isFavorite);
+    }
+
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             {/* Icons to the left */}
             <Tooltip title="Add To Favorites" arrow>
-                <IconButton>
-                    <StarOutlineIcon />
+                <IconButton onClick={handleFavoriteClick}>
+                    {isFavorite ? <StarIcon color="primary"/> : <StarOutlineIcon />}
                 </IconButton>
             </Tooltip>
 
