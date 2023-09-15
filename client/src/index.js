@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import App from './App';
+import SearchAppBar from './components/AppBar/AppBar';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -58,7 +59,8 @@ root.render(
                 padding: '0px'
             }}
         s>
-            <App />
+            <SearchAppBar></SearchAppBar>
+            <App></App>
         </Box>
     </ThemeProvider>
 );

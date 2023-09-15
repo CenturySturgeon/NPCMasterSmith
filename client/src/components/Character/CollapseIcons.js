@@ -10,7 +10,7 @@ const CollapseIcons = (props) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const handleFavoriteClick = (event) => {
+    const handleFavoriteClick = () => {
         setIsFavorite(!isFavorite);
     }
 

@@ -1,5 +1,6 @@
 import CharactersLayout from "./components/Character/CharactersLayout";
 import PromptField from "./components/Prompt/PromptField";
+import Box from '@mui/material/Box';
 
 import man_image from '../public/images/profile_man.png'
 import woman_image from '../public/images/profile_woman.png'
@@ -12,13 +13,15 @@ function Application() {
     
 
     return (
-        <div>
+        <Box sx={{
+            margin: '7px'
+        }}>
             <div style={{display: 'flex', justifyContent: 'center', alignItems:'center', width: '100%' }}>
                 <PromptField></PromptField>
             </div>
             <br/>
             <CharactersLayout items={dummies}></CharactersLayout>
-        </div>
+        </Box>
     )
 }
 
