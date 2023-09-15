@@ -7,13 +7,9 @@ export default function ActionsMenu(props) {
   return (
     <div>
       <Menu
-        id="basic-menu"
         anchorEl={props.anchorEl}
         open={props.open}
         onClose={props.handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
       >
         <MenuItem onClick={props.handleClose}>
           <ListItemIcon>
@@ -21,12 +17,14 @@ export default function ActionsMenu(props) {
           </ListItemIcon>
           <ListItemText>Edit</ListItemText>
         </MenuItem>
+
         <MenuItem onClick={props.handleClose}>
-        <ListItemIcon>
+          <ListItemIcon>
             <DeleteIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Delete</ListItemText>
         </MenuItem>
+
       </Menu>
     </div>
   );
