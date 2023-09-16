@@ -8,6 +8,7 @@ import { useState } from 'react';
 import man_image from '../public/images/profile_man.png'
 import woman_image from '../public/images/profile_woman.png'
 import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
+import ContenHolder from "./components/ContentHolder/ContentHolder";
 
 function Application() {
 
@@ -34,15 +35,7 @@ function Application() {
                 }}
             >
                 <SearchAppBar toggleTheme={toggleTheme}></SearchAppBar>
-                <Box sx={{
-                    margin: '7px'
-                }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                        <PromptField></PromptField>
-                    </div>
-                    <br />
-                    <CharactersLayout items={dummies}></CharactersLayout>
-                </Box>
+                <ContenHolder dummies={dummies}></ContenHolder>
             </Box>
         </ThemeProvider>
     )
