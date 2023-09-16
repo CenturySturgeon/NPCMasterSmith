@@ -39,7 +39,7 @@ const lightTheme = createTheme({
 })
 
 export default function AppTheme(props) {
-    const [isLightThemed, setIsLightThemed] = useState(true);
+    const [isLightThemed, setIsLightThemed] = useState(false);
     return(
         <ThemeProvider theme={isLightThemed ? lightTheme : darkTheme}>
             {props.children}
