@@ -1,7 +1,6 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
+import { createTheme } from '@mui/material/styles';
 
-const darkTheme = createTheme({
+export const darkTheme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
@@ -20,7 +19,7 @@ const darkTheme = createTheme({
     },
 });
 
-const lightTheme = createTheme({
+export const lightTheme = createTheme({
     palette: {
         mode: 'light',
         primary: {
@@ -37,12 +36,3 @@ const lightTheme = createTheme({
         },
     },
 })
-
-export default function AppTheme(props) {
-    const [isLightThemed, setIsLightThemed] = useState(false);
-    return(
-        <ThemeProvider theme={isLightThemed ? lightTheme : darkTheme}>
-            {props.children}
-        </ThemeProvider>
-    )
-}
