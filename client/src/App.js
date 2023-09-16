@@ -1,14 +1,13 @@
-import CharactersLayout from "./components/Character/CharactersLayout";
-import PromptField from "./components/Prompt/PromptField";
 import SearchAppBar from './components/AppBar/AppBar';
 import Box from '@mui/material/Box';
+import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
+import ContenHolder from "./components/ContentHolder/ContentHolder";
+
 import { ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 
 import man_image from '../public/images/profile_man.png'
 import woman_image from '../public/images/profile_woman.png'
-import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
-import ContenHolder from "./components/ContentHolder/ContentHolder";
 
 function Application() {
 
