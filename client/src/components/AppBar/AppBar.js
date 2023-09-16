@@ -52,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -89,6 +89,7 @@ export default function SearchAppBar() {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ ml: 2}}
+                        onClick={props.toggleTheme}
                     >
                         <SettingsIcon />
                     </IconButton>
