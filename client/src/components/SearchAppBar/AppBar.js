@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsMenu from './SettingsMenu';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -83,16 +83,7 @@ export default function SearchAppBar(props) {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <IconButton
-                        size="large"
-                        edge="end"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ ml: 2}}
-                        onClick={props.toggleTheme}
-                    >
-                        <SettingsIcon />
-                    </IconButton>
+                    <SettingsMenu></SettingsMenu>
                 </Toolbar>
             </AppBar>
         </Box>
