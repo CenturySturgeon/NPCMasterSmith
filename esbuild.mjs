@@ -3,13 +3,13 @@ import { spawn } from 'child_process';
 
 // This file has a .mjs extension since its syntax would not work on a regular .js file due to node (refer to esbuild's documentation for more)
 let ctx = await esbuild.context({
-    entryPoints: ["client/src/index.js", "client/*.css"],
+    entryPoints: ["./client/src/index.js"],
     outdir: "./client/public/esbundle/",
     bundle: true,
     // Avoid having to manually import your JSX library into each file (import * as React from 'react') 
     jsx: 'automatic',
-    // Enables JSX syntax for JS files
-    loader: { '.js': 'jsx' },
+    // Enables JSX syntax for JS files. Allows png images, .woof, and .woff2 font files to be imported from relative paths and import statements
+    loader: { '.js': 'jsx', '.png': 'dataurl', '.woff': 'dataurl', '.woff2': 'dataurl' },
     minify: true,
     plugins: [],
 });
