@@ -13,29 +13,20 @@ import (
 func SetRoutes(server *models.Server) {
 
 	server.App.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("reactApp", fiber.Map{})
-	})
-
-	server.App.Get("/home", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{
-			"Title":       "NPC Master Smith",
-			"Description": "Create NPC Characters For Your Campaigns",
-			"cssPaths":    []string{"/esBundle/src/index.css"},
-			"jsPaths":     []string{""},
-		}, "base")
+		return c.Render("index", fiber.Map{})
 	})
 
 	server.App.Post("/postCharacter", func(c *fiber.Ctx) error {
 		return handlers.PostCharacter(c, server.Db)
 	})
 
-	server.App.Get("/characters", func(c *fiber.Ctx) error {
-		return handlers.GetCharacters(c, server.Db)
-	})
+	// server.App.Get("/characters", func(c *fiber.Ctx) error {
+	// 	return handlers.GetCharacters(c, server.Db)
+	// })
 
-	server.App.Get("/getNewCharacter", func(c *fiber.Ctx) error {
-		return handlers.GetNewCharacter(c, server.LLM)
-	})
+	// server.App.Get("/getNewCharacter", func(c *fiber.Ctx) error {
+	// 	return handlers.GetNewCharacter(c, server.LLM)
+	// })
 
 	server.App.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
 		llm := mocks.LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
