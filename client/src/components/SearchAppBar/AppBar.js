@@ -83,7 +83,7 @@ export default function SearchAppBar(props) {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <SettingsMenu></SettingsMenu>
+                    <SettingsMenu isLightThemed={isLightThemed} toggleTheme={props.toggleTheme}></SettingsMenu>
                 </Toolbar>
             </AppBar>
         </Box>

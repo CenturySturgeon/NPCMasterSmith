@@ -3,7 +3,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import IconButton from '@mui/material/IconButton';
 import SettingsMenuItems from './SettingsMenuItems';
 
-const SettingsMenu = () => {
+const SettingsMenu = (props) => {
 
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
@@ -30,7 +30,7 @@ const SettingsMenu = () => {
             >
                 <SettingsIcon />
             </IconButton>
-            <SettingsMenuItems anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></SettingsMenuItems>
+            <SettingsMenuItems isLightThemed={isLightThemed} toggleTheme={props.toggleTheme} anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></SettingsMenuItems>
         </div>
     )
 }

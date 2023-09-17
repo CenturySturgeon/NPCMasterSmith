@@ -33,7 +33,7 @@ function Application() {
                     padding: '0px'
                 }}
             >
-                <SearchAppBar toggleTheme={toggleTheme}></SearchAppBar>
+                <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
                 <ContenHolder dummies={dummies}></ContenHolder>
             </Box>
         </ThemeProvider>
