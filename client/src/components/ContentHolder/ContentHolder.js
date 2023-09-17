@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 const ContenHolder = (props) => {
     return (
         <Box
-            sx={{ margin: '7px' }}
+            sx={{ mt: '12px' }}
         >
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <PromptField></PromptField>

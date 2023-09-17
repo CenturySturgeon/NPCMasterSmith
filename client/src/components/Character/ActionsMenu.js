@@ -5,7 +5,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function ActionsMenu(props) {
   return (
-    <div>
       <Menu
         anchorEl={props.anchorEl}
         open={props.open}
@@ -26,6 +25,5 @@ export default function ActionsMenu(props) {
         </MenuItem>
 
       </Menu>
-    </div>
   );
 }
