@@ -30,7 +30,7 @@ const SettingsMenu = (props) => {
             >
                 <SettingsIcon />
             </IconButton>
-            <SettingsMenuItems isLightThemed={isLightThemed} toggleTheme={props.toggleTheme} anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></SettingsMenuItems>
+            <SettingsMenuItems isLightThemed={props.isLightThemed} toggleTheme={props.toggleTheme} anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></SettingsMenuItems>
         </div>
     )
 }

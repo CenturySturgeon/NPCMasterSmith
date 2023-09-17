@@ -1,29 +1,38 @@
 import Menu from '@mui/material/Menu';
 import { MenuItem, ListItemIcon, ListItemText } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 export default function SettingsMenuItems(props) {
-  return (
-      <Menu
-        anchorEl={props.anchorEl}
-        open={props.open}
-        onClose={props.handleClose}
-      >
-        <MenuItem onClick={props.handleClose}>
-          <ListItemIcon>
-            <EditIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Edit</ListItemText>
-        </MenuItem>
 
-        <MenuItem onClick={props.handleClose}>
-          <ListItemIcon>
-            <DeleteIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Delete</ListItemText>
-        </MenuItem>
+    let themeIcon;
+    if (props.isLightThemed) {
+        themeIcon = (
+            <MenuItem onClick={props.toggleTheme}>
+                <ListItemIcon>
+                    <Brightness7Icon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Dark Mode</ListItemText>
+            </MenuItem>
+        );
+    } else {
+        themeIcon = (
+            <MenuItem onClick={props.toggleTheme}>
+                <ListItemIcon>
+                    <Brightness4Icon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Light Mode</ListItemText>
+            </MenuItem>
+        );
+    }
 
-      </Menu>
-  );
+    return (
+        <Menu
+            anchorEl={props.anchorEl}
+            open={props.open}
+            onClose={props.handleClose}
+        >
+            {themeIcon}
+        </Menu>
+    );
 }
