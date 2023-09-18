@@ -19,6 +19,7 @@ export default function PromptField(props) {
     if (iconEnabled) {
       // Handle sending the prompt to the backend here
       console.log('Prompt sent to the backend');
+      setPrompt('');
     }
   }
 
@@ -36,7 +37,7 @@ export default function PromptField(props) {
         id="fullWidth"
         helperText="A simple description of your character"
         onChange={onPromptInputChange}
-        defaultValue={prompt}
+        value={prompt}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
