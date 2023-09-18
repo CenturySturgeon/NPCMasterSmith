@@ -20,6 +20,7 @@ export default function PromptField(props) {
       // Handle sending the prompt to the backend here
       console.log('Prompt sent to the backend');
       setPrompt('');
+      setIconEnabled(false);
     }
   }
 
