@@ -5,16 +5,20 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 
 export default function PromptField() {
-
-  const [canSendPrompt, setCanSendPrompt] = useState(false);
   const [prompt, setPrompt] = useState('');
+  const [iconEnabled, setIconEnabled] = useState(false);
 
-  function onPropmtInputChange(event){
-    setPrompt(event.target.value);
-    // Count the number of words in the prompt field
-    if (event.target.value.trim().split(/\s+/).length > 1){
-      setCanSendPrompt(true);
-      console.log('Prompt can be sent to the backend')
+  function onPromptInputChange(event) {
+    const inputText = event.target.value;
+    setPrompt(inputText);
+    const wordCount = inputText.trim().split(/\s+/).length;
+    setIconEnabled(wordCount > 1);
+  }
+
+  function sendPrompt(){
+    if (iconEnabled) {
+      // Handle sending the prompt to the backend here
+      console.log('Prompt sent to the backend');
     }
   }
 
@@ -31,12 +35,15 @@ export default function PromptField() {
         label="Create a character"
         id="fullWidth"
         helperText="A simple description of your character"
-        onChange={onPropmtInputChange}
+        onChange={onPromptInputChange}
         defaultValue={prompt}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <SendIcon />
+              <SendIcon
+                style={{cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5}}
+                onClick={sendPrompt}
+              />
             </InputAdornment>
           ),
         }}
