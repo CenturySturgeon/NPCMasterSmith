@@ -34,7 +34,7 @@ function Application() {
                 }}
             >
                 <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                <ContenHolder dummies={dummies}></ContenHolder>
+                <ContenHolder theme={isLightThemed ? lightTheme : darkTheme} dummies={dummies}></ContenHolder>
             </Box>
         </ThemeProvider>
     )

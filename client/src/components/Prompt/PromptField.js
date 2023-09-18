@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function PromptField() {
+export default function PromptField(props) {
   const [prompt, setPrompt] = useState('');
   const [iconEnabled, setIconEnabled] = useState(false);
 
@@ -41,7 +41,7 @@ export default function PromptField() {
           endAdornment: (
             <InputAdornment position="end">
               <SendIcon
-                style={{cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5}}
+                style={{cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5, color: iconEnabled ? props.theme.palette.primary.main : 'inherit'}}
                 onClick={sendPrompt}
               />
             </InputAdornment>
