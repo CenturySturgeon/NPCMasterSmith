@@ -30,7 +30,7 @@ const ContentHolder = (props) => {
             <SpeedDial
                 ariaLabel="Characters action speed dial"
                 icon={<SpeedDialIcon />}
-                sx={{position: 'fixed', bottom: '2vh', left:'94vw'}}
+                sx={{position: 'sticky', bottom: '0', alignItems: 'end', marginRight: '12px', paddingBottom: '12px'}}
             >
                 {actions.map((action) => (
                     <SpeedDialAction
