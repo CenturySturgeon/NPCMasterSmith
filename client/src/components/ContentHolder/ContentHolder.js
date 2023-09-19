@@ -1,25 +1,45 @@
 import CharactersLayout from "../Character/CharactersLayout";
 import PromptField from "../Prompt/PromptField";
 import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
+
+const actions = [
+    { icon: <FileCopyIcon />, name: 'Copy' },
+    { icon: <SaveIcon />, name: 'Save' },
+    { icon: <PrintIcon />, name: 'Print' },
+    { icon: <ShareIcon />, name: 'Share' },
+  ];
 
 const ContentHolder = (props) => {
     return (
         <Box
-            sx={{ mt: '12px' }}
+            sx={{ mt: '12px'}}
         >
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <PromptField theme={props.theme}></PromptField>
             </div>
             <br />
             <CharactersLayout items={props.dummies}></CharactersLayout>
-            <Box sx={{position:'fixed', right:'16px', bottom:'12px'}}>
-                <Fab color="primary">
-                    <AddIcon></AddIcon>
-                </Fab>
-            </Box>
+            <SpeedDial
+                ariaLabel="Characters action speed dial"
+                icon={<SpeedDialIcon />}
+                sx={{position: 'fixed', bottom: '2vh', left:'94vw'}}
+            >
+                {actions.map((action) => (
+                    <SpeedDialAction
+                        key={action.name}
+                        icon={action.icon}
+                        tooltipTitle={action.name}
+                    />
+                ))}
+            </SpeedDial>
         </Box>
     )
 }
