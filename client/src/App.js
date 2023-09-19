@@ -1,4 +1,4 @@
-import SearchAppBar from './components/SearchAppBar/AppBar';
+import SearchAppBar from './components/SearchAppBar/SearchAppBar';
 import Box from '@mui/material/Box';
 import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
 import ContenHolder from "./components/ContentHolder/ContentHolder";
