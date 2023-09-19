@@ -30,7 +30,8 @@ function Application() {
                     justifyContent: 'center',
                     bgcolor: 'background.default',
                     color: 'text.primary',
-                    padding: '0px'
+                    padding: '0px',
+                    minHeight: '100%'
                 }}
             >
                 <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
