@@ -27,10 +27,12 @@ const ContentHolder = (props) => {
             </div>
             <br />
             <CharactersLayout items={props.dummies}></CharactersLayout>
+            <Box sx={{position: 'fixed', bottom: '16px', right: '24px'}}>
             <SpeedDial
                 ariaLabel="Characters action speed dial"
                 icon={<SpeedDialIcon />}
-                sx={{position: 'sticky', bottom: '0', alignItems: 'end', marginRight: '12px', paddingBottom: '12px'}}
+                sx={props.fixedItemMargin}
+                
             >
                 {actions.map((action) => (
                     <SpeedDialAction
@@ -40,6 +42,8 @@ const ContentHolder = (props) => {
                     />
                 ))}
             </SpeedDial>
+            </Box>
+            
         </Box>
     )
 }
