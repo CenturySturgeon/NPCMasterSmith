@@ -15,7 +15,7 @@ const actions = [
     { icon: <ShareIcon />, name: 'Share' },
 ];
 
-const ActionsSpeedDial = () => {
+const ActionsSpeedDial = (props) => {
     return (
         <Box sx={{ position: 'fixed', bottom: '16px', right: '24px' }}>
             <SpeedDial
