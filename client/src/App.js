@@ -9,9 +9,21 @@ import { useState } from 'react';
 import man_image from '../public/images/profile_man.png'
 import woman_image from '../public/images/profile_woman.png'
 
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+  }
+
 function Application() {
 
     const [isLightThemed, setIsLightThemed] = useState(false);
+
+    const toggleTheme = () => {
+        setIsLightThemed(isLightThemed => !isLightThemed);
+    };
+
+
+    let Theme = isLightThemed ? lightTheme : darkTheme;
+
     const [isBodyPaddingActive, setIsBodyPaddingActive] = useState(false);
 
     // TLDR: Margins that compensate mui's padding change on the body when an appbar menu pops up (desktop only).
@@ -22,18 +34,12 @@ function Application() {
         boddyPaddingCompensation = { marginRight: '0px' };
     } else {
         // Check if the scrollbar is present
-        if (document.body.scrollHeight > document.body.clientHeight) {
+        if (document.body.scrollHeight > document.body.clientHeight && !isMobileDevice()) {
             boddyPaddingCompensation = { marginRight: '17px' };
           } else { 
             boddyPaddingCompensation = { marginRight: '0px' };
           }
     }
-
-    const toggleTheme = () => {
-        setIsLightThemed(isLightThemed => !isLightThemed);
-    }
-
-    let Theme = isLightThemed ? lightTheme : darkTheme;
 
     const dummyM = { image: man_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
     const dummyF = { image: woman_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
