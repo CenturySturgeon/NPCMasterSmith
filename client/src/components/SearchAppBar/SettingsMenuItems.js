@@ -31,6 +31,14 @@ export default function SettingsMenuItems(props) {
             anchorEl={props.anchorEl}
             open={props.open}
             onClose={props.handleClose}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
         >
             {themeIcon}
         </Menu>
