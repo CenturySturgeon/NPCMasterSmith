@@ -26,7 +26,7 @@ const ContentHolder = (props) => {
                 <PromptField theme={props.theme}></PromptField>
             </div>
             <br />
-            <CharactersLayout items={props.dummies}></CharactersLayout>
+            <CharactersLayout setBodyPadComp={props.setBodyPadComp} items={props.dummies}></CharactersLayout>
             <Box sx={{position: 'fixed', bottom: '16px', right: '24px'}}>
             <SpeedDial
                 ariaLabel="Characters action speed dial"

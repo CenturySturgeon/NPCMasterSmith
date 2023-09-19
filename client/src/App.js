@@ -33,6 +33,8 @@ function Application() {
         setIsLightThemed(isLightThemed => !isLightThemed);
     }
 
+    let Theme = isLightThemed ? lightTheme : darkTheme;
+
     const dummyM = { image: man_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
     const dummyF = { image: woman_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
     const dummies = [dummyM, dummyF, dummyM, dummyF, dummyF];
@@ -51,7 +53,7 @@ function Application() {
                 }}
             >
                 <SearchAppBar setBodyPadComp={setIsBodyPaddingActive} isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                <ContenHolder fixedItemMargin={boddyPaddingCompensation} theme={isLightThemed ? lightTheme : darkTheme} dummies={dummies}></ContenHolder>
+                <ContenHolder fixedItemMargin={boddyPaddingCompensation} setBodyPadComp={setIsBodyPaddingActive} theme={Theme} dummies={dummies}></ContenHolder>
             </Box>
         </ThemeProvider>
     )
