@@ -2,7 +2,7 @@ import CharactersLayout from "../Character/CharactersLayout";
 import PromptField from "../Prompt/PromptField";
 import Box from '@mui/material/Box';
 
-const ContenHolder = (props) => {
+const ContentHolder = (props) => {
     return (
         <Box
             sx={{ mt: '12px' }}
@@ -16,4 +16,4 @@ const ContenHolder = (props) => {
     )
 }
 
-export default ContenHolder;
+export default ContentHolder;
