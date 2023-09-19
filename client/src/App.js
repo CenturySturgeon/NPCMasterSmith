@@ -23,10 +23,8 @@ function Application() {
     } else {
         // Check if the scrollbar is present
         if (document.body.scrollHeight > document.body.clientHeight) {
-            console.log('scrollbar')
             boddyPaddingCompensation = { marginRight: '17px' };
           } else { 
-            console.log('no scrollbar')
             boddyPaddingCompensation = { marginRight: '0px' };
           }
     }
