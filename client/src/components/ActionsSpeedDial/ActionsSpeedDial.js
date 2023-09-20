@@ -3,16 +3,12 @@ import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import AddCardIcon from '@mui/icons-material/AddCard';
 
 const actions = [
-    { icon: <FileCopyIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <PrintIcon />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
+    { icon: <AddCardIcon />, name: 'Add Empty Card' },
+    { icon: <PersonAddIcon />, name: 'Create Character' }
 ];
 
 const ActionsSpeedDial = (props) => {
