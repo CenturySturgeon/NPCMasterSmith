@@ -1,8 +1,7 @@
-import Box from '@mui/material/Box';
+import { Box, SpeedDial, SpeedDialAction } from '@mui/material';
+
 // Icons
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
+import { SpeedDialIcon } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddCardIcon from '@mui/icons-material/AddCard';
 
