@@ -10,6 +10,7 @@ export default CharactersLayout = (props) => {
                 {
                     props.items.map((character) => (
                         <Character
+                            theme={props.theme}
                             setBodyPadComp={props.setBodyPadComp}
                             campaign={character.campaign}
                             image={character.image}

@@ -44,7 +44,7 @@ export default function Character(props) {
     return (
         <Grid item xs={3}>
             <Box position="relative">
-                <Avatar variant="rounded" sx={{ position: 'absolute', top: 0, left: 0, bgcolor: teal[500] }}>{campaignChars(props.campaign)}</Avatar>
+                <Avatar variant="rounded" sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>{campaignChars(props.campaign)}</Avatar>
                 <IconButton aria-label="show more"
                     id="basic-button"
                     style={{ position: 'absolute', top: 0, right: 0 }}
@@ -56,6 +56,7 @@ export default function Character(props) {
                 </IconButton>
 
                 <ActionsMenu anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></ActionsMenu>
+                
                 <Paper elevation={3}>
                     <img className="img" src={props.image} alt="Character Image" />
                     <CharacterText name={props.name} quote={props.quote}></CharacterText>

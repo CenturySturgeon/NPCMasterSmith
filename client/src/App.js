@@ -47,7 +47,7 @@ function Application() {
 
 
     return (
-        <ThemeProvider theme={isLightThemed ? lightTheme : darkTheme}>
+        <ThemeProvider theme={Theme}>
             <Box
                 sx={{
                     alignItems: 'center',
