@@ -41,8 +41,8 @@ function Application() {
           }
     }
 
-    const dummyM = { image: man_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
-    const dummyF = { image: woman_image, name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character" };
+    const dummyM = { image: man_image, name: "Name of Character", campaing:'Dead Rising', quote: "Hereby is thy quote, a brief phrase said by the character" };
+    const dummyF = { image: woman_image, name: "Name of Character", campaign:'Candy Land', quote: "Hereby is thy quote, a brief phrase said by the character" };
     const dummies = [dummyM, dummyF, dummyM, dummyF, dummyF];
 
 
