@@ -7,7 +7,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddCardIcon from '@mui/icons-material/AddCard';
 
 const actions = [
-    { icon: <AddCardIcon />, name: 'Add Empty Card' },
+    { icon: <AddCardIcon sx={{transform: 'scaleX(-1)'}} />, name: 'Add Empty Card' },
     { icon: <PersonAddIcon />, name: 'Create Character' }
 ];
 
