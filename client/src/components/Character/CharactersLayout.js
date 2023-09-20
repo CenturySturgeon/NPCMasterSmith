@@ -8,7 +8,8 @@ import woman_image from '../../../public/images/profile_woman.png'
 
 const dummyM = { image: man_image, name: "Name of Character", campaign:'Dead Rising', quote: "Hereby is thy quote, a brief phrase said by the character" };
 const dummyF = { image: woman_image, name: "Name of Character", campaign:'Limbo', quote: "Hereby is thy quote, a brief phrase said by the character" };
-const dummies = [dummyM, dummyF, dummyM, dummyF, dummyF];
+const campaignLess = { image: woman_image, name: "Name of Character", campaign:'', quote: "Hereby is thy quote, a brief phrase said by the character" };
+const dummies = [dummyM, dummyF, dummyM, dummyF, campaignLess];
 
 export default CharactersLayout = (props) => {
     return (
