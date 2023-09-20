@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { Paper, Box, IconButton } from "@mui/material";
+import { Paper, Box, IconButton, Avatar } from "@mui/material";
+import { lightBlue } from '@mui/material/colors';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
@@ -28,6 +29,7 @@ export default function Character(props) {
     return (
         <Grid item xs={3}>
             <Box position="relative">
+                <Avatar variant="rounded" sx={{ position: 'absolute', top: 0, left: 0, bgcolor: lightBlue[800] }}>OP</Avatar>
                 <IconButton aria-label="show more"
                     id="basic-button"
                     style={{ position: 'absolute', top: 0, right: 0 }}
@@ -37,6 +39,7 @@ export default function Character(props) {
                     onClick={handleClick}>
                     <MoreVertIcon />
                 </IconButton>
+
                 <ActionsMenu anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></ActionsMenu>
                 <Paper elevation={3}>
                     <img className="img" src={props.image} alt="Character Image" />
