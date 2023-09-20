@@ -1,13 +1,10 @@
-import SearchAppBar from './components/SearchAppBar/SearchAppBar';
-import Box from '@mui/material/Box';
-import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
-import ContenHolder from "./components/ContentHolder/ContentHolder";
-
 import { ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
+import Box from '@mui/material/Box';
 
-import man_image from '../public/images/profile_man.png'
-import woman_image from '../public/images/profile_woman.png'
+import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
+import ContenHolder from "./components/ContentHolder/ContentHolder";
+import SearchAppBar from './components/SearchAppBar/SearchAppBar';
 
 function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
@@ -41,11 +38,6 @@ function Application() {
           }
     }
 
-    const dummyM = { image: man_image, name: "Name of Character", campaign:'Dead Rising', quote: "Hereby is thy quote, a brief phrase said by the character" };
-    const dummyF = { image: woman_image, name: "Name of Character", campaign:'Limbo', quote: "Hereby is thy quote, a brief phrase said by the character" };
-    const dummies = [dummyM, dummyF, dummyM, dummyF, dummyF];
-
-
     return (
         <ThemeProvider theme={Theme}>
             <Box
@@ -59,7 +51,7 @@ function Application() {
                 }}
             >
                 <SearchAppBar setBodyPadComp={setIsBodyPaddingActive} isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                <ContenHolder fixedItemMargin={boddyPaddingCompensation} setBodyPadComp={setIsBodyPaddingActive} theme={Theme} dummies={dummies}></ContenHolder>
+                <ContenHolder fixedItemMargin={boddyPaddingCompensation} setBodyPadComp={setIsBodyPaddingActive} theme={Theme}></ContenHolder>
             </Box>
         </ThemeProvider>
     )

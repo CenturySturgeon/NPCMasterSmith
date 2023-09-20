@@ -12,7 +12,7 @@ const ContentHolder = (props) => {
                 <PromptField theme={props.theme}></PromptField>
             </div>
             <br />
-            <CharactersLayout theme={props.theme} setBodyPadComp={props.setBodyPadComp} items={props.dummies}></CharactersLayout>
+            <CharactersLayout theme={props.theme} setBodyPadComp={props.setBodyPadComp}></CharactersLayout>
             <ActionsSpeedDial fixedItemMargin={props.fixedItemMargin}></ActionsSpeedDial>
 
         </Box>
