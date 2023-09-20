@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Paper, Box, IconButton, Avatar } from "@mui/material";
+import { Paper, Box, IconButton, Avatar, Tooltip } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
@@ -14,7 +14,7 @@ import CharacterText from './CharacterText';
  * @param {string} campaign - The character's campaign.
  * @returns {boolean} - The first letter of the first two words or the first two letters of the only word provided (N/A if there's no campaign).
  */
-function campaignChars(campaign) {
+function getCampaignChars(campaign) {
     if (campaign != '') {
         const wordArray = campaign.split(" ");
         if (wordArray.length > 1) {
@@ -43,14 +43,18 @@ export default function Character(props) {
         setAnchorEl(null);
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
+    
+    const campaignChars = getCampaignChars(props.campaign);
 
     return (
         <Grid item xs={3}>
             <Box position="relative">
-                <Avatar variant="rounded"
-                    sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
-                    {campaignChars(props.campaign)}
-                </Avatar>
+                <Tooltip title={campaignChars != 'N/A' ? props.campaign : 'Not Assigned'} arrow>
+                    <Avatar variant="rounded"
+                        sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
+                        {campaignChars}
+                    </Avatar>
+                </Tooltip>
                 <IconButton aria-label="show more"
                     id="basic-button"
                     style={{ position: 'absolute', top: 0, right: 0 }}
