@@ -33,6 +33,15 @@ export default function Character(props) {
 
     const campaignChars = getCampaignChars(props.campaign);
 
+    const campaignAvatar = (
+        <Tooltip title={campaignChars != 'N/A' ? props.campaign : 'Not Assigned'} arrow>
+            <Avatar variant="rounded"
+                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
+                {campaignChars}
+            </Avatar>
+        </Tooltip>
+    );
+
     const vertIconButton = (
         <IconButton aria-label="show more"
             id="basic-button"
@@ -46,8 +55,10 @@ export default function Character(props) {
         </IconButton>
     );
 
-    const characterForm = <CharacterForm campaign={props.campaign} name={props.name}
-        quote={props.quote} image={props.image} setEditingCard={setIsEditingCard} />
+    const characterForm = (
+        <CharacterForm campaign={props.campaign} name={props.name}
+            quote={props.quote} image={props.image} setEditingCard={setIsEditingCard} />
+    );
 
     const characterInfo = (
         <div>
@@ -59,21 +70,17 @@ export default function Character(props) {
     return (
         <Grid item xs={3}>
             <Box position="relative">
-                <Tooltip title={campaignChars != 'N/A' ? props.campaign : 'Not Assigned'} arrow>
-                    <Avatar variant="rounded"
-                        sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
-                        {campaignChars}
-                    </Avatar>
-                </Tooltip>
+                {/* Show the campaign avatar when the card is not being edited */}
+                {isEditingCard ? '' : campaignAvatar}
 
                 {/* Show the vertIcon button when the card is not being edited */}
                 {isEditingCard ? '' : vertIconButton}
 
+                {/* The actions menu is hidden by default */}
                 <ActionsMenu anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
-
-
                 <Paper elevation={3}>
+                    {/* Show the character info when the card is not being edited and the form when the card is being edited */}
                     {isEditingCard ? characterForm : characterInfo}
                 </Paper>
             </Box>
