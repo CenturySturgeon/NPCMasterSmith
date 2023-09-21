@@ -32,16 +32,18 @@ export default function Character(props) {
 
     const campaignChars = getCampaignChars(props.campaign);
 
-    const vertIconButton = (<IconButton aria-label="show more"
-        id="basic-button"
-        className='invisible'
-        style={{ position: 'absolute', top: 0, right: 0 }}
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleVertIconClick}>
-        <MoreVertIcon />
-    </IconButton>);
+    const vertIconButton = (
+        <IconButton aria-label="show more"
+            id="basic-button"
+            className='invisible'
+            style={{ position: 'absolute', top: 0, right: 0 }}
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleVertIconClick}>
+            <MoreVertIcon />
+        </IconButton>
+    );
 
     return (
         <Grid item xs={3}>
@@ -56,7 +58,7 @@ export default function Character(props) {
                 {/* Show the vertIcon button when the card is not being edited */}
                 {isEditingCard ? '' : vertIconButton}
 
-                <ActionsMenu anchorEl={anchorEl} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
+                <ActionsMenu anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
                 <Paper elevation={3}>
                     <img className="img" src={props.image} alt="Character Image" />
