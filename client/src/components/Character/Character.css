@@ -1,12 +1,13 @@
 .img {
     width: 100%;
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .form-inputsHolder {
     display: grid;
     justify-content: center;
+    padding: 8px 0;
 }
 
 .form-buttonHolder {
