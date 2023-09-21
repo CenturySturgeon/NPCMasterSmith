@@ -4,7 +4,12 @@
     border-top-right-radius: inherit;
 }
 
-.form-buttonHolder{
+.form-inputsHolder {
+    display: grid;
+    justify-content: center;
+}
+
+.form-buttonHolder {
     display: flex;
     justify-content: space-evenly;
 }
