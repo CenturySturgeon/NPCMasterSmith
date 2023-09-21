@@ -14,6 +14,9 @@ export default function Character(props) {
 
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
+    // Set a state to indicate whether the character is being edited or not
+    const [isEditingCard, setIsEditingCard] = useState(false);
+
     // Set a variable to indicate wether the menu is open or not 
     const open = Boolean(anchorEl);
 
@@ -26,8 +29,19 @@ export default function Character(props) {
         setAnchorEl(null);
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
-    
+
     const campaignChars = getCampaignChars(props.campaign);
+
+    const vertIconButton = (<IconButton aria-label="show more"
+        id="basic-button"
+        className='invisible'
+        style={{ position: 'absolute', top: 0, right: 0 }}
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleVertIconClick}>
+        <MoreVertIcon />
+    </IconButton>);
 
     return (
         <Grid item xs={3}>
@@ -38,15 +52,9 @@ export default function Character(props) {
                         {campaignChars}
                     </Avatar>
                 </Tooltip>
-                <IconButton aria-label="show more"
-                    id="basic-button"
-                    style={{ position: 'absolute', top: 0, right: 0 }}
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleVertIconClick}>
-                    <MoreVertIcon />
-                </IconButton>
+
+                {/* Show the vertIcon button when the card is not being edited */}
+                {isEditingCard ? '' : vertIconButton}
 
                 <ActionsMenu anchorEl={anchorEl} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
