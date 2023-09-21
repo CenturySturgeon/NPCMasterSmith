@@ -18,11 +18,11 @@ export default function Character(props) {
     const open = Boolean(anchorEl);
 
     // Menu event handlers
-    const handleClick = (event) => {
+    const handleVertIconClick = (event) => {
         setAnchorEl(event.currentTarget);
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
-    const handleClose = () => {
+    const closeVertIconMenu = () => {
         setAnchorEl(null);
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
@@ -44,11 +44,11 @@ export default function Character(props) {
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}>
+                    onClick={handleVertIconClick}>
                     <MoreVertIcon />
                 </IconButton>
 
-                <ActionsMenu anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></ActionsMenu>
+                <ActionsMenu anchorEl={anchorEl} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
                 <Paper elevation={3}>
                     <img className="img" src={props.image} alt="Character Image" />

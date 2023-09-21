@@ -8,16 +8,16 @@ export default function ActionsMenu(props) {
       <Menu
         anchorEl={props.anchorEl}
         open={props.open}
-        onClose={props.handleClose}
+        onClose={props.closeVertIconMenu}
       >
-        <MenuItem onClick={props.handleClose}>
+        <MenuItem onClick={props.closeVertIconMenu}>
           <ListItemIcon>
             <EditIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Edit</ListItemText>
         </MenuItem>
 
-        <MenuItem onClick={props.handleClose}>
+        <MenuItem onClick={props.closeVertIconMenu}>
           <ListItemIcon>
             <DeleteIcon fontSize="small" />
           </ListItemIcon>
