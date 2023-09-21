@@ -15,7 +15,7 @@ export default function PromptField(props) {
     setIconEnabled(wordCount > 1);
   }
 
-  function sendPrompt(){
+  function sendPrompt() {
     if (iconEnabled) {
       // Handle sending the prompt to the backend here
       console.log('Prompt sent to the backend');
@@ -38,12 +38,16 @@ export default function PromptField(props) {
         id="fullWidth"
         helperText="A simple description of your character"
         onChange={onPromptInputChange}
+        onKeyUp={(event) => {if (event.key === 'Enter'){sendPrompt()}}}
         value={prompt}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               <SendIcon
-                style={{cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5, color: iconEnabled ? props.theme.palette.primary.main : 'inherit'}}
+                style={{
+                  cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5,
+                  color: iconEnabled ? props.theme.palette.primary.main : 'inherit'
+                }}
                 onClick={sendPrompt}
               />
             </InputAdornment>
