@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Paper, Box, IconButton, Avatar, Tooltip } from "@mui/material";
+import { Paper, Box, IconButton, Avatar, Tooltip, TextField, Button } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
@@ -45,6 +45,28 @@ export default function Character(props) {
         </IconButton>
     );
 
+    const characterForm = (
+        <form>
+            <img className="img" src={props.image} alt="Character Image" />
+            <Box padding={1}>
+                <TextField label="Campaign" value={props.campaign} variant="outlined" />
+                <TextField label="Name" value={props.name} variant="outlined" />
+                <TextField label="Quote" value={props.quote} variant="outlined" />
+                <div>
+                    <Button type='submit' variant="contained">Save</Button>
+                    <Button onClick={() => { setIsEditingCard(false) }} variant="contained">Cancel</Button>
+                </div>
+            </Box>
+        </form>
+    );
+
+    const characterInfo = (
+        <div>
+            <img className="img" src={props.image} alt="Character Image" />
+            <CharacterText name={props.name} quote={props.quote}></CharacterText>
+        </div>
+    );
+
     return (
         <Grid item xs={3}>
             <Box position="relative">
@@ -60,9 +82,10 @@ export default function Character(props) {
 
                 <ActionsMenu anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
+
+
                 <Paper elevation={3}>
-                    <img className="img" src={props.image} alt="Character Image" />
-                    <CharacterText name={props.name} quote={props.quote}></CharacterText>
+                    {isEditingCard ? characterForm : characterInfo}
                 </Paper>
             </Box>
         </Grid>
