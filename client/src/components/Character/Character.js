@@ -7,6 +7,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 import './Character.css'
 import ActionsMenu from './ActionsMenu';
 import CharacterText from './CharacterText';
+import CharacterForm from './CharacterForm';
 
 import { getCampaignChars } from './Utils';
 
@@ -45,20 +46,8 @@ export default function Character(props) {
         </IconButton>
     );
 
-    const characterForm = (
-        <form>
-            <img className="img" src={props.image} alt="Character Image" />
-            <Box padding={1}>
-                <TextField label="Campaign" value={props.campaign} variant="outlined" />
-                <TextField label="Name" value={props.name} variant="outlined" />
-                <TextField label="Quote" value={props.quote} variant="outlined" />
-                <div>
-                    <Button type='submit' variant="contained">Save</Button>
-                    <Button onClick={() => { setIsEditingCard(false) }} variant="contained">Cancel</Button>
-                </div>
-            </Box>
-        </form>
-    );
+    const characterForm = <CharacterForm campaign={props.campaign} name={props.name}
+        quote={props.quote} image={props.image} setEditingCard={setIsEditingCard} />
 
     const characterInfo = (
         <div>
