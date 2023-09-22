@@ -10,6 +10,12 @@
     padding: 8px 0;
 }
 
+.form-roleplayHolder {
+    display: grid;
+    justify-content: center;
+    padding: 16px 0px 0px 0px;
+}
+
 .form-buttonHolder {
     display: flex;
     justify-content: space-evenly;

@@ -65,7 +65,7 @@ export default function CharacterForm(props) {
                     <TextField name="appearance" sx={textFieldStyles} variant="outlined" label="Appearance" onChange={handleInputChange} value={formData.appearance} />
                 </div>
                 <Divider />
-                <div className="form-inputsHolder">
+                <div className="form-roleplayHolder">
                     {formData.roleplayProps.map((item, index) => (
                         <TextField key={index} name={index} sx={textFieldStyles} variant="outlined" label="Roleplay Property" onChange={handleRoleplayChange} value={item} />
                     ))}
