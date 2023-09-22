@@ -9,6 +9,7 @@ export default function CharacterForm(props) {
         campaign: props.campaign,
         name: props.name,
         quote: props.quote,
+        appearance: props.appearance
     });
 
     // Handle form submission
@@ -21,6 +22,7 @@ export default function CharacterForm(props) {
         props.setCharCampaign(formData.campaign);
         props.setCharName(formData.name);
         props.setCharQuote(formData.quote);
+        props.setCharAppearance(formData.appearance);
 
         // Switch to the view mode
         props.setEditingCard(false);
@@ -44,6 +46,7 @@ export default function CharacterForm(props) {
                     <TextField name="campaign" sx={textFieldStyles} variant="outlined" label="Campaign" onChange={handleInputChange} value={formData.campaign} />
                     <TextField name="name" sx={textFieldStyles} variant="outlined" label="Name" onChange={handleInputChange} value={formData.name} />
                     <TextField name="quote" sx={textFieldStyles} variant="outlined" label="Quote" onChange={handleInputChange} value={formData.quote} />
+                    <TextField name="appearance" sx={textFieldStyles} variant="outlined" label="Appearance" onChange={handleInputChange} value={formData.appearance} />
                 </div>
                 <div className="form-buttonHolder">
                     <Button type='submit' variant="contained">Save</Button>
