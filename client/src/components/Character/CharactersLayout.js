@@ -6,9 +6,11 @@ import Character from './Character';
 import man_image from '../../../public/images/profile_man.png'
 import woman_image from '../../../public/images/profile_woman.png'
 
-const dummyM = { image: man_image, name: "Name of Character", campaign:'Dead Rising', quote: "Hereby is thy quote, a brief phrase said by the character" };
-const dummyF = { image: woman_image, name: "Name of Character", campaign:'Limbo', quote: "Hereby is thy quote, a brief phrase said by the character" };
-const campaignLess = { image: woman_image, name: "Name of Character", campaign:'', quote: "Hereby is thy quote, a brief phrase said by the character" };
+const appearance = "A brief, physical description of the character goes here";
+const roleplayProps = ["My first roleplay property","My second roleplay property", "My third roleplay property"];
+const dummyM = { image: man_image, campaign:'Dead Rising', name: "Name of Character",  quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
+const dummyF = { image: woman_image, campaign:'Limbo', name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
+const campaignLess = { image: woman_image, campaign:'', name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
 const dummies = [dummyM, dummyF, dummyM, dummyF, campaignLess];
 
 export default CharactersLayout = (props) => {
