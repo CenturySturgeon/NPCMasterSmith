@@ -17,6 +17,8 @@ export default function CharacterForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const id = e.target.id;
+
         // Send PUT request
 
         // Update the characters props
@@ -25,7 +27,6 @@ export default function CharacterForm(props) {
         props.setCharQuote(formData.quote);
         props.setCharAppearance(formData.appearance);
         props.setCharRoleplayProps(formData.roleplayProps);
-        console.log(formData.roleplayProps)
 
         // Switch to the view mode
         props.setEditingCard(false);
@@ -40,6 +41,7 @@ export default function CharacterForm(props) {
         });
     };
 
+    // Handle the roleplay properties changes
     const handleRoleplayChange = (e) => {
         // The name serves as the index in this case
         const { name, value } = e.target;
@@ -53,7 +55,7 @@ export default function CharacterForm(props) {
 
     const textFieldStyles = { marginBottom: '12px' };
     return (
-        <form onSubmit={handleSubmit}>
+        <form id={props.id} onSubmit={handleSubmit}>
             <img className="img" src={props.image} alt="Character Image" />
             <Box padding={1}>
                 <div className="form-inputsHolder">

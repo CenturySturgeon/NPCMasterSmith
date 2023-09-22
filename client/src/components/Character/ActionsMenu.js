@@ -10,6 +10,12 @@ export default function ActionsMenu(props) {
     props.setEditingCard(true);
   }
 
+  function handleDeleteCharClick(){
+    // Send the DELETE request
+    console.log("Character with id: ", props.id, " sent for deletion.");
+    props.closeVertIconMenu();
+  }
+
   return (
     <Menu
       anchorEl={props.anchorEl}
@@ -23,7 +29,7 @@ export default function ActionsMenu(props) {
         <ListItemText>Edit</ListItemText>
       </MenuItem>
 
-      <MenuItem onClick={props.closeVertIconMenu}>
+      <MenuItem onClick={handleDeleteCharClick}>
         <ListItemIcon>
           <DeleteIcon fontSize="small" />
         </ListItemIcon>

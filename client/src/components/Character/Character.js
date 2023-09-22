@@ -63,7 +63,7 @@ export default function Character(props) {
     );
 
     const characterForm = (
-        <CharacterForm campaign={charCampaign} name={charName}
+        <CharacterForm id={props.id} campaign={charCampaign} name={charName}
             quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
             setCharQuote={setCharQuote} setCharAppearance={setCharAppearance} setCharRoleplayProps={setCharRoleplayProps} setEditingCard={setIsEditingCard} />
     );
@@ -85,7 +85,7 @@ export default function Character(props) {
                 {isEditingCard ? '' : vertIconButton}
 
                 {/* The actions menu is hidden by default */}
-                <ActionsMenu anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
+                <ActionsMenu id={props.id} anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
                 <Paper elevation={3}>
                     {/* Show the character info when the card is not being edited and the form when the card is being edited */}
