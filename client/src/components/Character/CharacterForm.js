@@ -10,6 +10,7 @@ export default function CharacterForm(props) {
         name: props.name,
         quote: props.quote,
         appearance: props.appearance,
+        charRoleplayProps: props.charRoleplayProps,
     });
 
     // Handle form submission
@@ -37,6 +38,17 @@ export default function CharacterForm(props) {
         });
     };
 
+    const handleRoleplayChange = (e) => {
+        // The name serves as the index in this case
+        const { name, value } = e.target;
+        const updatedRoleplayProps = [...formData.charRoleplayProps];
+        updatedRoleplayProps[name] = value;
+        setFormData({
+            ...formData,
+            ["charRoleplayProps"]: updatedRoleplayProps,
+        });
+    };
+
     const textFieldStyles = { marginBottom: '12px' };
     return (
         <form onSubmit={handleSubmit}>
@@ -50,8 +62,8 @@ export default function CharacterForm(props) {
                 </div>
                 <Divider />
                 <div className="form-inputsHolder">
-                    {props.charRoleplayProps.map((item, index) => (
-                        <TextField sx={textFieldStyles} variant="outlined" label="Roleplay Property" value={item} />
+                    {formData.charRoleplayProps.map((item, index) => (
+                        <TextField key={index} name={index} sx={textFieldStyles} variant="outlined" label="Roleplay Property" onChange={handleRoleplayChange} value={item} />
                     ))}
                 </div>
                 <div className="form-buttonHolder">
