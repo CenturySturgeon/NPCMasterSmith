@@ -14,9 +14,9 @@ import { getCampaignChars } from './Utils';
 export default function Character(props) {
 
     // Character properties states for two way binding when editing
-    const [charNameEdit, setCharNameEdit] = useState(props.name);
-    const [charCampaignEdit, setCharCampaignEdit] = useState(props.campaign);
-    const [charQuoteEdit, setCharQuoteEdit] = useState(props.quote);
+    const [charName, setCharName] = useState(props.name);
+    const [charCampaign, setCharCampaign] = useState(props.campaign);
+    const [charQuote, setCharQuote] = useState(props.quote);
 
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
@@ -36,10 +36,10 @@ export default function Character(props) {
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
 
-    const campaignChars = getCampaignChars(props.campaign);
+    const campaignChars = getCampaignChars(charCampaign);
 
     const campaignAvatar = (
-        <Tooltip title={campaignChars != 'N/A' ? props.campaign : 'Not Assigned'} arrow>
+        <Tooltip title={campaignChars != 'N/A' ? charCampaign : 'Not Assigned'} arrow>
             <Avatar variant="rounded"
                 sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
                 {campaignChars}
@@ -61,15 +61,15 @@ export default function Character(props) {
     );
 
     const characterForm = (
-        <CharacterForm campaign={charCampaignEdit} name={charNameEdit}
-            quote={charQuoteEdit} image={props.image} setCharName={setCharNameEdit} setCharCampaign={setCharCampaignEdit}
-            setCharQuote={setCharQuoteEdit} setEditingCard={setIsEditingCard} />
+        <CharacterForm campaign={charCampaign} name={charName}
+            quote={charQuote} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
+            setCharQuote={setCharQuote} setEditingCard={setIsEditingCard} />
     );
 
     const characterInfo = (
         <div>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText name={props.name} quote={props.quote}></CharacterText>
+            <CharacterText name={charName} quote={charQuote}></CharacterText>
         </div>
     );
 
