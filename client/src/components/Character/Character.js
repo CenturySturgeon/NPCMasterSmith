@@ -64,7 +64,7 @@ export default function Character(props) {
 
     const characterForm = (
         <CharacterForm campaign={charCampaign} name={charName}
-            quote={charQuote} appearance={charAppearance} charRoleplayProps={charRoleplayProps} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
+            quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
             setCharQuote={setCharQuote} setCharAppearance={setCharAppearance} setCharRoleplayProps={setCharRoleplayProps} setEditingCard={setIsEditingCard} />
     );
 

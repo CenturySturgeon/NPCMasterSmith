@@ -10,7 +10,7 @@ export default function CharacterForm(props) {
         name: props.name,
         quote: props.quote,
         appearance: props.appearance,
-        charRoleplayProps: props.charRoleplayProps,
+        roleplayProps: props.roleplayProps,
     });
 
     // Handle form submission
@@ -24,6 +24,8 @@ export default function CharacterForm(props) {
         props.setCharName(formData.name);
         props.setCharQuote(formData.quote);
         props.setCharAppearance(formData.appearance);
+        props.setCharRoleplayProps(formData.roleplayProps);
+        console.log(formData.roleplayProps)
 
         // Switch to the view mode
         props.setEditingCard(false);
@@ -41,11 +43,11 @@ export default function CharacterForm(props) {
     const handleRoleplayChange = (e) => {
         // The name serves as the index in this case
         const { name, value } = e.target;
-        const updatedRoleplayProps = [...formData.charRoleplayProps];
+        const updatedRoleplayProps = [...formData.roleplayProps];
         updatedRoleplayProps[name] = value;
         setFormData({
             ...formData,
-            ["charRoleplayProps"]: updatedRoleplayProps,
+            ["roleplayProps"]: updatedRoleplayProps,
         });
     };
 
@@ -62,7 +64,7 @@ export default function CharacterForm(props) {
                 </div>
                 <Divider />
                 <div className="form-inputsHolder">
-                    {formData.charRoleplayProps.map((item, index) => (
+                    {formData.roleplayProps.map((item, index) => (
                         <TextField key={index} name={index} sx={textFieldStyles} variant="outlined" label="Roleplay Property" onChange={handleRoleplayChange} value={item} />
                     ))}
                 </div>
