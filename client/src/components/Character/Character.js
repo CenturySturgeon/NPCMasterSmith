@@ -18,6 +18,7 @@ export default function Character(props) {
     const [charCampaign, setCharCampaign] = useState(props.campaign);
     const [charQuote, setCharQuote] = useState(props.quote);
     const [charAppearance, setCharAppearance] = useState(props.appearance);
+    const [charRoleplayProps, setCharRoleplayProps] = useState(props.roleplayProps);
 
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
@@ -63,8 +64,8 @@ export default function Character(props) {
 
     const characterForm = (
         <CharacterForm campaign={charCampaign} name={charName}
-            quote={charQuote} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
-            setCharQuote={setCharQuote} setEditingCard={setIsEditingCard} appearance={charAppearance} setCharAppearance={setCharAppearance} />
+            quote={charQuote} appearance={charAppearance} charRoleplayProps={charRoleplayProps} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
+            setCharQuote={setCharQuote} setCharAppearance={setCharAppearance} setCharRoleplayProps={setCharRoleplayProps} setEditingCard={setIsEditingCard} />
     );
 
     const characterInfo = (

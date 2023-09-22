@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
 
 export default function CharacterForm(props) {
@@ -9,13 +9,13 @@ export default function CharacterForm(props) {
         campaign: props.campaign,
         name: props.name,
         quote: props.quote,
-        appearance: props.appearance
+        appearance: props.appearance,
     });
 
     // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         // Send PUT request
 
         // Update the characters props
@@ -47,6 +47,12 @@ export default function CharacterForm(props) {
                     <TextField name="name" sx={textFieldStyles} variant="outlined" label="Name" onChange={handleInputChange} value={formData.name} />
                     <TextField name="quote" sx={textFieldStyles} variant="outlined" label="Quote" onChange={handleInputChange} value={formData.quote} />
                     <TextField name="appearance" sx={textFieldStyles} variant="outlined" label="Appearance" onChange={handleInputChange} value={formData.appearance} />
+                </div>
+                <Divider />
+                <div className="form-inputsHolder">
+                    {props.charRoleplayProps.map((item, index) => (
+                        <TextField sx={textFieldStyles} variant="outlined" label="Roleplay Property" value={item} />
+                    ))}
                 </div>
                 <div className="form-buttonHolder">
                     <Button type='submit' variant="contained">Save</Button>
