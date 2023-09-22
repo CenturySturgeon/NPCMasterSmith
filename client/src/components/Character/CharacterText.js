@@ -7,7 +7,7 @@ const CharacterText = (props) => {
             <Typography variant="h6" component="h2">
                 {props.name}
             </Typography>
-            <Typography sx={{fontStyle: 'italic'}} variant="subtitle1">
+            <Typography sx={{ fontStyle: 'italic' }} variant="subtitle1">
                 "{props.quote}"
             </Typography>
             <CollapsableSection appearance={props.appearance} roleplayProps={props.roleplayProps}></CollapsableSection>

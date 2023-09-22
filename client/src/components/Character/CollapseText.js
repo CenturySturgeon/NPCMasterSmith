@@ -1,8 +1,6 @@
 import { Typography, Collapse } from "@mui/material";
 
 const CollapseText = (props) => {
-    console.log("XXXXXX",props.roleplayProps)
-
     return (
         <Collapse in={props.isExpanded}>
             <Typography variant="body1">
