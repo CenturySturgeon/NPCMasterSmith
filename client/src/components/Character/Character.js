@@ -13,6 +13,11 @@ import { getCampaignChars } from './Utils';
 
 export default function Character(props) {
 
+    // Character properties states for two way binding
+    const[charName, setCharName] = useState(props.name);
+    const[charCampaign, setCharCampaign] = useState(props.campaign);
+    const[charQuote, setCharQuote] = useState(props.quote);
+
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
     // Set a state to indicate whether the character is being edited or not
@@ -31,10 +36,10 @@ export default function Character(props) {
         props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
 
-    const campaignChars = getCampaignChars(props.campaign);
+    const campaignChars = getCampaignChars(charCampaign);
 
     const campaignAvatar = (
-        <Tooltip title={campaignChars != 'N/A' ? props.campaign : 'Not Assigned'} arrow>
+        <Tooltip title={campaignChars != 'N/A' ? charCampaign : 'Not Assigned'} arrow>
             <Avatar variant="rounded"
                 sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
                 {campaignChars}
@@ -56,14 +61,14 @@ export default function Character(props) {
     );
 
     const characterForm = (
-        <CharacterForm campaign={props.campaign} name={props.name}
-            quote={props.quote} image={props.image} setEditingCard={setIsEditingCard} />
+        <CharacterForm campaign={charCampaign} name={charName}
+            quote={charQuote} image={props.image} setEditingCard={setIsEditingCard} />
     );
 
     const characterInfo = (
         <div>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText name={props.name} quote={props.quote}></CharacterText>
+            <CharacterText name={charName} quote={charQuote}></CharacterText>
         </div>
     );
 
