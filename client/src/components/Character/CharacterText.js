@@ -10,7 +10,7 @@ const CharacterText = (props) => {
             <Typography sx={{fontStyle: 'italic'}} variant="subtitle1">
                 "{props.quote}"
             </Typography>
-            <CollapsableSection appearance={props.appearance}></CollapsableSection>
+            <CollapsableSection appearance={props.appearance} roleplayProps={props.roleplayProps}></CollapsableSection>
         </Box>
     );
 }

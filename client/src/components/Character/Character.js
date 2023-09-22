@@ -71,7 +71,7 @@ export default function Character(props) {
     const characterInfo = (
         <div>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText name={charName} quote={charQuote} appearance={charAppearance}></CharacterText>
+            <CharacterText name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
         </div>
     );
 

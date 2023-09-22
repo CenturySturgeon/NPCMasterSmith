@@ -1,6 +1,8 @@
 import { Typography, Collapse } from "@mui/material";
 
 const CollapseText = (props) => {
+    console.log("XXXXXX",props.roleplayProps)
+
     return (
         <Collapse in={props.isExpanded}>
             <Typography variant="body1">
@@ -8,9 +10,9 @@ const CollapseText = (props) => {
             </Typography>
             <Typography variant="body1">
                 <ul>
-                    <li>My first roleplay property.</li>
-                    <li>My second roleplay property.</li>
-                    <li>My third roleplay property.</li>
+                    {props.roleplayProps.map((item) => (
+                        <li>{item}</li>
+                    ))}
                 </ul>
             </Typography>
         </Collapse>
