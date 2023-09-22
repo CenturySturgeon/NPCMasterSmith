@@ -10,7 +10,7 @@ const CharacterText = (props) => {
             <Typography sx={{fontStyle: 'italic'}} variant="subtitle1">
                 "{props.quote}"
             </Typography>
-            <CollapsableSection></CollapsableSection>
+            <CollapsableSection appearance={props.appearance}></CollapsableSection>
         </Box>
     );
 }

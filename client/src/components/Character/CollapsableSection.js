@@ -4,7 +4,7 @@ import CollapseIcons from './CollapseIcons'
 import CollapseText from './CollapseText';
 
 
-const CollapsableSection = () => {
+const CollapsableSection = (props) => {
     const [isExpanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -14,7 +14,7 @@ const CollapsableSection = () => {
     return (
         <div>
             <CollapseIcons handleExpandClick={handleExpandClick} isExpanded={isExpanded}></CollapseIcons>
-            <CollapseText isExpanded={isExpanded}></CollapseText>
+            <CollapseText appearance={props.appearance} isExpanded={isExpanded}></CollapseText>
         </div>
     )
 }

@@ -4,7 +4,7 @@ const CollapseText = (props) => {
     return (
         <Collapse in={props.isExpanded}>
             <Typography variant="body1">
-                A brief, physical description of the character goes here.
+                {props.appearance}.
             </Typography>
             <Typography variant="body1">
                 <ul>

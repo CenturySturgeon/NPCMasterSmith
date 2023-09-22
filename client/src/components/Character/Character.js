@@ -17,6 +17,7 @@ export default function Character(props) {
     const [charName, setCharName] = useState(props.name);
     const [charCampaign, setCharCampaign] = useState(props.campaign);
     const [charQuote, setCharQuote] = useState(props.quote);
+    const [charAppearance, setCharAppearance] = useState(props.appearance);
 
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
@@ -69,7 +70,7 @@ export default function Character(props) {
     const characterInfo = (
         <div>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText name={charName} quote={charQuote}></CharacterText>
+            <CharacterText name={charName} quote={charQuote} appearance={charAppearance}></CharacterText>
         </div>
     );
 

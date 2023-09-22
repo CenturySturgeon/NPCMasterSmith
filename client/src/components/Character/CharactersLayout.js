@@ -26,6 +26,8 @@ export default CharactersLayout = (props) => {
                             image={character.image}
                             name={character.name}
                             quote={character.quote}
+                            appearance={character.appearance}
+                            roleplayProps={character.roleplayProps}
                         />
                     ))
                 }
