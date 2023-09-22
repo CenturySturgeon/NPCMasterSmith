@@ -4,11 +4,27 @@ import './Character.css'
 
 export default function CharacterForm(props) {
 
+    // States for the form text field values
     const [formData, setFormData] = useState({
         campaign: props.campaign,
         name: props.name,
         quote: props.quote,
     });
+
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        // Send PUT request
+
+        // Update the characters props
+        props.setCharCampaign(formData.campaign);
+        props.setCharName(formData.name);
+        props.setCharQuote(formData.quote);
+
+        // Switch to the view mode
+        props.setEditingCard(false);
+    };
 
     // Update state when inputs change
     const handleInputChange = (e) => {
@@ -21,7 +37,7 @@ export default function CharacterForm(props) {
 
     const textFieldStyles = { marginBottom: '12px' };
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <img className="img" src={props.image} alt="Character Image" />
             <Box padding={1}>
                 <div className="form-inputsHolder">
