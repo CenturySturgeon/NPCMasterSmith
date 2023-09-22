@@ -21,9 +21,9 @@ export default function CharacterForm(props) {
             <img className="img" src={props.image} alt="Character Image" />
             <Box padding={1}>
                 <div className="form-inputsHolder">
-                    <TextField sx={textFieldStyles} onChange={(event) => { setCharacterCampaign(event) }} label="Campaign" value={props.campaign} variant="outlined" />
-                    <TextField sx={textFieldStyles} onChange={(event) => { setCharacterName(event) }} label="Name" value={props.name} variant="outlined" />
-                    <TextField sx={textFieldStyles} onChange={(event) => { setCharacterQuote(event) }} label="Quote" value={props.quote} variant="outlined" />
+                    <TextField sx={textFieldStyles} variant="outlined" label="Campaign" onChange={(event) => { setCharacterCampaign(event) }} value={props.campaign} />
+                    <TextField sx={textFieldStyles} variant="outlined" label="Name" onChange={(event) => { setCharacterName(event) }} value={props.name} />
+                    <TextField sx={textFieldStyles} variant="outlined" label="Quote" onChange={(event) => { setCharacterQuote(event) }} value={props.quote} />
                 </div>
                 <div className="form-buttonHolder">
                     <Button type='submit' variant="contained">Save</Button>
