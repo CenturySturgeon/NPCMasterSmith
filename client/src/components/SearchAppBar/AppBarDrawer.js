@@ -15,7 +15,9 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 export default function AppBarDrawer(props) {
     return (
-        <Drawer anchor="left"
+        <Drawer
+            disableScrollLock={ true } 
+            anchor="left"
             open={
                 props.isDrawerOpen
             }

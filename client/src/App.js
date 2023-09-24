@@ -6,10 +6,6 @@ import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
 import ContenHolder from "./components/ContentHolder/ContentHolder";
 import SearchAppBar from './components/SearchAppBar/SearchAppBar';
 
-function isMobileDevice() {
-    return /Mobi|Android/i.test(navigator.userAgent);
-  }
-
 function Application() {
 
     const [isLightThemed, setIsLightThemed] = useState(false);
