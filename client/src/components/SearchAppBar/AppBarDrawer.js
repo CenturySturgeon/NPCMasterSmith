@@ -46,7 +46,7 @@ export default function AppBarDrawer(props) {
                         text: "Create Character",
                         icon: <PersonAddIcon/>}, {
                         text: "Manage Characters",
-                        icon: <PersonAddIcon/>}
+                        icon: <GroupsIcon/>}
                 ].map((item) => (
                     <ListItem key={
                             item.text
