@@ -1,18 +1,12 @@
 import CharactersPage from "../Character/CharactersPage";
-import PromptField from "../Prompt/PromptField";
 import Box from '@mui/material/Box';
+import PromptPage from "../Prompt/PromptPage";
 
 const ContentHolder = (props) => {
     return (
-        <Box
-            sx={{ mt: '12px' }}
-        >
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                <PromptField theme={props.theme}></PromptField>
-            </div>
-            <br />
+        <Box sx={{ mt: '12px' , width: '100%', display: 'flex', flexGrow: 1, flexDirection: 'column' }}>
+            <PromptPage></PromptPage>
             <CharactersPage theme={props.theme}/>
-
         </Box>
     )
 }

@@ -16,7 +16,7 @@ const dummies = [{ ...dummyM, ["id"]: 0 }, { ...dummyF, ["id"]: 1 }, { ...dummyM
 export default CharactersLayout = (props) => {
     return (
         <Container>
-            <Grid container spacing={3}>
+            <Grid sx={{margin: 0}} container spacing={3}>
                 {
                     dummies.map((character) => (
                         <Character

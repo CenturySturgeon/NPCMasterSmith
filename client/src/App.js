@@ -26,10 +26,14 @@ function Application() {
                     bgcolor: 'background.default',
                     color: 'text.primary',
                     padding: '0px',
-                    minHeight: '100%'
+                    minHeight: '100%',
+                    display: 'flex',
+                    flexDirection: 'column'
                 }}
             >
-                <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
+                <Box sx={{ width: '100%' }}>
+                    <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
+                </Box>
                 <ContenHolder theme={Theme}></ContenHolder>
             </Box>
         </ThemeProvider>
