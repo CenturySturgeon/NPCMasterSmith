@@ -3,6 +3,7 @@ import {
     Divider,
     List,
     ListItem,
+    ListItemButton,
     ListItemText,
     ListItemIcon,
     IconButton
@@ -38,16 +39,20 @@ export default function AppBarDrawer(props) {
 
             <List>
                 <ListItem>
-                    <ListItemIcon>
-                        <PersonAddIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Create Character"/>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <PersonAddIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Create Character"/>
+                    </ListItemButton>
                 </ListItem>
                 <ListItem>
-                    <ListItemIcon>
-                        <GroupsIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="View Characters"/>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <GroupsIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="View Characters"/>
+                    </ListItemButton>
                 </ListItem>
             </List>
         </Drawer>
