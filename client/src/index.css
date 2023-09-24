@@ -1,6 +1,14 @@
 /* global.css */
+html {
+  height: -webkit-fill-available;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0px;
-  }
-  
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+}
+
+#app{
+  height: 100%;
+}
