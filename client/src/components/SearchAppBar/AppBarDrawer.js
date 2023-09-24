@@ -38,32 +38,31 @@ export default function AppBarDrawer(props) {
 
             <Divider/>
 
-            <List>
-                <ListItem>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <ClassIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Manage Campaigns"/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <PersonAddIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Create Character"/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <GroupsIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Manage Characters"/>
-                    </ListItemButton>
-                </ListItem>
-            </List>
+            <List> {
+                [
+                    {
+                        text: "Manage Campaigns",
+                        icon: <ClassIcon/>}, {
+                        text: "Create Character",
+                        icon: <PersonAddIcon/>}, {
+                        text: "Manage Characters",
+                        icon: <PersonAddIcon/>}
+                ].map((item) => (
+                    <ListItem key={
+                            item.text
+                        }
+                        disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon> {
+                                item.icon
+                            } </ListItemIcon>
+                            <ListItemText primary={
+                                item.text
+                            }/>
+                        </ListItemButton>
+                    </ListItem>
+                ))
+            } </List>
         </Drawer>
     )
 }
