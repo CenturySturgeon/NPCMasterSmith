@@ -31,9 +31,7 @@ function Application() {
                     flexDirection: 'column'
                 }}
             >
-                <Box sx={{ width: '100%' }}>
-                    <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                </Box>
+                <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
                 <ContenHolder theme={Theme}></ContenHolder>
             </Box>
         </ThemeProvider>
