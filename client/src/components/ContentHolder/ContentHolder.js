@@ -1,5 +1,4 @@
-import ActionsSpeedDial from "../ActionsSpeedDial/ActionsSpeedDial";
-import CharactersLayout from "../Character/CharactersLayout";
+import CharactersPage from "../Character/CharactersPage";
 import PromptField from "../Prompt/PromptField";
 import Box from '@mui/material/Box';
 
@@ -12,8 +11,7 @@ const ContentHolder = (props) => {
                 <PromptField theme={props.theme}></PromptField>
             </div>
             <br />
-            <CharactersLayout theme={props.theme}/>
-            <ActionsSpeedDial/>
+            <CharactersPage theme={props.theme}/>
 
         </Box>
     )
