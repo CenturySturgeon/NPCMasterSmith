@@ -18,6 +18,7 @@ export default function ActionsMenu(props) {
 
   return (
     <Menu
+      disableScrollLock={ true }
       anchorEl={props.anchorEl}
       open={props.open}
       onClose={props.closeVertIconMenu}

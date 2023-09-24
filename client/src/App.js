@@ -51,7 +51,7 @@ function Application() {
                 }}
             >
                 <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                <ContenHolder fixedItemMargin={boddyPaddingCompensation} setBodyPadComp={setIsBodyPaddingActive} theme={Theme}></ContenHolder>
+                <ContenHolder fixedItemMargin={boddyPaddingCompensation} theme={Theme}></ContenHolder>
             </Box>
         </ThemeProvider>
     )

@@ -31,11 +31,9 @@ export default function Character(props) {
     // Menu event handlers
     const handleVertIconClick = (event) => {
         setAnchorEl(event.currentTarget);
-        props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
     const closeVertIconMenu = () => {
         setAnchorEl(null);
-        props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
 
     const campaignChars = getCampaignChars(charCampaign);

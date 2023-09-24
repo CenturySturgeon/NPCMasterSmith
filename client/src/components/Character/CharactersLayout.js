@@ -21,7 +21,6 @@ export default CharactersLayout = (props) => {
                     dummies.map((character) => (
                         <Character
                             theme={props.theme}
-                            setBodyPadComp={props.setBodyPadComp}
                             image={character.image}
                             id={character.id}
                             campaign={character.campaign}
