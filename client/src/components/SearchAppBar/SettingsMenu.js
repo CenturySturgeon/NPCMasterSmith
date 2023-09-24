@@ -13,11 +13,9 @@ const SettingsMenu = (props) => {
     // Menu event handlers
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
     const handleClose = () => {
         setAnchorEl(null);
-        props.setBodyPadComp(isBodyPaddingActive => !isBodyPaddingActive);
     };
 
     return (

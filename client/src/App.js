@@ -50,7 +50,7 @@ function Application() {
                     minHeight: '100%'
                 }}
             >
-                <SearchAppBar setBodyPadComp={setIsBodyPaddingActive} isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
+                <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
                 <ContenHolder fixedItemMargin={boddyPaddingCompensation} setBodyPadComp={setIsBodyPaddingActive} theme={Theme}></ContenHolder>
             </Box>
         </ThemeProvider>
