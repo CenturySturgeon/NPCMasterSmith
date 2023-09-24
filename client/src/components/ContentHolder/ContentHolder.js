@@ -13,7 +13,7 @@ const ContentHolder = (props) => {
             </div>
             <br />
             <CharactersLayout theme={props.theme}/>
-            <ActionsSpeedDial fixedItemMargin={props.fixedItemMargin}/>
+            <ActionsSpeedDial/>
 
         </Box>
     )

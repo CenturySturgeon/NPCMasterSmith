@@ -16,8 +16,6 @@ const ActionsSpeedDial = (props) => {
             <SpeedDial
                 ariaLabel="Characters action speed dial"
                 icon={<SpeedDialIcon />}
-                sx={props.fixedItemMargin}
-
             >
                 {actions.map((action) => (
                     <SpeedDialAction
