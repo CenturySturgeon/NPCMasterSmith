@@ -28,6 +28,7 @@ export default function SettingsMenuItems(props) {
 
     return (
         <Menu
+            disableScrollLock={ true }
             anchorEl={props.anchorEl}
             open={props.open}
             onClose={props.handleClose}
