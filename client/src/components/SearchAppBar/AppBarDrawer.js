@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ClassIcon from '@mui/icons-material/Class';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 export default function AppBarDrawer(props) {
@@ -41,6 +42,14 @@ export default function AppBarDrawer(props) {
                 <ListItem>
                     <ListItemButton>
                         <ListItemIcon>
+                            <ClassIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Manage Campaigns"/>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem>
+                    <ListItemButton>
+                        <ListItemIcon>
                             <PersonAddIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Create Character"/>
@@ -51,7 +60,7 @@ export default function AppBarDrawer(props) {
                         <ListItemIcon>
                             <GroupsIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="View Characters"/>
+                        <ListItemText primary="Manage Characters"/>
                     </ListItemButton>
                 </ListItem>
             </List>
