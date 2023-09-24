@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,6 +10,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsMenu from './SettingsMenu';
+import AppBarDrawer from './AppBarDrawer';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -53,6 +55,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar(props) {
+
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+    const toggleDrawer = () => {
+      setIsDrawerOpen(!isDrawerOpen);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -63,6 +72,7 @@ export default function SearchAppBar(props) {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
+                        onClick={toggleDrawer}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -86,6 +96,7 @@ export default function SearchAppBar(props) {
                     <SettingsMenu setBodyPadComp={props.setBodyPadComp} isLightThemed={props.isLightThemed} toggleTheme={props.toggleTheme}></SettingsMenu>
                 </Toolbar>
             </AppBar>
+            <AppBarDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>
         </Box>
     );
 }
