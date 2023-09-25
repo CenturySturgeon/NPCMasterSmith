@@ -19,7 +19,7 @@ const SettingsMenu = (props) => {
     };
 
     return (
-        <div>
+        <>
             <IconButton
                 size="large"
                 edge="end"
@@ -31,7 +31,7 @@ const SettingsMenu = (props) => {
                 <SettingsIcon />
             </IconButton>
             <SettingsMenuItems isLightThemed={props.isLightThemed} toggleTheme={props.toggleTheme} anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} open={open}></SettingsMenuItems>
-        </div>
+        </>
     )
 }
 
