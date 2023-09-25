@@ -5,9 +5,14 @@ import { SpeedDialIcon } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddCardIcon from '@mui/icons-material/AddCard';
 
+function aiCreateCharacter() {
+    // Routing to the prompt page goes here
+    console.log("Re-routing to the character prompt page");
+}
+
 const actions = [
-    { icon: <AddCardIcon sx={{transform: 'scaleX(-1)'}} />, name: 'Add Empty Card' },
-    { icon: <PersonAddIcon />, name: 'Create Character' }
+    { icon: <AddCardIcon sx={{ transform: 'scaleX(-1)' }} />, name: 'Add Empty Card' },
+    { icon: <PersonAddIcon onClick={aiCreateCharacter} />, name: 'Create Character' }
 ];
 
 const ActionsSpeedDial = (props) => {
