@@ -1,14 +1,18 @@
+import { useContext } from 'react';
 import Menu from '@mui/material/Menu';
 import { MenuItem, ListItemIcon, ListItemText } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { AppContext } from '../AppContext/AppContext';
 
 export default function SettingsMenuItems(props) {
 
+    const { isLightThemed, toggleTheme } = useContext(AppContext);
+
     let themeIcon;
-    if (props.isLightThemed) {
+    if (isLightThemed) {
         themeIcon = (
-            <MenuItem onClick={props.toggleTheme}>
+            <MenuItem onClick={toggleTheme}>
                 <ListItemIcon>
                     <Brightness7Icon fontSize="small" />
                 </ListItemIcon>
@@ -17,7 +21,7 @@ export default function SettingsMenuItems(props) {
         );
     } else {
         themeIcon = (
-            <MenuItem onClick={props.toggleTheme}>
+            <MenuItem onClick={toggleTheme}>
                 <ListItemIcon>
                     <Brightness4Icon fontSize="small" />
                 </ListItemIcon>
