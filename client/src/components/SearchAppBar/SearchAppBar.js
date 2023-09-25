@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchAppBar(props) {
+export default function SearchAppBar() {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   
@@ -63,7 +63,7 @@ export default function SearchAppBar(props) {
     };
 
     return (
-        <Box sx={{ flexGrow: 1, width: '100%' }}>
+        <Box sx={{ flexGrow: 0, width: '100%' }}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton

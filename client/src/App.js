@@ -1,4 +1,4 @@
-import { useState,createContext } from 'react';
+import { useState, createContext } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
@@ -20,26 +20,28 @@ function Application() {
 
     let Theme = isLightThemed ? lightTheme : darkTheme;
 
+    let themeColors = {primary: Theme.palette.primary.main, secondary: Theme.palette.secondary.main}
+
     return (
         <ThemeProvider theme={Theme}>
-            <AppContext.Provider value={{ Theme, isLightThemed, toggleTheme }}>
-            <Box
-                sx={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    bgcolor: 'background.default',
-                    color: 'text.primary',
-                    padding: '0px',
-                    minHeight: '100%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                }}
-            >
-                <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
-                <ContenHolder theme={Theme}></ContenHolder>
-            </Box>
+            <AppContext.Provider value={{ themeColors, isLightThemed, toggleTheme }}>
+                <Box
+                    sx={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        bgcolor: 'background.default',
+                        color: 'text.primary',
+                        padding: '0px',
+                        minHeight: '100%',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}
+                >
+                    <SearchAppBar />
+                    <ContenHolder />
+                </Box>
             </AppContext.Provider>
-            
+
         </ThemeProvider>
     )
 }

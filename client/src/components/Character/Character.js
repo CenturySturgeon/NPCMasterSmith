@@ -15,7 +15,7 @@ import { getCampaignChars } from './Utils';
 export default function Character(props) {
 
     // Extract the theme object from the app's context
-    const { Theme } = useContext(AppContext);
+    const { themeColors } = useContext(AppContext);
 
     // Character properties states for two way binding when editing
     const [charName, setCharName] = useState(props.name);
@@ -45,7 +45,7 @@ export default function Character(props) {
     const campaignAvatar = (
         <Tooltip title={campaignChars != 'N/A' ? charCampaign : 'Not Assigned'} arrow>
             <Avatar variant="rounded"
-                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: Theme.palette.primary.main }}>
+                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: themeColors.primary }}>
                 {campaignChars}
             </Avatar>
         </Tooltip>
