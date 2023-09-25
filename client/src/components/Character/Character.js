@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { Paper, Box, IconButton, Avatar, Tooltip, TextField, Button } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -8,10 +8,13 @@ import './Character.css'
 import ActionsMenu from './ActionsMenu';
 import CharacterText from './CharacterText';
 import CharacterForm from './CharacterForm';
+import { AppContext } from '../AppContext/AppContext';
 
 import { getCampaignChars } from './Utils';
 
 export default function Character(props) {
+
+    const { Theme } = useContext(AppContext);
 
     // Character properties states for two way binding when editing
     const [charName, setCharName] = useState(props.name);
@@ -41,7 +44,7 @@ export default function Character(props) {
     const campaignAvatar = (
         <Tooltip title={campaignChars != 'N/A' ? charCampaign : 'Not Assigned'} arrow>
             <Avatar variant="rounded"
-                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: props.theme.palette.primary.main }}>
+                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: Theme.palette.primary.main }}>
                 {campaignChars}
             </Avatar>
         </Tooltip>

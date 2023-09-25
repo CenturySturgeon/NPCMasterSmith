@@ -4,7 +4,7 @@ import ActionsSpeedDial from "../ActionsSpeedDial/ActionsSpeedDial";
 const CharactersPage = (props) => {
     return(
         <>
-            <CharactersLayout theme={props.theme}/>
+            <CharactersLayout/>
             <ActionsSpeedDial/>
         </>
     )

@@ -20,7 +20,6 @@ export default CharactersLayout = (props) => {
                 {
                     dummies.map((character) => (
                         <Character
-                            theme={props.theme}
                             image={character.image}
                             id={character.id}
                             campaign={character.campaign}
