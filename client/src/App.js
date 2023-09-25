@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { darkTheme, lightTheme } from './components/AppThemes/AppThemes'
 import ContenHolder from "./components/ContentHolder/ContentHolder";
 import SearchAppBar from './components/SearchAppBar/SearchAppBar';
+import { AppContext } from './components/AppContext/AppContext';
 
 function Application() {
 
@@ -19,6 +20,7 @@ function Application() {
 
     return (
         <ThemeProvider theme={Theme}>
+            <AppContext.Provider value={{ Theme, isLightThemed, toggleTheme }}>
             <Box
                 sx={{
                     alignItems: 'center',
@@ -34,6 +36,8 @@ function Application() {
                 <SearchAppBar isLightThemed={isLightThemed} toggleTheme={toggleTheme}></SearchAppBar>
                 <ContenHolder theme={Theme}></ContenHolder>
             </Box>
+            </AppContext.Provider>
+            
         </ThemeProvider>
     )
 }
