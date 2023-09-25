@@ -8,12 +8,13 @@ import './Character.css'
 import ActionsMenu from './ActionsMenu';
 import CharacterText from './CharacterText';
 import CharacterForm from './CharacterForm';
-import { AppContext } from '../AppContext/AppContext';
+import { AppContext } from '../../App';
 
 import { getCampaignChars } from './Utils';
 
 export default function Character(props) {
 
+    // Extract the theme object from the app's context
     const { Theme } = useContext(AppContext);
 
     // Character properties states for two way binding when editing

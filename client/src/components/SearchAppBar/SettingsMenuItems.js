@@ -3,10 +3,11 @@ import Menu from '@mui/material/Menu';
 import { MenuItem, ListItemIcon, ListItemText } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { AppContext } from '../AppContext/AppContext';
+import { AppContext } from '../../App';
 
 export default function SettingsMenuItems(props) {
 
+    // Extract the theme state variable and function from the app's context
     const { isLightThemed, toggleTheme } = useContext(AppContext);
 
     let themeIcon;
