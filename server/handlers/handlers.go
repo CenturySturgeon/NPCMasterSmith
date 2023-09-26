@@ -102,3 +102,20 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 		"Characters":  characters,
 	}, "base")
 }
+
+// Simple testing function that returns a 201 http status and prints the received data to the screen
+func TestPOST(c *fiber.Ctx) error {
+	// Get the request body as a string
+	requestBody := string(c.Request().Body())
+
+	// Print the received data to the console
+	fmt.Println("Received data:", requestBody)
+
+	// Set the response status code to 201 (Created)
+	c.Status(fiber.StatusCreated)
+
+	// Respond with a JSON message
+	return c.JSON(fiber.Map{
+		"message": "Resource created successfully",
+	})
+}
