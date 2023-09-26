@@ -16,51 +16,32 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 export default function AppBarDrawer(props) {
     return (
         <Drawer
-            disableScrollLock={ true } 
+            disableScrollLock={true}
             anchor="left"
-            open={
-                props.isDrawerOpen
-            }
-            onClose={
-                props.toggleDrawer
-        }>
-            <div style={
-                {
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end'
-                }
-            }>
-                <IconButton onClick={
-                    props.toggleDrawer
-                }>
-                    <ChevronLeftIcon/>
+            open={props.isDrawerOpen}
+            onClose={props.toggleDrawer}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                <IconButton onClick={props.toggleDrawer}>
+                    <ChevronLeftIcon />
                 </IconButton>
             </div>
 
-            <Divider/>
+            <Divider />
 
             <List> {
                 [
-                    {
-                        text: "Create Character",
-                        icon: <PersonAddIcon/>}, {
-                        text: "Manage Characters",
-                        icon: <GroupsIcon/>}, {
-                        text: "Manage Campaigns",
-                        icon: <ClassIcon/>} 
+                    { text: "Create Character", icon: <PersonAddIcon /> },
+                    { text: "Manage Characters", icon: <GroupsIcon /> },
+                    { text: "Manage Campaigns", icon: <ClassIcon /> }
                 ].map((item) => (
-                    <ListItem key={
-                            item.text
-                        }
-                        disablePadding>
+                    <ListItem key={item.text} disablePadding>
                         <ListItemButton>
-                            <ListItemIcon> {
-                                item.icon
-                            } </ListItemIcon>
-                            <ListItemText primary={
-                                item.text
-                            }/>
+                            <ListItemIcon>
+                                {item.icon}
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={item.text}
+                            />
                         </ListItemButton>
                     </ListItem>
                 ))
