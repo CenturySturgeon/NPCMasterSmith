@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
+import { testPOST } from "../API/API";
 
 export default function CharacterForm(props) {
 
@@ -30,6 +31,16 @@ export default function CharacterForm(props) {
 
         // Switch to the view mode
         props.setEditingCard(false);
+
+        character ={
+            name: formData.name,
+            campaign: formData.campaign,
+            quote: formData.quote,
+            appearance: formData.appearance,
+            roleplay: formData.roleplayProps
+        }
+
+        testPOST(character)
     };
 
     // Update state when inputs change
