@@ -24,14 +24,10 @@ export default function CharacterForm(props) {
 
         const id = e.target.id;
 
-        // Send PUT request
-
-        // Switch to the view mode
-        props.setEditingCard(false);
-        
         // Create a new character instance
-        const newCharacter = new Character(e.target.id, formData.campaign, '', formData.name, formData.quote, formData.appearance, formData.roleplayProps)
+        const newCharacter = new Character(id, formData.campaign, '', formData.name, formData.quote, formData.appearance, formData.roleplayProps);
 
+        // Send PUT request
         testPOST(newCharacter)
             // Handle the response if the request succeeds
             .then(handleResponse)
@@ -39,9 +35,11 @@ export default function CharacterForm(props) {
                 console.error('Error:', error);
                 // Handle errors if the request fails
             });
-        
+
         // Update the characters props
-        props.updateCharacterProps(newCharacter)
+        props.updateCharacterProps(newCharacter);
+        // Switch the card to view mode
+        props.setEditingCard(false);
     };
 
     // Update state when inputs change

@@ -40,7 +40,7 @@ export default function Character(props) {
         setAnchorEl(null);
     };
 
-    function updateCharacterProps(newCharacter){
+    function updateCharacterProps(newCharacter) {
         // Update the characters props
         setCharCampaign(newCharacter.campaign);
         setCharName(newCharacter.name);
