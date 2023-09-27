@@ -16,7 +16,7 @@ export default function CharacterForm(props) {
 
     // Handles the server response for the PUT request
     function handleResponse(responseStatus, characterData) {
-        if (responseStatus === 201) {
+        if (responseStatus === 200) {
             // Update the characters props
             props.updateCharacterProps(characterData);
             // Switch the card to view mode

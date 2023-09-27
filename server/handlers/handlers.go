@@ -111,8 +111,8 @@ func TestPOST(c *fiber.Ctx) error {
 	// Print the received data to the console
 	fmt.Println("Received data:", requestBody)
 
-	// Set the response status code to 201 (Created)
-	c.Status(fiber.StatusCreated)
+	// Set the response status code to 200 (Ok)
+	c.Status(fiber.StatusOK)
 
 	// Respond with a JSON message
 	return c.JSON(fiber.Map{
