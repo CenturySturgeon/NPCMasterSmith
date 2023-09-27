@@ -1,3 +1,4 @@
+import { deleteCharacter } from '../API/API';
 import Menu from '@mui/material/Menu';
 import { MenuItem, ListItemIcon, ListItemText } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,15 +11,23 @@ export default function ActionsMenu(props) {
     props.setEditingCard(true);
   }
 
-  function handleDeleteCharClick(){
-    // Send the DELETE request
-    console.log("Character with id: ", props.id, " sent for deletion.");
+  function handleDeleteResponse() {
     props.closeVertIconMenu();
+  }
+
+  function handleDeleteCharClick() {
+    deleteCharacter({ Id: props.id })
+      // Handle the response if the request succeeds
+      .then(responseStatus => { handleDeleteResponse(responseStatus) })
+      .catch(error => {
+        console.error('Error:', error);
+        // Handle errors if the request fails
+      });
   }
 
   return (
     <Menu
-      disableScrollLock={ true }
+      disableScrollLock={true}
       anchorEl={props.anchorEl}
       open={props.open}
       onClose={props.closeVertIconMenu}

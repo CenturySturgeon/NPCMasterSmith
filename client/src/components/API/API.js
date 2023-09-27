@@ -60,8 +60,8 @@ export function putCharacter(character) {
 }
 
 // DELETE request to delete the character
-export function deleteCharacter(character) {
-    const jsonData = JSON.stringify(character);
+export function deleteCharacter(id) {
+    const jsonData = JSON.stringify(id);
 
     const url = '/deleteCharacter';
 
