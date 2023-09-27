@@ -3,10 +3,6 @@ import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
 import { Character, testPOST } from "../API/API";
 
-function handleResponse(responseData) {
-    console.log('Response:', responseData);
-}
-
 export default function CharacterForm(props) {
 
     // States for the form text field values
@@ -17,6 +13,12 @@ export default function CharacterForm(props) {
         appearance: props.appearance,
         roleplayProps: props.roleplayProps,
     });
+
+    // Handles the server response for the PUT request
+    function handleResponse(responseData, characterData) {
+        console.log('Response:', responseData);
+        console.log('Character: ', characterData);
+    }
 
     // Handle form submission
     const handleSubmit = (e) => {
@@ -30,7 +32,7 @@ export default function CharacterForm(props) {
         // Send PUT request
         testPOST(newCharacter)
             // Handle the response if the request succeeds
-            .then(handleResponse)
+            .then(responseData => {handleResponse(responseData, newCharacter)})
             .catch(error => {
                 console.error('Error:', error);
                 // Handle errors if the request fails

@@ -30,6 +30,6 @@ export function testPOST(data) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json(); // If you expect a JSON response from the server
+            return response.json();
         })
 }
