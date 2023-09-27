@@ -57,7 +57,7 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// json.Unmarshal([]byte(llmresponses[0]), &character)
 
 	table := "characters"
-	query := fmt.Sprintf("INSERT INTO %s (Name, Appearance, Quote, Roleplay) VALUES ($1,$2, $3, $4)", table)
+	query := fmt.Sprintf("INSERT INTO %s (Name, Appearance, Quote, Roleplay) VALUES ($1, $2, $3, $4)", table)
 
 	// Since the characters table specifies the Rolplay cloumn as jsonb, the character's roleplay slice is turned back into a JSON array
 	roleplayJsonArray, _ := json.Marshal(character.Roleplay)
@@ -101,6 +101,23 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 		"jsPaths":     []string{""},
 		"Characters":  characters,
 	}, "base")
+}
+
+// Simple testing function that returns a 200 http status and prints the character data
+func PutCharacter(c *fiber.Ctx) error {
+	// Get the request body as a string
+	requestBody := string(c.Request().Body())
+
+	// Print the received data to the console
+	fmt.Println("Received data:", requestBody)
+
+	// Set the response status code to 200 (Ok)
+	c.Status(fiber.StatusOK)
+
+	// Respond with a JSON message
+	return c.JSON(fiber.Map{
+		"message": "Character updated successfully",
+	})
 }
 
 // Simple testing function that returns a 201 http status and prints the received data to the screen
