@@ -41,7 +41,6 @@ export default function Character(props) {
     };
 
     function updateCharacterProps(newCharacter){
-        console.log(newCharacter)
         // Update the characters props
         setCharCampaign(newCharacter.campaign);
         setCharName(newCharacter.name);

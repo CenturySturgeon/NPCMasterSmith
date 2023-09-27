@@ -1,3 +1,15 @@
+export class Character {
+    constructor(id, campaign, image, name, quote, appearance, roleplayProps){
+        this.id = id;
+        this.campaign = campaign;
+        this.image = image;
+        this.name = name;
+        this.quote = quote;
+        this.appearance = appearance;
+        this.roleplayProps = roleplayProps;
+    }
+}
+
 export function testPOST(data) {
 
     const jsonData = JSON.stringify(data);

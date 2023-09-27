@@ -28,7 +28,8 @@ export default function CharacterForm(props) {
 
         // Switch to the view mode
         props.setEditingCard(false);
-
+        
+        // Create a new character instance
         character = {
             name: formData.name,
             campaign: formData.campaign,
