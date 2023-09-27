@@ -33,11 +33,11 @@ export function putCharacter(character){
         })
 }
 
-export function testPOST(data) {
+export function postCharacter(data) {
 
     const jsonData = JSON.stringify(data);
 
-    const url = '/testPOST';
+    const url = '/postCharacter';
 
     const requestOptions = {
         method: 'POST',

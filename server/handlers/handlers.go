@@ -71,6 +71,30 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	return GetCharacters(c, db)
 }
 
+// Simple testing function that returns a 200 http status and prints the character data
+func PutCharacter(c *fiber.Ctx) error {
+
+	// Create new character instance
+	character := new(models.Character)
+
+	// Parse the request body to the character
+	if err := c.BodyParser(character); err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	// Print the received data to the console
+	fmt.Println("Received data:", character)
+
+	// Set the response status code to 200 (Ok)
+	c.Status(fiber.StatusOK)
+
+	// Respond with a JSON message
+	return c.JSON(fiber.Map{
+		"message": "Character updated successfully",
+	})
+}
+
 func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 	var x string
 	var character models.Character
@@ -101,45 +125,4 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 		"jsPaths":     []string{""},
 		"Characters":  characters,
 	}, "base")
-}
-
-// Simple testing function that returns a 200 http status and prints the character data
-func PutCharacter(c *fiber.Ctx) error {
-
-	// Create new character instance
-	character := new(models.Character)
-
-	// Parse the request body to the character
-	if err := c.BodyParser(character); err != nil {
-		fmt.Println(err)
-		return err
-	}
-
-	// Print the received data to the console
-	fmt.Println("Received data:", character)
-
-	// Set the response status code to 200 (Ok)
-	c.Status(fiber.StatusOK)
-
-	// Respond with a JSON message
-	return c.JSON(fiber.Map{
-		"message": "Character updated successfully",
-	})
-}
-
-// Simple testing function that returns a 201 http status and prints the received data to the screen
-func TestPOST(c *fiber.Ctx) error {
-	// Get the request body as a string
-	requestBody := string(c.Request().Body())
-
-	// Print the received data to the console
-	fmt.Println("Received data:", requestBody)
-
-	// Set the response status code to 200 (Ok)
-	c.Status(fiber.StatusOK)
-
-	// Respond with a JSON message
-	return c.JSON(fiber.Map{
-		"message": "Resource created successfully",
-	})
 }
