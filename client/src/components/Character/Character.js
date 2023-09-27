@@ -42,11 +42,11 @@ export default function Character(props) {
 
     function updateCharacterProps(newCharacter) {
         // Update the characters props
-        setCharCampaign(newCharacter.campaign);
-        setCharName(newCharacter.name);
-        setCharQuote(newCharacter.quote);
-        setCharAppearance(newCharacter.appearance);
-        setCharRoleplayProps(newCharacter.roleplayProps);
+        setCharCampaign(newCharacter.Campaign);
+        setCharName(newCharacter.Name);
+        setCharQuote(newCharacter.Quote);
+        setCharAppearance(newCharacter.Appearance);
+        setCharRoleplayProps(newCharacter.Roleplay);
     }
 
     const campaignChars = getCampaignChars(charCampaign);

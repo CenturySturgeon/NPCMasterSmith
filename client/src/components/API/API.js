@@ -1,12 +1,12 @@
 export class Character {
     constructor(id, campaign, image, name, quote, appearance, roleplayProps){
-        this.id = id;
-        this.campaign = campaign;
-        this.image = image;
-        this.name = name;
-        this.quote = quote;
-        this.appearance = appearance;
-        this.roleplayProps = roleplayProps;
+        this.Id = id;
+        this.Campaign = campaign;
+        this.Image = image;
+        this.Name = name;
+        this.Quote = quote;
+        this.Appearance = appearance;
+        this.Roleplay = roleplayProps;
     }
 }
 
