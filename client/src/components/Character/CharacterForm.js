@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
-import { Character, testPOST } from "../API/API";
+import { Character, putCharacter } from "../API/API";
 
 export default function CharacterForm(props) {
 
@@ -15,7 +15,7 @@ export default function CharacterForm(props) {
     });
 
     // Handles the server response for the PUT request
-    function handleResponse(responseStatus, characterData) {
+    function handlePutResponse(responseStatus, characterData) {
         if (responseStatus === 200) {
             // Update the characters props
             props.updateCharacterProps(characterData);
@@ -34,9 +34,9 @@ export default function CharacterForm(props) {
         const newCharacter = new Character(id, formData.campaign, '', formData.name, formData.quote, formData.appearance, formData.roleplayProps);
 
         // Send PUT request
-        testPOST(newCharacter)
+        putCharacter(newCharacter)
             // Handle the response if the request succeeds
-            .then(responseStatus => { handleResponse(responseStatus, newCharacter) })
+            .then(responseStatus => { handlePutResponse(responseStatus, newCharacter) })
             .catch(error => {
                 console.error('Error:', error);
                 // Handle errors if the request fails
