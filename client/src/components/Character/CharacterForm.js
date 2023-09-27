@@ -26,13 +26,6 @@ export default function CharacterForm(props) {
 
         // Send PUT request
 
-        // Update the characters props
-        props.setCharCampaign(formData.campaign);
-        props.setCharName(formData.name);
-        props.setCharQuote(formData.quote);
-        props.setCharAppearance(formData.appearance);
-        props.setCharRoleplayProps(formData.roleplayProps);
-
         // Switch to the view mode
         props.setEditingCard(false);
 
@@ -41,7 +34,7 @@ export default function CharacterForm(props) {
             campaign: formData.campaign,
             quote: formData.quote,
             appearance: formData.appearance,
-            roleplay: formData.roleplayProps
+            roleplayProps: formData.roleplayProps
         }
 
         testPOST(character)
@@ -51,6 +44,9 @@ export default function CharacterForm(props) {
                 console.error('Error:', error);
                 // Handle errors if the request fails
             });
+        
+        // Update the characters props
+        props.updateCharacterProps(character)
     };
 
     // Update state when inputs change

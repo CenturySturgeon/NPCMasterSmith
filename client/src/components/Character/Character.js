@@ -40,6 +40,16 @@ export default function Character(props) {
         setAnchorEl(null);
     };
 
+    function updateCharacterProps(newCharacter){
+        console.log(newCharacter)
+        // Update the characters props
+        setCharCampaign(newCharacter.campaign);
+        setCharName(newCharacter.name);
+        setCharQuote(newCharacter.quote);
+        setCharAppearance(newCharacter.appearance);
+        setCharRoleplayProps(newCharacter.roleplayProps);
+    }
+
     const campaignChars = getCampaignChars(charCampaign);
 
     const campaignAvatar = (
@@ -66,8 +76,7 @@ export default function Character(props) {
 
     const characterForm = (
         <CharacterForm id={props.id} campaign={charCampaign} name={charName}
-            quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} setCharName={setCharName} setCharCampaign={setCharCampaign}
-            setCharQuote={setCharQuote} setCharAppearance={setCharAppearance} setCharRoleplayProps={setCharRoleplayProps} setEditingCard={setIsEditingCard} />
+            quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} updateCharacterProps={updateCharacterProps} setEditingCard={setIsEditingCard} />
     );
 
     const characterInfo = (
