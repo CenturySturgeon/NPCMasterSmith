@@ -15,9 +15,13 @@ export default function CharacterForm(props) {
     });
 
     // Handles the server response for the PUT request
-    function handleResponse(responseData, characterData) {
-        console.log('Response:', responseData);
-        console.log('Character: ', characterData);
+    function handleResponse(responseStatus, characterData) {
+        if (responseStatus === 201) {
+            // Update the characters props
+            props.updateCharacterProps(characterData);
+            // Switch the card to view mode
+            props.setEditingCard(false);
+        }
     }
 
     // Handle form submission
@@ -32,16 +36,11 @@ export default function CharacterForm(props) {
         // Send PUT request
         testPOST(newCharacter)
             // Handle the response if the request succeeds
-            .then(responseData => {handleResponse(responseData, newCharacter)})
+            .then(responseStatus => { handleResponse(responseStatus, newCharacter) })
             .catch(error => {
                 console.error('Error:', error);
                 // Handle errors if the request fails
             });
-
-        // Update the characters props
-        props.updateCharacterProps(newCharacter);
-        // Switch the card to view mode
-        props.setEditingCard(false);
     };
 
     // Update state when inputs change
