@@ -42,7 +42,7 @@ func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
 	}, "base")
 }
 
-// PostCharacter handler inserts the new character to the characters sql table.
+// PostCharacter handler inserts the new character to the characters sql table
 func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Create new character instance
 	character := new(models.Character)
@@ -71,8 +71,8 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	return GetCharacters(c, db)
 }
 
-// Simple testing function that returns a 200 http status and prints the character data
-func PutCharacter(c *fiber.Ctx) error {
+// PutCharacter handler updates the character registry in the characters sql table
+func PutCharacter(c *fiber.Ctx, db *sql.DB) error {
 
 	// Create new character instance
 	character := new(models.Character)
@@ -92,6 +92,29 @@ func PutCharacter(c *fiber.Ctx) error {
 	// Respond with a JSON message
 	return c.JSON(fiber.Map{
 		"message": "Character updated successfully",
+	})
+}
+
+// DeleteCharacter handler deletes the character registry in the characters sql table
+func DeleteCharacter(c *fiber.Ctx, db *sql.DB) error {
+	// Create new character instance
+	character := new(models.Character)
+
+	// Parse the request body to the character
+	if err := c.BodyParser(character); err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	// Print the received data to the console
+	fmt.Println("Received data:", character)
+
+	// Set the response status code to 204 (No Content)
+	c.Status(fiber.StatusNoContent)
+
+	// Respond with a JSON message
+	return c.JSON(fiber.Map{
+		"message": "Character deleted successfully",
 	})
 }
 
