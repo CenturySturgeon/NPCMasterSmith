@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
-import { testPOST } from "../API/API";
+import { Character, testPOST } from "../API/API";
 
 function handleResponse(responseData) {
     console.log('Response:', responseData);
@@ -30,15 +30,9 @@ export default function CharacterForm(props) {
         props.setEditingCard(false);
         
         // Create a new character instance
-        character = {
-            name: formData.name,
-            campaign: formData.campaign,
-            quote: formData.quote,
-            appearance: formData.appearance,
-            roleplayProps: formData.roleplayProps
-        }
+        const newCharacter = new Character(e.target.id, formData.campaign, '', formData.name, formData.quote, formData.appearance, formData.roleplayProps)
 
-        testPOST(character)
+        testPOST(newCharacter)
             // Handle the response if the request succeeds
             .then(handleResponse)
             .catch(error => {
@@ -47,7 +41,7 @@ export default function CharacterForm(props) {
             });
         
         // Update the characters props
-        props.updateCharacterProps(character)
+        props.updateCharacterProps(newCharacter)
     };
 
     // Update state when inputs change
