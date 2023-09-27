@@ -1,6 +1,6 @@
 export class Character {
     constructor(id, campaign, image, name, quote, appearance, roleplayProps){
-        this.Id = id;
+        this.Id = parseInt(id);
         this.Campaign = campaign;
         this.Image = image;
         this.Name = name;

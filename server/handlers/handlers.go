@@ -88,7 +88,7 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 
 	// Scan the rows and store them in characters in an array
 	for rows.Next() {
-		rows.Scan(&character.ID, &character.Name, &character.Appearance, &character.Quote, &x)
+		rows.Scan(&character.Id, &character.Name, &character.Appearance, &character.Quote, &x)
 		// Character's roleplay is interpreted as a string by the sql.Scan; it needs to be transformed back to []string
 		character.Roleplay = strings.Split(strings.Trim(x, "[]"), ",")
 		characters = append(characters, character)
@@ -105,11 +105,18 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 
 // Simple testing function that returns a 200 http status and prints the character data
 func PutCharacter(c *fiber.Ctx) error {
-	// Get the request body as a string
-	requestBody := string(c.Request().Body())
+
+	// Create new character instance
+	character := new(models.Character)
+
+	// Parse the request body to the character
+	if err := c.BodyParser(character); err != nil {
+		fmt.Println(err)
+		return err
+	}
 
 	// Print the received data to the console
-	fmt.Println("Received data:", requestBody)
+	fmt.Println("Received data:", character)
 
 	// Set the response status code to 200 (Ok)
 	c.Status(fiber.StatusOK)
