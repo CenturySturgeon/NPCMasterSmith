@@ -7,23 +7,17 @@ export function testPOST(data) {
     const requestOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
+            'Content-Type': 'application/json',
         },
-        body: jsonData, // Pass the JSON data as the request body
+        body: jsonData,
     };
-
-    fetch(url, requestOptions)
+    
+    // Fetch should be returned so the call to the function can make use of the 'then' and 'catch' sentences to execute further logic
+    return fetch(url, requestOptions)
         .then(response => {
             if (!response.ok) {
-                console.log('err',response);
                 throw new Error('Network response was not ok');
             }
             return response.json(); // If you expect a JSON response from the server
         })
-        .then(data => {
-            console.log(data); // Handle the response from the server
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
 }

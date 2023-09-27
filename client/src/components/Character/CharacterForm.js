@@ -3,6 +3,10 @@ import { Box, TextField, Button, Divider } from "@mui/material";
 import './Character.css'
 import { testPOST } from "../API/API";
 
+function handleResponse(responseData) {
+    console.log('Response:', responseData);
+}
+
 export default function CharacterForm(props) {
 
     // States for the form text field values
@@ -32,7 +36,7 @@ export default function CharacterForm(props) {
         // Switch to the view mode
         props.setEditingCard(false);
 
-        character ={
+        character = {
             name: formData.name,
             campaign: formData.campaign,
             quote: formData.quote,
@@ -41,6 +45,12 @@ export default function CharacterForm(props) {
         }
 
         testPOST(character)
+            // Handle the response if the request succeeds
+            .then(handleResponse)
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if the request fails
+            });
     };
 
     // Update state when inputs change
