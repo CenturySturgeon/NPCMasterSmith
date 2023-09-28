@@ -4,7 +4,7 @@ import { Paper, Box, IconButton, Avatar, Tooltip, TextField, Button } from "@mui
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
-import './Character.css'
+import './CharacterCard.css'
 import ActionsMenu from './ActionsMenu';
 import CharacterText from './CharacterText';
 import CharacterForm from './CharacterForm';
@@ -12,7 +12,7 @@ import { AppContext } from '../../App';
 
 import { getCampaignChars } from './Utils';
 
-export default function Character(props) {
+export default function CharacterCard(props) {
 
     // Extract the theme object from the app's context
     const { themeColors } = useContext(AppContext);

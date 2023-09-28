@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, TextField, Button, Divider } from "@mui/material";
-import './Character.css'
+import './CharacterCard.css'
 import { Character, putCharacter } from "../API/API";
 
 export default function CharacterForm(props) {
