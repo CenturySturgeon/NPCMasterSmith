@@ -20,3 +20,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.character-card {
+    overflow-y: scroll;
+    /* Max height prop can now be used to limit the vertical size of the card */
+    /* max-height: 350px; */
+}
+
+/* Hide the scrollbar for Webkit-based browsers */
+.character-card::-webkit-scrollbar {
+    display: none;
+}

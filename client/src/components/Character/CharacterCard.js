@@ -97,7 +97,7 @@ export default function CharacterCard(props) {
                 {/* The actions menu is hidden by default */}
                 <ActionsMenu id={props.id} anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
-                <Paper elevation={3}>
+                <Paper className='character-card' elevation={3}>
                     {/* Show the character info when the card is not being edited and the form when the card is being edited */}
                     {isEditingCard ? characterForm : characterInfo}
                 </Paper>
