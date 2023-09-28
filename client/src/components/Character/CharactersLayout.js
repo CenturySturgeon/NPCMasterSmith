@@ -1,3 +1,4 @@
+import { getCharacters } from '../API/API';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
@@ -14,9 +15,23 @@ const campaignLess = { image: woman_image, id: 4, campaign: '', name: "Name of C
 const dummies = [{ ...dummyM, ["id"]: 0 }, { ...dummyF, ["id"]: 1 }, { ...dummyM, ["id"]: 2 }, { ...dummyF, ["id"]: 3 }, campaignLess];
 
 export default CharactersLayout = (props) => {
+    getCharacters()
+        .then(data => {
+            // Access the "characters" array
+            const characters = data.characters;
+
+            // Loop through the characters array
+            for (const character of characters) {
+                console.log(character);
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
     return (
         <Container>
-            <Grid sx={{margin: 0}} container spacing={3}>
+            <Grid sx={{ margin: 0 }} container spacing={3}>
                 {
                     dummies.map((character) => (
                         <Character
