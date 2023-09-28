@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { getCharacters } from '../API/API';
+import { Character, getCharacters } from '../API/API';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
@@ -10,40 +10,40 @@ import CharacterCard from './CharacterCard';
 
 const appearance = "A brief, physical description of the character goes here";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
-const dummyM = { image: man_image, id: 0, campaign: 'Dead Rising', name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
-const dummyF = { image: woman_image, id: 0, campaign: 'Limbo', name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
-const campaignLess = { image: woman_image, id: 4, campaign: '', name: "Name of Character", quote: "Hereby is thy quote, a brief phrase said by the character", appearance: appearance, roleplayProps: roleplayProps };
-const dummies = [{ ...dummyM, ["id"]: 0 }, { ...dummyF, ["id"]: 1 }, { ...dummyM, ["id"]: 2 }, { ...dummyF, ["id"]: 3 }, campaignLess];
+const dummyM = new Character(666, "Dead rising", man_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyF = new Character(667, "Limbo", woman_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const campaignLess = new Character(670, "", woman_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummies = [dummyM, dummyF, campaignLess];
 
 export default CharactersLayout = (props) => {
 
     const [fetchedCharacters, setFetchedCharacters] = useState([]);
 
-    function handleCharacters (data){
+    function handleCharacters(data) {
         // Access the "characters" array
         const characters = data.characters;
-    
+
         // Loop through the characters array and set the images depending on the id
         for (const character of characters) {
-            if (character.Id % 2 ===0){
+            if (character.Id % 2 === 0) {
                 character.Image = woman_image
             } else {
                 character.Image = man_image
             }
         }
-        
-        setFetchedCharacters( [...characters]);
+
+        setFetchedCharacters(dummies.concat(...characters));
     }
 
     useEffect(() => {
         getCharacters()
-        .then(data => {handleCharacters(data)})
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+            .then(data => { handleCharacters(data) })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
     }, [])
 
-    console.log("sdfasd",fetchedCharacters)
+    console.log("Fetched Characters:", fetchedCharacters)
     return (
         <Container>
             <Grid sx={{ margin: 0 }} container spacing={3}>
