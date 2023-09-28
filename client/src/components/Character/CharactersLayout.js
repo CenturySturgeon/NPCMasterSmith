@@ -1,3 +1,5 @@
+
+import { useState, useEffect } from 'react';
 import { getCharacters } from '../API/API';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -14,33 +16,47 @@ const campaignLess = { image: woman_image, id: 4, campaign: '', name: "Name of C
 const dummies = [{ ...dummyM, ["id"]: 0 }, { ...dummyF, ["id"]: 1 }, { ...dummyM, ["id"]: 2 }, { ...dummyF, ["id"]: 3 }, campaignLess];
 
 export default CharactersLayout = (props) => {
-    getCharacters()
-        .then(data => {
-            // Access the "characters" array
-            const characters = data.characters;
 
-            // Loop through the characters array
-            for (const character of characters) {
-                console.log(character);
+    const [fetchedCharacters, setFetchedCharacters] = useState([]);
+
+    function handleCharacters (data){
+        // Access the "characters" array
+        const characters = data.characters;
+    
+        // Loop through the characters array and set the images depending on the id
+        for (const character of characters) {
+            if (character.Id % 2 ===0){
+                character.Image = woman_image
+            } else {
+                character.Image = man_image
             }
-        })
+        }
+        
+        setFetchedCharacters( [...characters]);
+    }
+
+    useEffect(() => {
+        getCharacters()
+        .then(data => {handleCharacters(data)})
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
+    }, [])
 
+    console.log("sdfasd",fetchedCharacters)
     return (
         <Container>
             <Grid sx={{ margin: 0 }} container spacing={3}>
                 {
-                    dummies.map((character) => (
+                    fetchedCharacters.map((character) => (
                         <CharacterCard
-                            image={character.image}
-                            id={character.id}
-                            campaign={character.campaign}
-                            name={character.name}
-                            quote={character.quote}
-                            appearance={character.appearance}
-                            roleplayProps={character.roleplayProps}
+                            image={character.Image}
+                            id={character.Id}
+                            campaign={character.Campaign}
+                            name={character.Name}
+                            quote={character.Quote}
+                            appearance={character.Appearance}
+                            roleplayProps={character.Roleplay}
                         />
                     ))
                 }
