@@ -28,9 +28,9 @@ func SetRoutes(server *models.Server) {
 		return handlers.DeleteCharacter(c, server.Db)
 	})
 
-	// server.App.Get("/characters", func(c *fiber.Ctx) error {
-	// 	return handlers.GetCharacters(c, server.Db)
-	// })
+	server.App.Get("/characters", func(c *fiber.Ctx) error {
+		return handlers.GetCharacters(c, server.Db)
+	})
 
 	// server.App.Get("/getNewCharacter", func(c *fiber.Ctx) error {
 	// 	return handlers.GetNewCharacter(c, server.LLM)

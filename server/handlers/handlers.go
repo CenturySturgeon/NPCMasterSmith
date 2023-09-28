@@ -130,7 +130,7 @@ func DeleteCharacter(c *fiber.Ctx, db *sql.DB) error {
 }
 
 func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
-	var x string
+	var roleplay string
 	var character models.Character
 	var characters []models.Character
 
@@ -146,17 +146,16 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 
 	// Scan the rows and store them in characters in an array
 	for rows.Next() {
-		rows.Scan(&character.Id, &character.Name, &character.Appearance, &character.Quote, &x)
+		scanErr := rows.Scan(&character.Id, &character.Campaign, &character.Image, &character.Name, &character.Quote, &character.Appearance, &roleplay)
+		if err != nil {
+			fmt.Println(scanErr)
+		}
 		// Character's roleplay is interpreted as a string by the sql.Scan; it needs to be transformed back to []string
-		character.Roleplay = strings.Split(strings.Trim(x, "[]"), ",")
+		character.Roleplay = strings.Split(strings.Trim(roleplay, "[]"), ",")
 		characters = append(characters, character)
 	}
 
-	return c.Render("characters", fiber.Map{
-		"Title":       "NPC Master Smith | Characters",
-		"Description": "All Your Characters In One Place",
-		"cssPaths":    []string{"/esbundle/characters.css"},
-		"jsPaths":     []string{""},
-		"Characters":  characters,
-	}, "base")
+	return c.JSON(fiber.Map{
+		"characters": characters,
+	})
 }
