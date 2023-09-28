@@ -11,8 +11,9 @@ export default function ActionsMenu(props) {
     props.setEditingCard(true);
   }
 
-  function handleDeleteResponse() {
+  function handleDeleteResponse(responseStatus) {
     props.closeVertIconMenu();
+    console.log("successfully deleted the character: ", responseStatus);
   }
 
   function handleDeleteCharClick() {

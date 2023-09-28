@@ -97,17 +97,28 @@ func PutCharacter(c *fiber.Ctx, db *sql.DB) error {
 
 // DeleteCharacter handler deletes the character registry in the characters sql table
 func DeleteCharacter(c *fiber.Ctx, db *sql.DB) error {
-	// Create new character instance
-	character := new(models.Character)
 
-	// Parse the request body to the character
-	if err := c.BodyParser(character); err != nil {
-		fmt.Println(err)
-		return err
+	// Parse JSON request body into a generic map
+	var requestBody map[string]interface{}
+	if err := c.BodyParser(&requestBody); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Invalid JSON",
+		})
 	}
 
+	// Extract the ID (interface, by default, uses a float64) from the request body as an integer
+	idFloat, ok := requestBody["Id"].(float64)
+	if !ok {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Id is missing or not a number",
+		})
+	}
+
+	// Convert the float64 ID to an integer
+	id := int(idFloat)
+
 	// Print the received data to the console
-	fmt.Println("Received data:", character)
+	fmt.Println("Character to delete with Id: ", id)
 
 	// Set the response status code to 204 (No Content)
 	c.Status(fiber.StatusNoContent)
