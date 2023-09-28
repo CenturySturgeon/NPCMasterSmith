@@ -10,6 +10,21 @@ export class Character {
     }
 }
 
+// GET request to fetch all characters
+export function getCharacters() {
+
+    const url = '/characters';
+
+    // Fetch should be returned so the call to the function can make use of the 'then' and 'catch' sentences to execute further logic
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+}
+
 // POST request to create a new character
 export function postCharacter(data) {
 
