@@ -2,10 +2,9 @@ import { getCharacters } from '../API/API';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
-import Character from './Character';
-
 import man_image from '../../../public/images/profile_man.png'
 import woman_image from '../../../public/images/profile_woman.png'
+import CharacterCard from './CharacterCard';
 
 const appearance = "A brief, physical description of the character goes here";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
@@ -34,7 +33,7 @@ export default CharactersLayout = (props) => {
             <Grid sx={{ margin: 0 }} container spacing={3}>
                 {
                     dummies.map((character) => (
-                        <Character
+                        <CharacterCard
                             image={character.image}
                             id={character.id}
                             campaign={character.campaign}
