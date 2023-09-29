@@ -79,9 +79,9 @@ export default function CharacterCard(props) {
     );
 
     const characterInfo = (
-        <Box className='top-bottom-holder' sx={{flexGrow: 1}} >
+        <Box className='top-bottom-holder'>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
+            <CharacterText className='top-bottom-holder' name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
         </Box>
     );
 

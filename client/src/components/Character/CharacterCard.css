@@ -34,9 +34,11 @@
     display: none;
 }
 
+/* Containers where in a div with two components, one should be at the top and the other at the bottom */
 .top-bottom-holder{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .top-bottom-inner{
