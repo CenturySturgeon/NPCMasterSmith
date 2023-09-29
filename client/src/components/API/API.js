@@ -1,8 +1,9 @@
 export class Character {
-    constructor(id, campaign, image, name, quote, appearance, roleplayProps) {
+    constructor(id, campaign, image, favorite, name, quote, appearance, roleplayProps) {
         this.Id = parseInt(id);
         this.Campaign = campaign;
         this.Image = image;
+        this.Favorite = favorite;
         this.Name = name;
         this.Quote = quote;
         this.Appearance = appearance;
