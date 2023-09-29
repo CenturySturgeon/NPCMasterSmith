@@ -79,10 +79,10 @@ export default function CharacterCard(props) {
     );
 
     const characterInfo = (
-        <div>
+        <Box className='top-bottom-holder' sx={{flexGrow: 1}} >
             <img className="img" src={props.image} alt="Character Image" />
             <CharacterText name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
-        </div>
+        </Box>
     );
 
     return (
