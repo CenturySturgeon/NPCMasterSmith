@@ -8,10 +8,10 @@ import Tooltip from '@mui/material/Tooltip';
 
 const CollapseIcons = (props) => {
 
-    const [isFavorite, setIsFavorite] = useState(false);
+    const isFavorite = props.isFavorite;
 
     const handleFavoriteClick = () => {
-        setIsFavorite(!isFavorite);
+        props.toggleIsFavorite();
     }
 
     return (

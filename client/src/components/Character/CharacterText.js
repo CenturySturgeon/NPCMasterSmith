@@ -13,7 +13,7 @@ const CharacterText = (props) => {
                     "{props.quote}"
                 </Typography>
             </Box>
-            <CollapsableSection appearance={props.appearance} roleplayProps={props.roleplayProps}></CollapsableSection>
+            <CollapsableSection toggleIsFavorite={props.toggleIsFavorite} isFavorite={props.isFavorite} appearance={props.appearance} roleplayProps={props.roleplayProps}></CollapsableSection>
         </Box>
     );
 }

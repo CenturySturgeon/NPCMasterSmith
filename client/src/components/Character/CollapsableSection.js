@@ -13,7 +13,7 @@ const CollapsableSection = (props) => {
 
     return (
         <>
-            <CollapseIcons handleExpandClick={handleExpandClick} isExpanded={isExpanded}></CollapseIcons>
+            <CollapseIcons toggleIsFavorite={props.toggleIsFavorite} isFavorite={props.isFavorite} handleExpandClick={handleExpandClick} isExpanded={isExpanded}></CollapseIcons>
             <CollapseText appearance={props.appearance} roleplayProps={props.roleplayProps} isExpanded={isExpanded}></CollapseText>
         </>
     )

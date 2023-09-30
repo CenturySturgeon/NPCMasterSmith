@@ -20,6 +20,7 @@ export default function CharacterCard(props) {
     // Character properties states for two way binding when editing
     const [charName, setCharName] = useState(props.name);
     const [charCampaign, setCharCampaign] = useState(props.campaign);
+    const [charIsFavorite, setCharIsFavorite] = useState(props.favorite);
     const [charQuote, setCharQuote] = useState(props.quote);
     const [charAppearance, setCharAppearance] = useState(props.appearance);
     const [charRoleplayProps, setCharRoleplayProps] = useState(props.roleplayProps);
@@ -47,6 +48,11 @@ export default function CharacterCard(props) {
         setCharQuote(newCharacter.Quote);
         setCharAppearance(newCharacter.Appearance);
         setCharRoleplayProps(newCharacter.Roleplay);
+    }
+
+    function toggleIsFavorite() {
+        setCharIsFavorite(!charIsFavorite);
+        // PUT request here
     }
 
     const campaignChars = getCampaignChars(charCampaign);
@@ -81,10 +87,10 @@ export default function CharacterCard(props) {
     const characterInfo = (
         <Box className='top-bottom-holder'>
             <img className="img" src={props.image} alt="Character Image" />
-            <CharacterText className='top-bottom-holder' name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
+            <CharacterText className='top-bottom-holder' toggleIsFavorite={toggleIsFavorite} isFavorite={charIsFavorite} name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
         </Box>
     );
-
+    console.log(charIsFavorite);
     return (
         <Grid item xs={3}>
             <Box position="relative">

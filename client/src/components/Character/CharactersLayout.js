@@ -10,12 +10,12 @@ import CharacterCard from './CharacterCard';
 
 const appearance = "A brief, physical description of the character goes here";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
-const dummyM = new Character(666, "Dead rising", man_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const dummyF = new Character(667, "Limbo", woman_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const campaignLess = new Character(670, "", woman_image, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyM = new Character(666, "Dead rising", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyF = new Character(667, "Limbo", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const campaignLess = new Character(670, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 const dummies = [dummyM, dummyF, campaignLess];
 
-export default CharactersLayout = (props) => {
+export default CharactersLayout = () => {
 
     const [fetchedCharacters, setFetchedCharacters] = useState([]);
 
@@ -50,9 +50,10 @@ export default CharactersLayout = (props) => {
                 {
                     fetchedCharacters.map((character) => (
                         <CharacterCard
-                            image={character.Image}
                             id={character.Id}
                             campaign={character.Campaign}
+                            image={character.Image}
+                            favorite={character.Favorite}
                             name={character.Name}
                             quote={character.Quote}
                             appearance={character.Appearance}
