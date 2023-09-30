@@ -157,7 +157,7 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 	var characters []models.Character
 
 	// Get all characters stored on the DB
-	rows, err := db.Query("SELECT * FROM characters")
+	rows, err := db.Query("SELECT * FROM characters ORDER BY id ASC;")
 	// Don't forget to close the DB connection
 	defer rows.Close()
 
