@@ -43,7 +43,6 @@ export default CharactersLayout = () => {
             });
     }, [])
 
-    console.log("Fetched Characters:", fetchedCharacters)
     return (
         <Container>
             <Grid sx={{ margin: 0 }} container spacing={3}>

@@ -90,7 +90,6 @@ export default function CharacterCard(props) {
             <CharacterText className='top-bottom-holder' toggleIsFavorite={toggleIsFavorite} isFavorite={charIsFavorite} name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
         </Box>
     );
-    console.log(charIsFavorite);
     return (
         <Grid item xs={3}>
             <Box position="relative">
