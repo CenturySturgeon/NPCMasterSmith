@@ -83,6 +83,8 @@ func PutCharacter(c *fiber.Ctx, db *sql.DB) error {
 		return err
 	}
 
+	fmt.Println(c.GetReqHeaders()["Only-Update-Is-Favorite"])
+
 	// Print the received data to the console
 	fmt.Println("Received data:", character)
 

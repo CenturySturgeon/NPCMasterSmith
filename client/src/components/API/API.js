@@ -51,8 +51,15 @@ export function postCharacter(character) {
         })
 }
 
-// PUT request to update the character
-export function putCharacter(character) {
+/**
+ * PUT request to update the character.
+ *
+ * @param {string} character - The character object to update.
+ * @param {string} onlyUpdateIsFavorite - Boolean, false by default, that determines if only the isFavorite prop will be updated.
+ * @returns {Promise<number>} A Promise that resolves with the HTTP status code of the response.
+ * @throws {Error} If the network response is not successful (status code other than 2xx).
+ */
+export function putCharacter(character, onlyUpdateIsFavorite=false) {
     const jsonData = JSON.stringify(character);
 
     const url = '/putCharacter';
@@ -61,6 +68,7 @@ export function putCharacter(character) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Only-Update-Is-Favorite': Boolean(onlyUpdateIsFavorite)
         },
         body: jsonData,
     };
