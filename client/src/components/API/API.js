@@ -3,7 +3,7 @@ export class Character {
         this.Id = parseInt(id);
         this.Campaign = campaign;
         this.Image = image;
-        this.Favorite = favorite;
+        this.Favorite = Boolean(favorite);
         this.Name = name;
         this.Quote = quote;
         this.Appearance = appearance;
@@ -27,9 +27,9 @@ export function getCharacters() {
 }
 
 // POST request to create a new character
-export function postCharacter(data) {
+export function postCharacter(character) {
 
-    const jsonData = JSON.stringify(data);
+    const jsonData = JSON.stringify(character);
 
     const url = '/postCharacter';
 

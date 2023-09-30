@@ -31,7 +31,7 @@ export default function CharacterForm(props) {
         const id = e.target.id;
 
         // Create a new character instance
-        const newCharacter = new Character(id, formData.campaign, '', formData.name, formData.quote, formData.appearance, formData.roleplayProps);
+        const newCharacter = new Character(id, formData.campaign, '',  props.isFavorite, formData.name, formData.quote, formData.appearance, formData.roleplayProps);
 
         // Send PUT request
         putCharacter(newCharacter)

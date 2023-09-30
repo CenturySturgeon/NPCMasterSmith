@@ -80,7 +80,7 @@ export default function CharacterCard(props) {
     );
 
     const characterForm = (
-        <CharacterForm id={props.id} campaign={charCampaign} name={charName}
+        <CharacterForm id={props.id} campaign={charCampaign} isFavorite={charIsFavorite} name={charName}
             quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} updateCharacterProps={updateCharacterProps} setEditingCard={setIsEditingCard} />
     );
 
