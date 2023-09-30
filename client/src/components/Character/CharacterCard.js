@@ -1,4 +1,5 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { Character, putCharacter } from '../API/API';
 
 import { Paper, Box, IconButton, Avatar, Tooltip, TextField, Button } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -9,7 +10,6 @@ import ActionsMenu from './ActionsMenu';
 import CharacterText from './CharacterText';
 import CharacterForm from './CharacterForm';
 import { AppContext } from '../../App';
-
 import { getCampaignChars } from './Utils';
 
 export default function CharacterCard(props) {
@@ -24,11 +24,12 @@ export default function CharacterCard(props) {
     const [charQuote, setCharQuote] = useState(props.quote);
     const [charAppearance, setCharAppearance] = useState(props.appearance);
     const [charRoleplayProps, setCharRoleplayProps] = useState(props.roleplayProps);
-
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
     // Set a state to indicate whether the character is being edited or not
     const [isEditingCard, setIsEditingCard] = useState(false);
+    // Flag to trigger the PUT request only when the favorite prop changes but not when the component loads
+    const [sendRequest, setSendRequest] = useState(false);
 
     // Set a variable to indicate wether the menu is open or not 
     const open = Boolean(anchorEl);
@@ -51,9 +52,18 @@ export default function CharacterCard(props) {
     }
 
     function toggleIsFavorite() {
-        setCharIsFavorite(!charIsFavorite);
-        // PUT request here
+        setCharIsFavorite(charIsFavorite => !charIsFavorite);
+        setSendRequest(true);
     }
+
+    useEffect(() => {
+        if (sendRequest) {
+            character = new Character(props.id, '', '', charIsFavorite, '', '', '', []);
+            putCharacter(character, true);
+            // Reset the flag to false after sending the request
+            setSendRequest(false);
+        }
+    }, [charIsFavorite, sendRequest])
 
     const campaignChars = getCampaignChars(charCampaign);
 
