@@ -113,7 +113,6 @@ func PutCharacter(c *fiber.Ctx, db *sql.DB) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "There was an error when updating the character",
 		})
-
 	}
 
 	// Set the response status code to 200 (Ok)
@@ -147,8 +146,17 @@ func DeleteCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// Convert the float64 ID to an integer
 	id := int(idFloat)
 
-	// Print the received data to the console
-	fmt.Println("Character to delete with Id: ", id)
+	table := "characters"
+	query := fmt.Sprintf("DELETE FROM %s WHERE id = $1", table)
+
+	_, dbErr := db.Exec(query, id)
+
+	if dbErr != nil {
+		log.Fatalf("An error occured while executing query: %v", dbErr)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": "There was an error deleting the character",
+		})
+	}
 
 	// Set the response status code to 204 (No Content)
 	c.Status(fiber.StatusNoContent)
