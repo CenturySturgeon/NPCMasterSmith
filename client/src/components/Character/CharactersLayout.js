@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Character, getCharacters } from '../API/API';
+import { getCharacters } from '../API/API';
 import { Container, Typography, Box, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
@@ -7,28 +7,7 @@ import man_image from '../../../public/images/profile_man.png'
 import woman_image from '../../../public/images/profile_woman.png'
 import CharacterCard from './CharacterCard';
 
-const appearance = "A brief, physical description of the character goes here";
-const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
-const dummyM = new Character(0, "Custom Campaign", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const dummyF = new Character(0, "Custom Campaign", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const campaignLess = new Character(0, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const dummies = [dummyM, dummyF, campaignLess];
-
-/**
-     * Function randomDummy randomly chooses between the male or female character variant.
-     *
-     * @returns {Character} A character object.
-     */
-function randomDummy() {
-    // The '0.5' number is the probability to get 'true' as a result.
-    if (Math.random() < 0.5) {
-        return dummyM;
-    } else {
-        return dummyF;
-    }
-}
-
-export default CharactersLayout = () => {
+export default CharactersLayout = (props) => {
 
     const [fetchedCharacters, setFetchedCharacters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +25,7 @@ export default CharactersLayout = () => {
             }
         }
 
-        setFetchedCharacters([...characters].concat(dummies),);
+        setFetchedCharacters([...characters]);
         // Let the loading animation run for at least half a second before displaying the characters
         setTimeout(function () {
             setIsLoading(false);
@@ -64,7 +43,7 @@ export default CharactersLayout = () => {
     const charGrid = (
         <Grid sx={{ margin: 0 }} container spacing={3}>
             {
-                fetchedCharacters.map((character) => (
+                fetchedCharacters.concat(props.dummies).map((character) => (
                     <CharacterCard
                         id={character.Id}
                         campaign={character.Campaign}

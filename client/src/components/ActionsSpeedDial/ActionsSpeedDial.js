@@ -10,12 +10,11 @@ function aiCreateCharacter() {
     console.log("Re-routing to the character prompt page");
 }
 
-const actions = [
-    { icon: <AddCardIcon sx={{ transform: 'scaleX(-1)' }} />, name: 'Add Empty Card' },
-    { icon: <PersonAddIcon onClick={aiCreateCharacter} />, name: 'Create Character' }
-];
-
 const ActionsSpeedDial = (props) => {
+    const actions = [
+        { icon: <AddCardIcon sx={{ transform: 'scaleX(-1)' }} onClick={props.addDummy} />, name: 'New Character Card' },
+        { icon: <PersonAddIcon onClick={aiCreateCharacter} />, name: 'Create Character' }
+    ];
     return (
         <Box sx={{ position: 'fixed', bottom: '16px', right: '24px' }}>
             <SpeedDial
