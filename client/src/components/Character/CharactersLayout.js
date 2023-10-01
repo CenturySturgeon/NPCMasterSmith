@@ -1,23 +1,24 @@
 
 import { useState, useEffect } from 'react';
 import { Character, getCharacters } from '../API/API';
-import { Container, Typography} from '@mui/material';
+import { Container, Typography, Box, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
 import man_image from '../../../public/images/profile_man.png'
 import woman_image from '../../../public/images/profile_woman.png'
 import CharacterCard from './CharacterCard';
 
-const appearance = "A brief, physical description of the character goes here";
+const appearance = "A brief, physical description of the character goes here.";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
-const dummyM = new Character(666, "Dead rising", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const dummyF = new Character(667, "Limbo", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const campaignLess = new Character(670, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyM = new Character(0, "Dead rising", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyF = new Character(0, "Limbo", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const campaignLess = new Character(0, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 const dummies = [dummyM, dummyF, campaignLess];
 
 export default CharactersLayout = () => {
 
     const [fetchedCharacters, setFetchedCharacters] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     function handleCharacters(data) {
         // Access the "characters" array
@@ -32,7 +33,11 @@ export default CharactersLayout = () => {
             }
         }
 
-        setFetchedCharacters(dummies.concat(...characters));
+        setFetchedCharacters([...characters].concat(dummies),);
+        // run the loading animation for at least half a second before displaying the characters
+        setTimeout(function () {
+            setIsLoading(false);
+        }, 500);
     }
 
     useEffect(() => {
@@ -63,12 +68,20 @@ export default CharactersLayout = () => {
     );
 
     const noChars = (
-        <Typography sx={{textAlign: 'center', fontWeight: '400'}} variant="h1" component="h2">No Characters Available</Typography>
+        <Typography sx={{ textAlign: 'center', fontWeight: '400' }} variant="h1" component="h2">No Characters Available</Typography>
     );
+
+    if (isLoading) {
+        return (
+            <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <CircularProgress />
+            </Box>
+        )
+    }
 
     return (
         <Container>
-            { fetchedCharacters.length >0 ? charGrid : noChars }
+            {fetchedCharacters.length > 0 ? charGrid : noChars}
         </Container>
     )
 }
