@@ -27,7 +27,7 @@ export default function CharacterCard(props) {
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
     // Set a state to indicate whether the character is being edited or not
-    const [isEditingCard, setIsEditingCard] = useState(false);
+    const [isEditingCard, setIsEditingCard] = useState(props.id === 0);
     // Flag to trigger the PUT request only when the favorite prop changes but not when the component loads
     const [sendRequest, setSendRequest] = useState(false);
 

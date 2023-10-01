@@ -8,8 +8,8 @@ import woman_image from '../../../public/images/profile_woman.png'
 
 const appearance = "A brief, physical description of the character goes here";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
-const dummyM = new Character(0, "Custom Campaign", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const dummyF = new Character(0, "Custom Campaign", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyM = new Character(0, "", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
+const dummyF = new Character(0, "", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 const campaignLess = new Character(0, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 
 /**
@@ -32,7 +32,6 @@ const CharactersPage = (props) => {
     function addDummy() {
         dummy = randomDummy();
         setDummies([...dummies, dummy]);
-        console.log("Added dummy: ", dummy);
     }
 
     return (
