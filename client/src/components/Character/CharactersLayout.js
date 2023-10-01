@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Character, getCharacters } from '../API/API';
-import Container from '@mui/material/Container';
+import { Container, Typography} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
 import man_image from '../../../public/images/profile_man.png'
@@ -41,26 +41,34 @@ export default CharactersLayout = () => {
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-    }, [])
+    }, []);
+
+    const charGrid = (
+        <Grid sx={{ margin: 0 }} container spacing={3}>
+            {
+                fetchedCharacters.map((character) => (
+                    <CharacterCard
+                        id={character.Id}
+                        campaign={character.Campaign}
+                        image={character.Image}
+                        favorite={character.Favorite}
+                        name={character.Name}
+                        quote={character.Quote}
+                        appearance={character.Appearance}
+                        roleplayProps={character.Roleplay}
+                    />
+                ))
+            }
+        </Grid>
+    );
+
+    const noChars = (
+        <Typography sx={{textAlign: 'center', fontWeight: '400'}} variant="h1" component="h2">No Characters Available</Typography>
+    );
 
     return (
         <Container>
-            <Grid sx={{ margin: 0 }} container spacing={3}>
-                {
-                    fetchedCharacters.map((character) => (
-                        <CharacterCard
-                            id={character.Id}
-                            campaign={character.Campaign}
-                            image={character.Image}
-                            favorite={character.Favorite}
-                            name={character.Name}
-                            quote={character.Quote}
-                            appearance={character.Appearance}
-                            roleplayProps={character.Roleplay}
-                        />
-                    ))
-                }
-            </Grid>
+            { fetchedCharacters.length >0 ? charGrid : noChars }
         </Container>
     )
 }
