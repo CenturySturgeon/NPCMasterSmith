@@ -88,24 +88,32 @@ func PutCharacter(c *fiber.Ctx, db *sql.DB) error {
 	updateFavoriteOnly, _ := strconv.ParseBool(c.GetReqHeaders()["Only-Update-Is-Favorite"])
 
 	table := "characters"
+	// Pre-define a variable for the query to execute
 	var query string
+	// Pre-define a variable for the DB query execution error
+	var dbErr error
+
 	if updateFavoriteOnly {
 		query = fmt.Sprintf("UPDATE %s SET favorite = $2 WHERE id = $1", table)
 
-		_, err := db.Exec(query, character.Id, character.Favorite)
-		if err != nil {
-			log.Fatalf("An error occured while executing query: %v", err)
-		}
+		_, dbErr = db.Exec(query, character.Id, character.Favorite)
+
 	} else {
 		query = fmt.Sprintf("UPDATE %s SET campaign = $2, image = $3, name = $4, quote = $5, appearance = $6, roleplay = $7 WHERE id = $1", table)
 
 		// Since the characters table specifies the Rolplay cloumn as jsonb, the character's roleplay slice is turned back into a JSON array
 		roleplayJsonArray, _ := json.Marshal(character.Roleplay)
 
-		_, err := db.Exec(query, character.Id, character.Campaign, character.Image, character.Name, character.Quote, character.Appearance, roleplayJsonArray)
-		if err != nil {
-			log.Fatalf("An error occured while executing query: %v", err)
-		}
+		_, dbErr = db.Exec(query, character.Id, character.Campaign, character.Image, character.Name, character.Quote, character.Appearance, roleplayJsonArray)
+
+	}
+
+	if dbErr != nil {
+		log.Fatalf("An error occured while executing query: %v", dbErr)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": "There was an error when updating the character",
+		})
+
 	}
 
 	// Set the response status code to 200 (Ok)
