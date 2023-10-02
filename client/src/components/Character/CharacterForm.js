@@ -15,8 +15,9 @@ export default function CharacterForm(props) {
     });
 
     // Handles the server response for the POST request
-    function handlePostResponse(data) {
+    function handlePostResponse(data, characterData) {
         props.setId(data.id);
+        props.updateCharacterProps(characterData);
         props.setEditingCard(false);
     }
 
@@ -49,10 +50,10 @@ export default function CharacterForm(props) {
                     // Handle errors if the request fails
                 });
         } else {
-            // Send PUT request
+            // Send POST request
             postCharacter(newCharacter)
                 // Handle the response if the request succeeds
-                .then(data => { handlePostResponse(data) })
+                .then(data => { handlePostResponse(data, newCharacter) })
                 .catch(error => {
                     console.error('Error:', error);
                     // Handle errors if the request fails

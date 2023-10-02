@@ -72,7 +72,6 @@ export default CharactersLayout = (props) => {
             </Box>
         )
     }
-    console.log(fetchedCharacters.length, fetchedCharacters)
     return (
         <Container>
             {fetchedCharacters.concat(props.dummies).length > 0 ? charGrid : noChars}
