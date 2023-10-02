@@ -192,13 +192,21 @@ func GetCharacters(c *fiber.Ctx, db *sql.DB) error {
 	// Scan the rows and store them in characters in an array
 	for rows.Next() {
 		scanErr := rows.Scan(&character.Id, &character.Campaign, &character.Image, &character.Favorite, &character.Name, &character.Quote, &character.Appearance, &roleplay)
-		if err != nil {
+		if scanErr != nil {
 			fmt.Println(scanErr)
+			return scanErr
 		}
+
 		// Character's roleplay is interpreted as a string by the sql.Scan; it needs to be transformed back to []string
 		character.Roleplay = strings.Split(strings.Trim(roleplay, "[]"), ",")
 		characters = append(characters, character)
 	}
+
+	// Check for errors from rows.Next()
+	if err := rows.Err(); err != nil {
+		return err
+	}
+
 	return c.JSON(fiber.Map{
 		"characters": characters,
 	})
