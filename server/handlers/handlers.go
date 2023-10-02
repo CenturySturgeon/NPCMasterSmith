@@ -71,8 +71,6 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 		log.Fatalf("An error occured while executing query: %v", err)
 	}
 
-	fmt.Println(id, character)
-
 	// Set the response status code to 201 (Created)
 	c.Status(fiber.StatusCreated)
 

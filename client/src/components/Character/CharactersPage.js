@@ -10,7 +10,6 @@ const appearance = "A brief, physical description of the character goes here";
 const roleplayProps = ["My first roleplay property", "My second roleplay property", "My third roleplay property"];
 const dummyM = new Character(0, "", man_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 const dummyF = new Character(0, "", woman_image, false, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
-const campaignLess = new Character(0, "", woman_image, true, "Name of Character", "Hereby is thy quote, a brief phrase said by the character", appearance, roleplayProps);
 
 /**
  * Function randomDummy randomly chooses between the male or female character variant.
