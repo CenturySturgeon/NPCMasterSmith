@@ -50,10 +50,10 @@ export function postCharacter(character) {
     // Fetch should be returned so the call to the function can make use of the 'then' and 'catch' sentences to execute further logic
     return fetch(url, requestOptions)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            if (response.status != 201) {
+                throw new Error('Network response was not 201');
             }
-            return response;
+            return response.json();
         })
 }
 
@@ -65,7 +65,7 @@ export function postCharacter(character) {
  * @returns {Promise<number>} A Promise that resolves with the HTTP status code of the response.
  * @throws {Error} If the network response is not successful (status code other than 2xx).
  */
-export function putCharacter(character, onlyUpdateIsFavorite=false) {
+export function putCharacter(character, onlyUpdateIsFavorite = false) {
     const jsonData = JSON.stringify(character);
 
     const url = '/putCharacter';
