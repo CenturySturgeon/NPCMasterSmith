@@ -53,7 +53,7 @@ export function postCharacter(character) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.status;
+            return response;
         })
 }
 
