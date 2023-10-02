@@ -1,5 +1,6 @@
 import PromptField from "./PromptField";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 
 const PromptPage = (props) => {
     return (
@@ -7,10 +8,16 @@ const PromptPage = (props) => {
             <Box>
                 <Typography fontWeight={400} variant="h1" component="h1">All Your NPCs In One Place</Typography>
             </Box>
-            <Box>
-                <Typography>A dragonslayer looking to avenge his dead family</Typography>
-                <Typography>A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg</Typography>
-                <Typography>A bartender, who knows and talks more than he probably should</Typography>
+            <Box width={'60%'} >
+                <Button color="secondary" sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                    A dragonslayer looking to avenge his dead family
+                </Button>
+                <Button color="secondary" sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                    A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg
+                </Button>
+                <Button color="secondary" sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                    A bartender, who knows and talks more than he probably should
+                </Button>
             </Box>
             <PromptField theme={props.theme}></PromptField>
         </Box>
