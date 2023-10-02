@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Button, Divider } from "@mui/material";
 import './CharacterCard.css'
-import { Character, putCharacter } from "../API/API";
+import { Character, postCharacter, putCharacter } from "../API/API";
 
 export default function CharacterForm(props) {
 
@@ -13,6 +13,15 @@ export default function CharacterForm(props) {
         appearance: props.appearance,
         roleplayProps: props.roleplayProps,
     });
+
+    // Handles the server response for the POST request
+    function handlePostResponse(response) {
+        if (response.status === 201) {
+            console.log(response)
+            // Switch the card to view mode
+            props.setEditingCard(false);
+        }
+    }
 
     // Handles the server response for the PUT request
     function handlePutResponse(responseStatus, characterData) {
@@ -31,16 +40,27 @@ export default function CharacterForm(props) {
         const id = e.target.id;
 
         // Create a new character instance
-        const newCharacter = new Character(id, formData.campaign, '',  props.isFavorite, formData.name, formData.quote, formData.appearance, formData.roleplayProps);
+        const newCharacter = new Character(id, formData.campaign, '', props.isFavorite, formData.name, formData.quote, formData.appearance, formData.roleplayProps);
 
-        // Send PUT request
-        putCharacter(newCharacter)
-            // Handle the response if the request succeeds
-            .then(responseStatus => { handlePutResponse(responseStatus, newCharacter) })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle errors if the request fails
-            });
+        if (id != 0) {
+            // Send PUT request
+            putCharacter(newCharacter)
+                // Handle the response if the request succeeds
+                .then(responseStatus => { handlePutResponse(responseStatus, newCharacter) })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle errors if the request fails
+                });
+        } else {
+            // Send PUT request
+            postCharacter(newCharacter)
+                // Handle the response if the request succeeds
+                .then(response => { handlePostResponse(response) })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle errors if the request fails
+                });
+        }
     };
 
     // Update state when inputs change
