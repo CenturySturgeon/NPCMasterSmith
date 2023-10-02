@@ -18,6 +18,7 @@ export default function CharacterCard(props) {
     const { themeColors } = useContext(AppContext);
 
     // Character properties states for two way binding when editing
+    const [charId, setCharId] = useState(props.id);
     const [charName, setCharName] = useState(props.name);
     const [charCampaign, setCharCampaign] = useState(props.campaign);
     const [charIsFavorite, setCharIsFavorite] = useState(props.favorite);
@@ -27,7 +28,7 @@ export default function CharacterCard(props) {
     // Set a state for the anchor element of the menu
     const [anchorEl, setAnchorEl] = useState(null);
     // Set a state to indicate whether the character is being edited or not
-    const [isEditingCard, setIsEditingCard] = useState(props.id === 0);
+    const [isEditingCard, setIsEditingCard] = useState(charId === 0);
     // Flag to trigger the PUT request only when the favorite prop changes but not when the component loads
     const [sendRequest, setSendRequest] = useState(false);
 
@@ -58,7 +59,7 @@ export default function CharacterCard(props) {
 
     useEffect(() => {
         if (sendRequest) {
-            character = new Character(props.id, '', '', charIsFavorite, '', '', '', []);
+            character = new Character(charId, '', '', charIsFavorite, '', '', '', []);
             putCharacter(character, true);
             // Reset the flag to false after sending the request
             setSendRequest(false);
@@ -90,7 +91,7 @@ export default function CharacterCard(props) {
     );
 
     const characterForm = (
-        <CharacterForm id={props.id} campaign={charCampaign} isFavorite={charIsFavorite} name={charName}
+        <CharacterForm id={charId} campaign={charCampaign} isFavorite={charIsFavorite} name={charName}
             quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} image={props.image} updateCharacterProps={updateCharacterProps} setEditingCard={setIsEditingCard} />
     );
 
@@ -110,7 +111,7 @@ export default function CharacterCard(props) {
                 {isEditingCard ? '' : vertIconButton}
 
                 {/* The actions menu is hidden by default */}
-                <ActionsMenu id={props.id} anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
+                <ActionsMenu id={charId} anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
                 <Paper className='character-card' elevation={3}>
                     {/* Show the character info when the card is not being edited and the form when the card is being edited */}

@@ -26,7 +26,13 @@ export function getCharacters() {
         })
 }
 
-// POST request to create a new character
+/**
+ * POST request to create a new character.
+ *
+ * @param {string} character - The base character object to create.
+ * @returns {Promise<number>} A Promise that resolves with the HTTP status code of the response.
+ * @throws {Error} If the network response is not successful (status code other than 2xx).
+ */
 export function postCharacter(character) {
 
     const jsonData = JSON.stringify(character);
