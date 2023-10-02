@@ -16,17 +16,19 @@ export default CharactersLayout = (props) => {
         // Access the "characters" array
         const characters = data.characters;
 
-        // Loop through the characters array and set the images depending on the id
-        for (const character of characters) {
-            if (character.Id % 2 === 0) {
-                character.Image = woman_image
-            } else {
-                character.Image = man_image
+        if (characters != null) {
+            // Loop through the characters array and set the images depending on the id
+            for (const character of characters) {
+                if (character.Id % 2 === 0) {
+                    character.Image = woman_image
+                } else {
+                    character.Image = man_image
+                }
             }
-        }
 
-        setFetchedCharacters([...characters]);
-        // Let the loading animation run for at least half a second before displaying the characters
+            setFetchedCharacters([...characters]);
+            // Let the loading animation run for at least half a second before displaying the characters
+        }
         setTimeout(function () {
             setIsLoading(false);
         }, 500);
@@ -70,7 +72,7 @@ export default CharactersLayout = (props) => {
             </Box>
         )
     }
-
+    console.log(fetchedCharacters.length, fetchedCharacters)
     return (
         <Container>
             {fetchedCharacters.length > 0 ? charGrid : noChars}
