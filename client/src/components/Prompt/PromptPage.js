@@ -9,6 +9,7 @@ const PromptPage = () => {
     const { themeColors } = useContext(AppContext);
     
     const buttonColor = themeColors.mode === 'dark' ? 'primary' : 'inherit';
+    const buttonStyles = { width: '100%', justifyContent: 'space-between', paddingTop: '12px', paddingBottom: '12px', marginBottom: '6px' };
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -16,13 +17,13 @@ const PromptPage = () => {
                 <Typography fontWeight={400} variant="h1" component="h1">All Your NPCs In One Place</Typography>
             </Box>
             <Box width={'60%'} >
-                <Button color={buttonColor}  sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                <Button color={buttonColor}  sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
                     A dragonslayer looking to avenge his dead family
                 </Button>
-                <Button color={buttonColor} sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
                     A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg
                 </Button>
-                <Button color={buttonColor} sx={{ width: '100%', justifyContent: 'space-between' }} variant="outlined" endIcon={<SendIcon />}>
+                <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
                     A bartender, who knows and talks more than he probably should
                 </Button>
             </Box>
