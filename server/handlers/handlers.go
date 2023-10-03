@@ -58,7 +58,7 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	// json.Unmarshal([]byte(llmresponses[0]), &character)
 
 	table := "characters"
-	query := fmt.Sprintf("INSERT INTO %s (Name, Appearance, Quote, Roleplay) VALUES ($1, $2, $3, $4) RETURNING id", table)
+	query := fmt.Sprintf("INSERT INTO %s (Campaign, Image, Name, Appearance, Quote, Roleplay) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id", table)
 
 	// Since the characters table specifies the Rolplay cloumn as jsonb, the character's roleplay slice is turned back into a JSON array
 	roleplayJsonArray, _ := json.Marshal(character.Roleplay)
@@ -66,7 +66,7 @@ func PostCharacter(c *fiber.Ctx, db *sql.DB) error {
 	var id int
 
 	// Query row returns the row resulting from the query, in this case it returns the id.
-	err := db.QueryRow(query, character.Name, character.Appearance, character.Quote, roleplayJsonArray).Scan(&id)
+	err := db.QueryRow(query, character.Campaign, character.Image, character.Name, character.Appearance, character.Quote, roleplayJsonArray).Scan(&id)
 	if err != nil {
 		log.Fatalf("An error occured while executing query: %v", err)
 	}
