@@ -18,13 +18,13 @@ const PromptPage = () => {
             </Box>
             <Box width={'60%'} >
                 <Button color={buttonColor}  sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
-                    A dragonslayer looking to avenge his dead family
+                    A small, goblin-like hunchback creature who hides his dark intentions behind his charm
+                </Button>
+                <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
+                    A seasoned bartender who knows and talks more than he probably should
                 </Button>
                 <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
                     A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg
-                </Button>
-                <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />}>
-                    A bartender, who knows and talks more than he probably should
                 </Button>
             </Box>
             <PromptField></PromptField>
