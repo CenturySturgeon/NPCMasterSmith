@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AppContext } from '../../App';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function PromptField(props) {
+export default function PromptField() {
+  // Extract the theme colors object from the app's context
+  const { themeColors } = useContext(AppContext);
+
   const [prompt, setPrompt] = useState('');
   const [iconEnabled, setIconEnabled] = useState(false);
 
@@ -46,7 +50,7 @@ export default function PromptField(props) {
               <SendIcon
                 style={{
                   cursor: iconEnabled ? 'pointer' : 'default', opacity: iconEnabled ? 1 : 0.5,
-                  color: iconEnabled ? props.theme.palette.primary.main : 'inherit'
+                  color: iconEnabled ? themeColors.primary : 'inherit'
                 }}
                 onClick={sendPrompt}
               />
