@@ -20,7 +20,7 @@ function Application() {
 
     let Theme = isLightThemed ? lightTheme : darkTheme;
 
-    let themeColors = {primary: Theme.palette.primary.main, secondary: Theme.palette.secondary.main}
+    let themeColors = { mode: Theme.palette.mode, primary: Theme.palette.primary.main, secondary: Theme.palette.secondary.main}
 
     return (
         <ThemeProvider theme={Theme}>
