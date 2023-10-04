@@ -32,7 +32,7 @@ func SetRoutes(server *models.Server) {
 		return handlers.GetCharacters(c, server.Db)
 	})
 
-	server.App.Get("/postPrompt", func(c *fiber.Ctx) error {
+	server.App.Post("/postPrompt", func(c *fiber.Ctx) error {
 		return handlers.PostCharacterPrompt(c, server.LLM)
 	})
 
