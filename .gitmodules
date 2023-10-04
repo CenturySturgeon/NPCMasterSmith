@@ -1,3 +1,4 @@
 [submodule "ai/llama.cpp"]
 	path = ai/llama.cpp
 	url = https://github.com/ggerganov/llama.cpp
+	ignore = all
