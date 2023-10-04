@@ -14,8 +14,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// GetNewCharacter handler prompts the llm for a new character and redirects the user to an html page with the editable character card.
-func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
+// PostCharacterPrompt handler prompts the llm for a new character and returns the character in json format.
+func PostCharacterPrompt(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Initialize new prompt variable
 	p := new(models.Prompt)
 
@@ -28,21 +28,26 @@ func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
 	instructionBlock := fmt.Sprintf(`<s>[INST] <<SYS>>%s<</SYS>>`, instructionString)
 
 	// Mock-prompt the model and store the response(s)
-	llmresponse, _ := utils.JsonCharacter(p, instructionBlock, llm)
+	llmresponse, err := utils.JsonCharacter(p, instructionBlock, llm)
+
+	if err != nil {
+		c.Status(fiber.StatusInternalServerError)
+		return c.JSON(fiber.Map{
+			"message": "Something went wrong when creating the character",
+		})
+	}
 
 	// Create new character instance
 	character := new(models.Character)
 
+	c.Status(fiber.StatusOK)
+
 	// Parse the json body to the character instance
 	json.Unmarshal([]byte(llmresponse), &character)
 
-	return c.Render("character", fiber.Map{
-		"Title":       "Edit Your Character",
-		"Description": "Edit or approve your character",
-		"cssPaths":    []string{"/esbundle/character.css"},
-		"jsPaths":     []string{""},
-		"Character":   character,
-	}, "base")
+	return c.JSON(fiber.Map{
+		"character": character,
+	})
 }
 
 // PostCharacter handler inserts the new character to the characters sql table
