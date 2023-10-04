@@ -32,9 +32,9 @@ func SetRoutes(server *models.Server) {
 		return handlers.GetCharacters(c, server.Db)
 	})
 
-	// server.App.Get("/getNewCharacter", func(c *fiber.Ctx) error {
-	// 	return handlers.GetNewCharacter(c, server.LLM)
-	// })
+	server.App.Get("/postPrompt", func(c *fiber.Ctx) error {
+		return handlers.PostCharacterPrompt(c, server.LLM)
+	})
 
 	server.App.Get("/testPromptBuffering", func(c *fiber.Ctx) error {
 		llm := mocks.LLM{Model: "My model", Llamacpp: "My llama.cpp instance", Ngl: 10}
