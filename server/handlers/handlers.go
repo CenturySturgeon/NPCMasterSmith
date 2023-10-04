@@ -17,10 +17,13 @@ import (
 // PostCharacterPrompt handler prompts the llm for a new character and returns the character in json format.
 func PostCharacterPrompt(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Initialize new prompt variable
-	p := new(models.Prompt)
+	prompt := new(models.Prompt)
 
-	// Extracts the user prompt from the GET request body
-	p.Prompt = c.Query("prompt")
+	// Parse the request body to the Prompt instance
+	if err := c.BodyParser(prompt); err != nil {
+		fmt.Println(err)
+		return err
+	}
 
 	instructionString := `You're a Dungeons and Dragons character creator. All your responses must only contain JSON format following the template: {"Name": "Name of the character (additional nicknames must be inside parenthesis)","Appearance": "Physical description of the character","Quote": "A quote or phrase the character would say","Roleplay": ["Distintive character trait", "Another distintive character trait", "Yet another distintive character trait"]}`
 
@@ -28,7 +31,7 @@ func PostCharacterPrompt(c *fiber.Ctx, llm *gollama.LLM) error {
 	instructionBlock := fmt.Sprintf(`<s>[INST] <<SYS>>%s<</SYS>>`, instructionString)
 
 	// Mock-prompt the model and store the response(s)
-	llmresponse, err := utils.JsonCharacter(p, instructionBlock, llm)
+	llmresponse, err := utils.JsonCharacter(prompt, instructionBlock, llm)
 
 	if err != nil {
 		c.Status(fiber.StatusInternalServerError)

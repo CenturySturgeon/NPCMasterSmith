@@ -11,6 +11,43 @@ export class Character {
     }
 }
 
+export class Prompt {
+    constructor(prompt) {
+        this.Prompt = String(prompt);
+    }
+}
+
+/**
+ * POST request for the LLM to create a new charactter.
+ *
+ * @param {string} prompt - The base prompt object to create.
+ * @returns {Promise<number>} A Promise that resolves with the HTTP status code of the response.
+ * @throws {Error} If the network response is not successful (status code other than 2xx).
+ */
+export function postCharacterPrompt(prompt) {
+
+    const jsonData = JSON.stringify(prompt);
+
+    const url = '/postPrompt';
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: jsonData,
+    };
+
+    // Fetch should be returned so the call to the function can make use of the 'then' and 'catch' sentences to execute further logic
+    return fetch(url, requestOptions)
+        .then(response => {
+            if (response.status != 201) {
+                throw new Error('Network response was not 201');
+            }
+            return response.json();
+        })
+}
+
 // GET request to fetch all characters
 export function getCharacters() {
 
