@@ -41,8 +41,8 @@ export function postCharacterPrompt(prompt) {
     // Fetch should be returned so the call to the function can make use of the 'then' and 'catch' sentences to execute further logic
     return fetch(url, requestOptions)
         .then(response => {
-            if (response.status != 201) {
-                throw new Error('Network response was not 201');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
             return response.json();
         })
