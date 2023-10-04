@@ -38,7 +38,7 @@ func ExtractJson(s string) (string, error) {
 				}
 			}
 			// If the character == '{' it means that from that index onwards there is a json body
-			if string(character) == "{" && startJson == false {
+			if string(character) == "{" && !startJson {
 				startJson = true
 				startIndex = index
 				counter += 1
@@ -47,7 +47,7 @@ func ExtractJson(s string) (string, error) {
 	}
 
 	// If the loop is completed and there was no closure, or there are no {} characters in the string, then it means there is no valid json body in the string
-	return "", errors.New("No valid JSON found in input")
+	return "", errors.New("no valid json found in input")
 }
 
 // NewLLM function creates a gollama LLM instance using the relative path to Llama.cpp and the environment variable MODELPATH to set the LLM's model and Llama.cpp running instance.
@@ -59,6 +59,8 @@ func NewLLM(ngl int) *gollama.LLM {
 	}
 
 	// Create an LLM instance
+	// NOTE: While the path to the model is an absolute one, the path to llama.cpp is not. Llama.cpp's path is "../ai/llama.cpp" as specified bellow.
+	//		 For this project to work, the llama.cpp build must be in the "../ai/llama.cpp" path.
 	llm := gollama.LLM{Llamacpp: "../ai/llama.cpp", Model: modelPath, Ngl: ngl}
 	// It appears that the command to communicate with the model is executed at the server.go level, so the relative paths must refelct this
 
