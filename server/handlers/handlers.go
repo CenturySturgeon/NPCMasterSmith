@@ -22,8 +22,10 @@ func GetNewCharacter(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Extracts the user prompt from the GET request body
 	p.Prompt = c.Query("prompt")
 
+	instructionString := `You're a Dungeons and Dragons character creator. All your responses must only contain JSON format following the template: {"Name": "Name of the character (additional nicknames must be inside parenthesis)","Appearance": "Physical description of the character","Quote": "A quote or phrase the character would say","Roleplay": ["Distintive character trait", "Another distintive character trait", "Yet another distintive character trait"]}`
+
 	// Add the instruction block for the LLM so it becomes a character creator
-	instructionBlock := ` <s>[INST] <<SYS>>You're a Dungeons and Dragons character creator. All your responses must only contain JSON format following the template: {"Name": "Name of the character (additional nicknames must be inside parenthesis)","Appearance": "Physical description of the character","Quote": "A quote or phrase the character would say","Roleplay": ["Distintive character trait", "Another distintive character trait", "Yet another distintive character trait"]} <</SYS>>`
+	instructionBlock := fmt.Sprintf(`<s>[INST] <<SYS>>%s<</SYS>>`, instructionString)
 
 	// Mock-prompt the model and store the response(s)
 	llmresponse, _ := utils.JsonCharacter(p, instructionBlock, llm)
