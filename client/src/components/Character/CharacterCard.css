@@ -27,16 +27,12 @@
 }
 
 .single-character-card {
-    display: flex;
-    overflow-y: scroll;
     /* Max height prop can now be used to limit the vertical size of the card */
     max-height: 570px;
     min-height: 400px;
 }
 
 .multi-character-card {
-    display: flex;
-    overflow-y: scroll;
     /* Max height prop can now be used to limit the vertical size of the card */
     max-height: 400px;
     min-height: 400px;

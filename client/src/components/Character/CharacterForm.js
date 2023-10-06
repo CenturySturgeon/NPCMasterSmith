@@ -101,7 +101,7 @@ export default function CharacterForm(props) {
                 </div>
                 <div className="form-buttonHolder">
                     <Button type='submit' variant="contained">Save</Button>
-                    <Button onClick={() => { props.setEditingCard(false) }} variant="contained">Cancel</Button>
+                    <Button onClick={() => {props.isOnlyCard ? console.log("Redirecting to Home...") : props.setEditingCard(false) }} variant="contained">Cancel</Button>
                 </div>
             </Box>
         </form>
