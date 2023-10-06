@@ -100,8 +100,12 @@ export default function CharacterCard(props) {
             <CharacterText className='top-bottom-holder' toggleIsFavorite={toggleIsFavorite} isFavorite={charIsFavorite} name={charName} quote={charQuote} appearance={charAppearance} roleplayProps={charRoleplayProps} ></CharacterText>
         </Box>
     );
+    const cardStyles = {
+        Box: props.isOnlyCard ? {maxWidth: '30%'}: '',
+        CardClass : props.isOnlyCard ? 'single-character-card': 'multi-character-card'
+    }
     return (
-            <Box position="relative">
+            <Box sx={cardStyles.Box} position="relative">
                 {/* Show the campaign avatar when the card is not being edited */}
                 {isEditingCard ? '' : campaignAvatar}
 
@@ -111,7 +115,7 @@ export default function CharacterCard(props) {
                 {/* The actions menu is hidden by default */}
                 <ActionsMenu id={charId} anchorEl={anchorEl} setEditingCard={setIsEditingCard} closeVertIconMenu={closeVertIconMenu} open={open}></ActionsMenu>
 
-                <Paper className='character-card' elevation={3}>
+                <Paper className={'character-card' + ' ' + cardStyles.CardClass} elevation={3}>
                     {/* Show the character info when the card is not being edited and the form when the card is being edited */}
                     {isEditingCard ? characterForm : characterInfo}
                 </Paper>

@@ -48,6 +48,7 @@ export default CharactersLayout = (props) => {
                 fetchedCharacters.concat(props.dummies).map((character) => (
                     <Grid item xs={3}>
                         <CharacterCard
+                            isOnlyCard={false}
                             id={character.Id}
                             campaign={character.Campaign}
                             image={character.Image}

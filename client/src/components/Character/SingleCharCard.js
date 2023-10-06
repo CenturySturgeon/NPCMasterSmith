@@ -4,7 +4,7 @@ import man_image from '../../../public/images/profile_man.png'
 const SingleCharCard = () => {
     return (
         <CharacterCard
-            isOnlyCard={false}
+            isOnlyCard={true}
             id={0}
             campaign={""}
             image={man_image}
