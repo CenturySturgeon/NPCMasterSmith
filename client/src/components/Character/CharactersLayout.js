@@ -46,16 +46,18 @@ export default CharactersLayout = (props) => {
         <Grid sx={{ margin: 0 }} container spacing={3}>
             {
                 fetchedCharacters.concat(props.dummies).map((character) => (
-                    <CharacterCard
-                        id={character.Id}
-                        campaign={character.Campaign}
-                        image={character.Image}
-                        favorite={character.Favorite}
-                        name={character.Name}
-                        quote={character.Quote}
-                        appearance={character.Appearance}
-                        roleplayProps={character.Roleplay}
-                    />
+                    <Grid item xs={3}>
+                        <CharacterCard
+                            id={character.Id}
+                            campaign={character.Campaign}
+                            image={character.Image}
+                            favorite={character.Favorite}
+                            name={character.Name}
+                            quote={character.Quote}
+                            appearance={character.Appearance}
+                            roleplayProps={character.Roleplay}
+                        />
+                    </Grid>
                 ))
             }
         </Grid>

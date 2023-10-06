@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from 'react';
 import { Character, putCharacter } from '../API/API';
 
 import { Paper, Box, IconButton, Avatar, Tooltip, TextField, Button } from "@mui/material";
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import MoreVertIcon from '@mui/icons-material/MoreVert'; // Import MoreVertIcon
 
 import './CharacterCard.css'
@@ -102,7 +101,6 @@ export default function CharacterCard(props) {
         </Box>
     );
     return (
-        <Grid item xs={3}>
             <Box position="relative">
                 {/* Show the campaign avatar when the card is not being edited */}
                 {isEditingCard ? '' : campaignAvatar}
@@ -118,6 +116,5 @@ export default function CharacterCard(props) {
                     {isEditingCard ? characterForm : characterInfo}
                 </Paper>
             </Box>
-        </Grid>
     );
 }
