@@ -6,7 +6,7 @@ const SingleCharCard = () => {
     return (
         <>
 
-            <Typography fontWeight={400} variant="h1" component="h1">Edit your Character</Typography>
+            <Typography fontWeight={400} variant="h1" component="h1">Customize Character</Typography>
             <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
                 <CharacterCard
                     isOnlyCard={true}

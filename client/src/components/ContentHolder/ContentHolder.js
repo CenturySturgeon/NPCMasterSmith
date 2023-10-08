@@ -4,7 +4,7 @@ import PromptPage from "../Prompt/PromptPage";
 
 const ContentHolder = () => {
     return (
-        <Box sx={{ mt: '12px' , width: '100%', display: 'flex', flexGrow: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ mb: '12px', mt: '12px', width: '100%', display: 'flex', flexGrow: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <PromptPage></PromptPage>
             <CharactersPage/>
         </Box>
