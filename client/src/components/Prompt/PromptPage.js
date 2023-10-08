@@ -27,7 +27,7 @@ const PromptPage = () => {
     const { themeColors } = useContext(AppContext);
 
     const buttonColor = themeColors.mode === 'dark' ? 'primary' : 'inherit';
-    const buttonStyles = { width: '100%', justifyContent: 'space-between', paddingTop: '12px', paddingBottom: '12px', marginBottom: '6px' };
+    const buttonStyles = { width: '100%', justifyContent: 'space-between', paddingTop: '12px', paddingBottom: '12px', marginBottom: '6px', textTransform: 'none' };
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -36,13 +36,13 @@ const PromptPage = () => {
             </Box>
             <Box width={'60%'} >
                 <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={ <SendIcon />} onClick={handlePromptExampleClick}>
-                    A small, goblin-like hunchback creature who hides his dark intentions behind his charm
+                    A small, goblin-like hunchback creature who hides his dark intentions behind his charm.
                 </Button>
                 <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={ <SendIcon />} onClick={handlePromptExampleClick}>
-                    A seasoned bartender who knows and talks more than he probably should
+                    A seasoned bartender who knows and talks more than he probably should...
                 </Button>
                 <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={ <SendIcon /> } onClick={handlePromptExampleClick}>
-                    A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg
+                    A shipyard store owner with a thick pirate accent, a rude demeanor, and a wooden leg.
                 </Button>
             </Box>
             <PromptField></PromptField>
