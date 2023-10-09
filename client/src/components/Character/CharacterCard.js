@@ -70,7 +70,7 @@ export default function CharacterCard(props) {
     const campaignAvatar = (
         <Tooltip title={campaignChars != 'N/A' ? charCampaign : 'Not Assigned'} arrow>
             <Avatar variant="rounded"
-                sx={{ position: 'absolute', top: 0, left: 0, bgcolor: themeColors.primary }}>
+                sx={{ position: 'absolute', zIndex: 1, top: 0, left: 0, bgcolor: themeColors.primary }}>
                 {campaignChars}
             </Avatar>
         </Tooltip>
@@ -80,7 +80,7 @@ export default function CharacterCard(props) {
         <IconButton aria-label="show more"
             id="basic-button"
             className='invisible'
-            style={{ position: 'absolute', top: 0, right: 0 }}
+            style={{ position: 'absolute', zIndex: 1, top: 0, right: 0 }}
             aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
