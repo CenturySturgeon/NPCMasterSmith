@@ -36,7 +36,7 @@ const PromptPage = () => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
             <Box>
-                <Typography fontWeight={400} variant="h1" component="h1">All Your NPCs In One Place</Typography>
+                <Typography fontWeight={400} variant="h1" component="h1">Build Characters Using AI</Typography>
             </Box>
             <Box width={'60%'} >
                 <Button color={buttonColor} sx={buttonStyles} variant="outlined" endIcon={<SendIcon />} onClick={handlePromptExampleClick}>
