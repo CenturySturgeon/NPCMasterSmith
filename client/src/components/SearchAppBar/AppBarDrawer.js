@@ -13,7 +13,11 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ClassIcon from '@mui/icons-material/Class';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
+import { useNavigate } from "react-router-dom";
+
 export default function AppBarDrawer(props) {
+    const navigate = useNavigate();
+
     return (
         <Drawer
             disableScrollLock={true}
@@ -30,12 +34,12 @@ export default function AppBarDrawer(props) {
 
             <List> {
                 [
-                    { text: "Create Character", icon: <PersonAddIcon /> },
-                    { text: "Manage Characters", icon: <GroupsIcon /> },
-                    { text: "Manage Campaigns", icon: <ClassIcon /> }
+                    { text: "Create Character", icon: <PersonAddIcon />, route: "/" },
+                    { text: "Manage Characters", icon: <GroupsIcon />, route: "/characters" },
+                    { text: "Manage Campaigns", icon: <ClassIcon />, route: "/" }
                 ].map((item) => (
                     <ListItem key={item.text} disablePadding>
-                        <ListItemButton>
+                        <ListItemButton onClick={() => navigate(item.route)}>
                             <ListItemIcon>
                                 {item.icon}
                             </ListItemIcon>
