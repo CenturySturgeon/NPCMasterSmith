@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../../App';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Prompt, postCharacterPrompt } from '../API/API';
 import { Box, Typography, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';

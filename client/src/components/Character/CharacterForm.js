@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Divider } from "@mui/material";
 import './CharacterCard.css'
 import { Character, postCharacter, putCharacter } from "../API/API";
 
 export default function CharacterForm(props) {
+    const navigate = useNavigate();
 
     // States for the form text field values
     const [formData, setFormData] = useState({
@@ -101,7 +103,7 @@ export default function CharacterForm(props) {
                 </div>
                 <div className="form-buttonHolder">
                     <Button type='submit' variant="contained">Save</Button>
-                    <Button onClick={() => {props.isOnlyCard ? console.log("Redirecting to Home...") : props.setEditingCard(false) }} variant="contained">Cancel</Button>
+                    <Button onClick={() => {props.isOnlyCard ? navigate('/') : props.setEditingCard(false) }} variant="contained">Cancel</Button>
                 </div>
             </Box>
         </form>
