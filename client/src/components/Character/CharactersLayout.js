@@ -43,25 +43,28 @@ export default CharactersLayout = (props) => {
     }, []);
 
     const charGrid = (
-        <Grid sx={{ margin: 0 }} container spacing={3}>
-            {
-                fetchedCharacters.concat(props.dummies).map((character) => (
-                    <Grid item xs={3}>
-                        <CharacterCard
-                            isOnlyCard={false}
-                            id={character.Id}
-                            campaign={character.Campaign}
-                            image={character.Image}
-                            favorite={character.Favorite}
-                            name={character.Name}
-                            quote={character.Quote}
-                            appearance={character.Appearance}
-                            roleplayProps={character.Roleplay}
-                        />
-                    </Grid>
-                ))
-            }
-        </Grid>
+        <>
+            <Typography fontWeight={400} variant="h1" component="h1">All Your NPCs In One Place</Typography>
+            <Grid sx={{ margin: 0 }} container spacing={3}>
+                {
+                    fetchedCharacters.concat(props.dummies).map((character) => (
+                        <Grid item xs={3}>
+                            <CharacterCard
+                                isOnlyCard={false}
+                                id={character.Id}
+                                campaign={character.Campaign}
+                                image={character.Image}
+                                favorite={character.Favorite}
+                                name={character.Name}
+                                quote={character.Quote}
+                                appearance={character.Appearance}
+                                roleplayProps={character.Roleplay}
+                            />
+                        </Grid>
+                    ))
+                }
+            </Grid>
+        </>
     );
 
     const noChars = (
@@ -76,7 +79,7 @@ export default CharactersLayout = (props) => {
         )
     }
     return (
-        <Container>
+        <Container sx={{flexGrow: 1}}>
             {fetchedCharacters.concat(props.dummies).length > 0 ? charGrid : noChars}
         </Container>
     )
