@@ -21,6 +21,9 @@ export default function CharacterForm(props) {
         props.setId(data.id);
         props.updateCharacterProps(characterData);
         props.setEditingCard(false);
+        if (props.isOnlyCard){
+            navigate('/characters')
+        }
     }
 
     // Handles the server response for the PUT request
