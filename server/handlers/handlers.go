@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"npcmastersmith/mocks"
 	"npcmastersmith/models"
 	"npcmastersmith/utils"
+	"os"
 	"strconv"
 	"strings"
 
@@ -30,10 +32,17 @@ func PostCharacterPrompt(c *fiber.Ctx, llm *gollama.LLM) error {
 	// Add the instruction block for the LLM so it becomes a character creator
 	instructionBlock := fmt.Sprintf(`<s>[INST] <<SYS>>%s<</SYS>>`, instructionString)
 
-	// Mock-prompt the model and store the response(s)
-	llmresponse, err := utils.JsonCharacter(prompt, instructionBlock, llm)
+	var llmresponse string
+	var llmErr error
+	if os.Getenv("MOCK") == "true" {
+		// Mock-prompt the model and store the response(s)
+		llmresponse, llmErr = mocks.MockPromptModel()
+	} else {
+		// Prompt the model and store the response(s)
+		llmresponse, llmErr = utils.JsonCharacter(prompt, instructionBlock, llm)
+	}
 
-	if err != nil {
+	if llmErr != nil {
 		c.Status(fiber.StatusInternalServerError)
 		return c.JSON(fiber.Map{
 			"message": "Something went wrong when creating the character",

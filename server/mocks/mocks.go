@@ -40,3 +40,10 @@ func (llm *LLM) BufferPromptModel(prompt string, outputChan chan<- string) {
 	close(outputChan)
 	fmt.Println("\nChannel closed")
 }
+
+// Mock prompts the model and returns a dummy character
+func MockPromptModel() (string, error) {
+	jsonResponse := "{\"Name\": \"Gargauth (Once-treasurer of hell, the Tenth Lord of the nine, Lost lord of the pit)\", \"Appearance\": \"A shield of silvered, vanadium steel, embelished with bronze decorations suggesting the horns, eyes and fangs of a pit fiend.\", \"Quote\": \"You have no idea of the secrets which I could share with you! If you would only serve me!\", \"Roleplay\": [\"Wants nothing more than to be released from his prision.\", \"Craves power, with little care for what it takes.\", \"Speaks in either a siblant, seductive whisper or a baritone roar.\"]}"
+
+	return jsonResponse, nil
+}
