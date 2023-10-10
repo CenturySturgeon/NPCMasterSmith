@@ -16,6 +16,14 @@ func SetRoutes(server *models.Server) {
 		return c.Render("index", fiber.Map{})
 	})
 
+	server.App.Get("/characters", func(c *fiber.Ctx) error {
+		return c.Render("index", fiber.Map{})
+	})
+
+	server.App.Get("/newcharacter", func(c *fiber.Ctx) error {
+		return c.Render("index", fiber.Map{})
+	})
+
 	server.App.Post("/postCharacter", func(c *fiber.Ctx) error {
 		return handlers.PostCharacter(c, server.Db)
 	})
