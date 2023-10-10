@@ -12,17 +12,15 @@ import (
 
 func SetRoutes(server *models.Server) {
 
-	server.App.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{})
-	})
+	// All the index routes should return the index html file to let the client side do the rendering
+	indexRoutes := []string{"/", "/characters", "/newcharacter"}
 
-	server.App.Get("/characters", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{})
-	})
-
-	server.App.Get("/newcharacter", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{})
-	})
+	// Assign index routes to return the index file
+	for _, route := range indexRoutes {
+		server.App.Get(route, func(c *fiber.Ctx) error {
+			return c.Render("index", fiber.Map{})
+		})
+	}
 
 	server.App.Post("/postCharacter", func(c *fiber.Ctx) error {
 		return handlers.PostCharacter(c, server.Db)
