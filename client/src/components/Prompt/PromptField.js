@@ -1,11 +1,16 @@
 import { useState, useContext } from 'react';
 import { AppContext } from '../../App';
+import { Prompt, postCharacterPrompt } from '../API/API';
+import { useNavigate } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 
 export default function PromptField() {
+  const navigate = useNavigate();
+  
   // Extract the theme colors object from the app's context
   const { themeColors } = useContext(AppContext);
 
@@ -19,10 +24,22 @@ export default function PromptField() {
     setIconEnabled(wordCount > 1);
   }
 
+  // Handles the LLM response
+  function handlePostResponse(data) {
+    console.log(data.character);
+    navigate('/newcharacter', { state: data.character });
+  }
+
   function sendPrompt() {
     if (iconEnabled) {
-      // Handle sending the prompt to the backend here
-      console.log('Prompt sent to the backend');
+      charPrompt = new Prompt(prompt);
+      postCharacterPrompt(charPrompt)
+        .then(data => { handlePostResponse(data) })
+        .catch(error => {
+          console.error('Error:', error);
+          // Handle errors if the request fails
+        });
+
       setPrompt('');
       setIconEnabled(false);
     }
@@ -42,7 +59,7 @@ export default function PromptField() {
         id="fullWidth"
         helperText="A simple description of your character"
         onChange={onPromptInputChange}
-        onKeyUp={(event) => {if (event.key === 'Enter'){sendPrompt()}}}
+        onKeyUp={(event) => { if (event.key === 'Enter') { sendPrompt() } }}
         value={prompt}
         InputProps={{
           endAdornment: (
